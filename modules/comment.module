@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.module,v 1.145.2.1 2003/07/10 05:03:41 dries Exp $
+// $Id: comment.module,v 1.145.2.2 2003/07/24 12:24:00 dries Exp $
 
 $GLOBALS["cmodes"] = array(1 => t("Flat list - collapsed"), 2 => t("Flat list - expanded"), 3 => t("Threaded list - collapsed"), 4 => t("Threaded list - expanded"));
 $GLOBALS["corder"] = array(1 => t("Date - newest first"), 2 => t("Date - oldest first"));
@@ -1325,7 +1325,9 @@ function comment_visible($comment, $threshold = 0) {
 }
 
 function comment_moderate() {
-  global $moderation, $user;
+  global $user;
+
+  $moderation = $_POST["moderation"];
 
   if ($moderation) {
     $result = db_query("SELECT mid, value FROM moderation_roles WHERE rid = %d", $user->rid);

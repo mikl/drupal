@@ -1,5 +1,5 @@
 <?php
-// $Id: module.inc,v 1.58.2.5 2004/12/01 12:09:56 dries Exp $
+// $Id: module.inc,v 1.58.2.6 2004/12/14 22:16:42 dries Exp $
 
 /**
  * @file
@@ -80,7 +80,7 @@ function module_list($refresh = FALSE, $bootstrap = FALSE) {
  *   Filename of module, if no $path has been specified.
  */
 function module_set_filename($module, $path = null) {
-  static $list;
+  static $list = array();
 
   if ($path) {
     $list[$module] = $path;

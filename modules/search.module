@@ -1,5 +1,5 @@
 <?php
-// $Id: search.module,v 1.27.2.2 2003/03/12 19:20:28 dries Exp $
+// $Id: search.module,v 1.27.2.3 2003/05/30 14:59:22 dries Exp $
 
 function search_help() {
   $output = "<b>". t("Search guidelines") ."</b>";
@@ -262,8 +262,10 @@ function update_index($search_array) {
       ** Walk through the weighted words array, inserting them into
       ** the search index
       */
-      foreach ($newwords as $key => $value) {
-        db_query("INSERT INTO search_index VALUES('$key', ". $node["lno"] .", '$node_type', $value)");
+      if ($newwords) {
+        foreach ($newwords as $key => $value) {
+          db_query("INSERT INTO search_index VALUES('$key', ". $node["lno"] .", '$node_type', $value)");
+        }
       }
 
       // Zap the weighted words array, so we don't add multiples.

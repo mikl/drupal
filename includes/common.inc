@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.133.2.8 2003/03/05 06:21:53 dries Exp $
+// $Id: common.inc,v 1.133.2.9 2003/03/17 07:01:45 dries Exp $
 
 function conf_init() {
   global $HTTP_HOST;
@@ -793,6 +793,9 @@ function page_footer() {
   }
 }
 
+// set error handler:
+set_error_handler("error_handler");
+
 unset($conf);
 
 $config = conf_init();
@@ -807,16 +810,13 @@ include_once "includes/pager.inc";
 // initialize configuration variables, using values from conf.php if available:
 $conf = variable_init(isset($conf) ? $conf : array());
 
+// initialize installed modules:
+module_init();
+
 // initialize localization system:
 $locale = locale_init();
 
 // initialize theme:
 $theme = theme_init();
-
-// initialize installed modules:
-module_init();
-
-// set error handler:
-set_error_handler("error_handler");
 
 ?>

@@ -1,5 +1,5 @@
 <?php
-// $Id: forum.module,v 1.171.2.1 2004-03-09 21:33:27 dries Exp $
+// $Id: forum.module,v 1.171.2.2 2004-03-15 19:41:47 dries Exp $
 
 function forum_help($section = 'admin/help#forum') {
   $output = '';
@@ -571,7 +571,7 @@ function theme_forum_list($forums, $parents, $tid) {
  * @return output for the topic list.
  */
 function theme_forum_topic_list($tid, $topics, $sortby, $forum_per_page, $offset) {
-  global $user, $id, $status, $user, $pager_total, $forum_topic_list_header;
+  global $user, $id, $status, $pager_total, $forum_topic_list_header;
 
   if ($topics) {
 

@@ -1,5 +1,5 @@
 <?php
-// $Id: module.inc,v 1.58.2.2 2004-11-24 19:25:31 dries Exp $
+// $Id: module.inc,v 1.58.2.3 2004-11-25 06:12:35 dries Exp $
 
 /**
  * @file
@@ -42,7 +42,7 @@ function module_list($refresh = FALSE, $bootstrap = FALSE) {
   static $list;
 
   if ($refresh) {
-    unset($list);
+    $list = array();
   }
 
   if (!$list) {

@@ -1,5 +1,5 @@
 <?php
-// $Id: bootstrap.inc,v 1.32.2.1 2004-11-24 19:25:31 dries Exp $
+// $Id: bootstrap.inc,v 1.32.2.2 2004-11-25 06:12:35 dries Exp $
 
 /**
  * @file
@@ -294,6 +294,78 @@ function bootstrap_invoke_all($op) {
     module_load($module);
     module_invoke($module, $op);
   }
+}
+
+/**
+ * Define the critical hooks that force modules to always be loaded.
+ */
+function bootstrap_hooks() {
+  return array('init', 'exit');
+}
+
+/**
+ * Given an internal Drupal path, return the alias set by the administrator.
+ */
+function drupal_get_path_alias($path) {
+  if (($map = drupal_get_path_map()) && ($newpath = array_search($path, $map))) {
+    return $newpath;
+  }
+  elseif (function_exists('conf_url_rewrite')) {
+    return conf_url_rewrite($path, 'outgoing');
+  }
+  else {
+    // No alias found. Return the normal path.
+    return $path;
+  }
+}
+
+/**
+ * Return an array mapping path aliases to their internal Drupal paths.
+ */
+function drupal_get_path_map($action = '') {
+  static $map = NULL;
+
+  if ($action == 'rebuild') {
+    $map = NULL;
+  }
+
+  if (is_null($map)) {
+    $map = array();  // Make $map non-null in case no aliases are defined.
+    $result = db_query('SELECT * FROM {url_alias}');
+    while ($data = db_fetch_object($result)) {
+      $map[$data->dst] = $data->src;
+    }
+  }
+
+  return $map;
+}
+
+/**
+ * Set the title of the current page, for display on the page and in the title bar.
+ */
+function drupal_set_title($title = NULL) {
+  static $stored_title;
+
+  if (isset($title)) {
+    $stored_title = $title;
+  }
+  return $stored_title;
+}
+
+/**
+ * Get the title of the current page, for display on the page and in the title bar.
+ */
+function drupal_get_title() {
+  $title = drupal_set_title();
+
+  if (!isset($title)) {
+    // titles cannot be determined when serving a cached page
+    if (function_exists('menu_get_active_title')) {
+      $title = menu_get_active_title();
+    }
+  }
+
+  return $title;
 }
 
 /**

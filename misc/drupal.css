@@ -1,4 +1,4 @@
-/* $Id: drupal.css,v 1.84 2004-09-21 01:35:40 unconed Exp $ */
+/* $Id: drupal.css,v 1.84.2.1 2005-01-09 10:00:46 dries Exp $ */
 
 /*
 ** HTML elements
@@ -142,7 +142,7 @@ tr.light .form-item, tr.dark .form-item {
   margin-bottom: 0em;
   white-space: nowrap;
 }
-.form-item input.error {
+.form-item input.error, .form-item textarea.error {
   border: 2px solid red;
 }
 .form-item .description {

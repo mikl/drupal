@@ -1,5 +1,5 @@
 <?php
-// $Id: page.module,v 1.110.2.1 2004-03-10 09:31:54 dries Exp $
+// $Id: page.module,v 1.110.2.2 2004-04-12 10:12:59 dries Exp $
 
 /**
  * Provide online user help
@@ -99,6 +99,13 @@ function page_load($node) {
 function page_link($type, $node = 0, $main) {
 
   $links = array();
+
+  if ($type == "page" && user_access("access content")) {
+    $result = db_query("SELECT n.nid, n.title, p.link, p.description FROM {page} p INNER JOIN {node} n ON p.nid = n.nid WHERE n.status = '1' AND p.link != '' ORDER BY p.link");
+    while ($page = db_fetch_object($result)) {
+      $links[] = l($page->link, "node/view/$page->nid", array("title" => $page->description));
+    }
+  }
 
   if ($type == 'system') {
     if (page_access('create', $node)) {

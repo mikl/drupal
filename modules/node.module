@@ -1,5 +1,5 @@
 <?php
-// $Id: node.module,v 1.410.2.2 2004/10/29 00:51:38 unconed Exp $
+// $Id: node.module,v 1.410.2.3 2004/11/15 09:56:56 dries Exp $
 
 /**
  * @file
@@ -1382,9 +1382,15 @@ function node_submit($node) {
     }
   }
 
-  // Node was submitted successfully. Redirect to the viewing page.
   drupal_set_message($msg);
-  drupal_goto('node/'. $node->nid);
+
+  // Node was submitted successfully: redirect the user.
+  if (node_access('view', $node)) {
+    drupal_goto('node/'. $node->nid);
+  }
+  else {
+    drupal_goto();
+  }
 }
 
 /**

@@ -1,5 +1,5 @@
 <?php
-// $Id: import.module,v 1.129.2.1 2003-12-22 21:56:12 dries Exp $
+// $Id: import.module,v 1.129.2.2 2003-12-31 09:57:05 dries Exp $
 
 
 function import_help($section = "admin/help#import") {
@@ -322,8 +322,14 @@ function import_refresh($feed) {
       return t("failed to parse RSS feed '%site': suspicious input data.", array("%site" => $feed["title"]));
     }
 
+    // extract the XML file's encoding (the XML parser in PHP4 doesn't do this by itself):
+    $encoding = 'utf-8';
+    if (ereg('^<\?xml[^>]+encoding="([^"]+)"', $data, $match)) {
+      $encoding = $match[1];
+    }
+
     // parse the data:
-    $xml_parser = xml_parser_create();
+    $xml_parser = xml_parser_create($encoding);
     xml_set_element_handler($xml_parser, "import_element_start", "import_element_end");
     xml_set_character_data_handler($xml_parser, "import_element_data");
     xml_parser_set_option($xml_parser, XML_OPTION_TARGET_ENCODING, "utf-8");

@@ -1,5 +1,5 @@
 <?php
-// $Id: locale.module,v 1.45 2002/10/29 19:39:19 dries Exp $
+// $Id: locale.module,v 1.45.2.1 2003/03/11 21:46:01 dries Exp $
 
 function locale_help() {
  ?>
@@ -136,7 +136,7 @@ function locale_seek() {
           foreach ($languages as $key=>$value) {
             $tmp[] = $key . (check_query($edit["status"]) == 1 ? " !=" : " =") ." ''";
           }
-          $query[] = implode(" && ", $tmp);
+          $query[] = implode(" AND ", $tmp);
           break;
         case "any":
           foreach ($languages as $key=>$value) {

@@ -1,5 +1,5 @@
 <?php
-// $Id: profile.module,v 1.41 2004-02-21 21:26:57 dries Exp $
+// $Id: profile.module,v 1.41.2.1 2004-03-24 05:59:53 dries Exp $
 
 function _profile_init() {
   /*
@@ -299,7 +299,7 @@ function _profile_select($name, $value, $options, $extra = 0, $multiple = 0) {
     foreach ($options as $key=>$choice) {
       $select .= "<option value=\"$key\"". (is_array($value) ? (in_array($key, $value) ? " selected=\"selected\"" : "") : ($key == $value ? " selected=\"selected\"" : "")) .">". check_form($choice) ."</option>";
     }
-    return "<select name=\"edit[$name]". ($multiple ? "[]" : "") ."\"". ($multiple ? " multiple " : "") . ($extra ? " $extra" : "") .">$select</select>";
+    return "<select name=\"edit[$name]". ($multiple ? "[]" : "") ."\"". ($multiple ? " multiple=\"multiple\" " : "") . ($extra ? " $extra" : "") .">$select</select>";
   }
 }
 

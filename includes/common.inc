@@ -1,5 +1,5 @@
 <?php
-/* $Id: common.inc,v 1.328.2.8 2004/05/03 11:53:15 unconed Exp $ */
+/* $Id: common.inc,v 1.328.2.9 2004/05/24 18:08:43 dries Exp $ */
 
 /**
  * @defgroup common Core functions
@@ -551,7 +551,7 @@ function drupal_specialchars($input, $quotes = ENT_NOQUOTES) {
  */
 function valid_email_address($mail) {
   $user = '[a-zA-Z0-9_\-\.\+\^!#\$%&*+\/\=\?\`\|\{\}~\']+';
-  $domain = '(?:[a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9]\.?)+';
+  $domain = '(?:(?:[a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.?)+';
   $ipv4 = '[0-9]{1,3}(\.[0-9]{1,3}){3}';
   $ipv6 = '[0-9a-fA-F]{1,4}(\:[0-9a-fA-F]{1,4}){7}';
 

@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.module,v 1.145.2.2 2003/07/24 12:24:00 dries Exp $
+// $Id: comment.module,v 1.145.2.3 2003/08/12 18:29:28 dries Exp $
 
 $GLOBALS["cmodes"] = array(1 => t("Flat list - collapsed"), 2 => t("Flat list - expanded"), 3 => t("Threaded list - collapsed"), 4 => t("Threaded list - expanded"));
 $GLOBALS["corder"] = array(1 => t("Date - newest first"), 2 => t("Date - oldest first"));
@@ -1402,12 +1402,12 @@ function comment_num_all($nid) {
 function comment_num_replies($id) {
   static $cache;
 
-  if (!isset($cache[$nid])) {
+  if (!isset($cache[$id])) {
     $result = db_query("SELECT COUNT(cid) FROM comments WHERE pid = %d AND status = 0", $id);
-    $cache[$nid] = $result ? db_result($result, 0) : 0;
+    $cache[$id] = $result ? db_result($result, 0) : 0;
   }
 
-  return $cache[$nid];
+  return $cache[$id];
 }
 
 /**

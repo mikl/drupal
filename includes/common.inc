@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.133.2.4 2003/01/05 08:10:48 dries Exp $
+// $Id: common.inc,v 1.133.2.5 2003/01/08 05:47:31 dries Exp $
 
 function conf_init() {
   global $HTTP_HOST;
@@ -723,6 +723,7 @@ function link_page() {
   }
   else {
     $links[] = l(t("home"), array(), "index", "", array("title" => t("Return to the main page.")));
+
     foreach (module_list() as $name) {
       if (module_hook($name, "link")) {
         $links = array_merge($links, module_invoke($name, "link", "page"));
@@ -734,13 +735,15 @@ function link_page() {
 }
 
 function link_node($node, $main = 0) {
+  $links = array();
+
   foreach (module_list() as $name) {
     if (module_hook($name, "link")) {
       $links = array_merge($links, module_invoke($name, "link", "node", $node, $main));
     }
   }
 
-  return $links ? $links : array();
+  return $links;
 }
 
 function timer_start() {

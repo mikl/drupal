@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.module,v 1.73.2.1 2004-01-18 07:59:51 dries Exp $
+// $Id: taxonomy.module,v 1.73.2.2 2004-03-14 20:08:21 dries Exp $
 
 function taxonomy_feed($taxonomy) {
   global $id, $type;
@@ -612,7 +612,7 @@ function _taxonomy_term_select($title, $name, $value, $vocabulary_id, $descripti
 
     $size = min(12, count($options));
 
-    return form_item($title, "<select name=\"edit[$name][]\"". ($multiple ? " multiple size=\"$size\"" : "") . ($extra ? " $extra" : "") .">$select</select>", $description);
+    return form_item($title, "<select name=\"edit[$name][]\"". ($multiple ? " multiple=\"multiple\" size=\"$size\"" : "") . ($extra ? " $extra" : "") .">$select</select>", $description);
   }
 }
 

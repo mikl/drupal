@@ -1,5 +1,5 @@
 <?php
-// $Id: user.module,v 1.407.2.10 2005/01/05 20:17:33 dries Exp $
+// $Id: user.module,v 1.407.2.11 2005/01/27 21:32:14 dries Exp $
 
 /**
  * @file
@@ -678,7 +678,8 @@ function user_menu($may_cache) {
 
     if ($user->uid) {
       $items[] = array('path' => 'user/'. $user->uid, 'title' => t('my account'),
-        'callback' => 'user_page', 'access' => TRUE);
+        'callback' => 'user_page', 'access' => TRUE,
+        'type' => MENU_DYNAMIC_ITEM);
       $items[] = array('path' => 'logout', 'title' => t('log out'),
         'access' => TRUE,
         'callback' => 'user_logout',

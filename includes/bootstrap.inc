@@ -1,5 +1,5 @@
 <?php
-/* $Id: bootstrap.inc,v 1.11 2004-02-21 14:08:07 kjartan Exp $ */
+/* $Id: bootstrap.inc,v 1.11.2.1 2004-10-12 19:49:20 dries Exp $ */
 
 function conf_init() {
 
@@ -227,7 +227,12 @@ function request_uri() {
     $uri = $_SERVER["REQUEST_URI"];
   }
   else {
-    $uri = $_SERVER["PHP_SELF"] ."?". $_SERVER["argv"][0];
+    if (isset($_SERVER["argv"])) {
+      $uri = $_SERVER["PHP_SELF"] ."?". $_SERVER["argv"][0];
+    }
+    else {
+      $uri = $_SERVER["PHP_SELF"] ."?". $_SERVER["QUERY_STRING"];
+    }
   }
 
   return check_url($uri);

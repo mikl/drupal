@@ -1,5 +1,5 @@
 <?php
-// $Id: node.module,v 1.284 2003-10-29 17:42:11 dries Exp $
+// $Id: node.module,v 1.284.2.1 2003-12-04 22:47:52 dries Exp $
 
 function node_help($section = "admin/help#node") {
   global $mod;
@@ -172,15 +172,15 @@ function node_teaser($body) {
   ** we try to split at paragraph boundaries.
   */
 
+  if ($length = strpos($body, "</p>", $size)) {
+    return substr($body, 0, $length + 4);
+  }
+
   if ($length = strpos($body, "<br />", $size)) {
     return substr($body, 0, $length);
   }
 
   if ($length = strpos($body, "<br>", $size)) {
-    return substr($body, 0, $length);
-  }
-
-  if ($length = strpos($body, "</p>", $size)) {
     return substr($body, 0, $length);
   }
 

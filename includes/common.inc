@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.226.2.2 2003/07/09 22:08:11 dries Exp $
+// $Id: common.inc,v 1.226.2.3 2003/07/09 22:13:25 dries Exp $
 
 function conf_init() {
 
@@ -484,12 +484,13 @@ function xss_check_input_data($data) {
     */
 
     // check strings:
-    $match += preg_match("/\Wjavascript\s*:/i", $data);
+    $match  = preg_match("/\Wjavascript\s*:/i", $data);
     $match += preg_match("/\Wexpression\s*\(/i", $data);
     $match += preg_match("/\Walert\s*\(/i", $data);
 
     // check attributes:
-    $match  = preg_match("/\W(dynsrc|datasrc|data|lowsrc|on[a-z]+)\s*=[^>]+?>/i", $data);
+    $match += preg_match("/\W(dynsrc|datasrc|data|lowsrc|on[a-z]+)\s*=[^>]+?>/i", $data);
+    
 
     // check tags:
     $match += preg_match("/<\s*(applet|script|object|style|embed|form|blink|meta|html|frame|iframe|layer|ilayer|head|frameset|xml)/i", $data);

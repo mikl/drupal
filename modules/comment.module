@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.module,v 1.224.2.8 2004-05-10 21:31:11 dries Exp $
+// $Id: comment.module,v 1.224.2.9 2004-05-20 10:45:26 dries Exp $
 
 function comment_help($section = "admin/help#comment") {
   $output = "";
@@ -1393,7 +1393,7 @@ function theme_comment($comment, $links = 0) {
   $output .= "<div class=\"subject\">$comment->subject". ($comment->new ? ' '. theme('mark') : '') ."</div>\n";
   $output .= "<div class=\"moderation\">". $comment->moderation ."</div>\n";
   $output .= "<div class=\"credit\">". t("by %a on %b", array("%a" => format_name($comment), "%b" => format_date($comment->timestamp))) ."</div>\n";
-  $output .= "<div class=\"body\">". check_output($comment->comment) ."</div>\n";
+  $output .= "<div class=\"body\">$comment->comment</div>\n";
   $output .= "<div class=\"links\">$links</div>\n";
   $output .= "</div>\n";
   return $output;

@@ -1,5 +1,5 @@
 <?php
-// $Id: statistics.module,v 1.39.2.7 2003/04/22 06:40:47 dries Exp $
+// $Id: statistics.module,v 1.39.2.8 2003/05/17 20:05:20 dries Exp $
 
 // Initialization hook, runs each time statistic module is loaded
 function statistics_init() {
@@ -817,8 +817,12 @@ function statistics_get($nid) {
 /* Block hook */
 function statistics_block($op = "list", $delta = 0) {
   if ($op == "list") {
-    $blocks[0]["info"] = t("Top nodes");
-    $blocks[1]["info"] = t("Who's online");
+    if (variable_get("statistics_enable_node_counter", 0)) {
+      $blocks[0]["info"] = t("Top nodes");
+    }
+    if (variable_get("statistics_enable_access_log", 0)) {
+      $blocks[1]["info"] = t("Who's online");
+    }
     return $blocks;
   }
   else {

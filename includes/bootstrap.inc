@@ -1,5 +1,5 @@
 <?php
-// $Id: bootstrap.inc,v 1.32.2.2 2004-11-25 06:12:35 dries Exp $
+// $Id: bootstrap.inc,v 1.32.2.3 2004-12-01 12:09:56 dries Exp $
 
 /**
  * @file
@@ -230,11 +230,10 @@ function drupal_page_header() {
   if (variable_get('dev_timer', 0)) {
     timer_start();
   }
-  bootstrap_invoke_all('init');
 
   if (variable_get('cache', 0)) {
     if ($cache = page_get_cache()) {
-
+      bootstrap_invoke_all('init');
       // Set default values:
       $date = gmdate('D, d M Y H:i:s', $cache->created) .' GMT';
       $etag = '"'. md5($date) .'"';

@@ -1,5 +1,5 @@
 <?php
-/* $Id: common.inc,v 1.329 2004-03-08 18:35:04 dries Exp $ */
+/* $Id: common.inc,v 1.328.2.1 2004-03-08 18:38:43 dries Exp $ */
 
 /**
  * @defgroup common Core functions

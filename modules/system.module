@@ -1,5 +1,5 @@
 <?php
-// $Id: system.module,v 1.53 2002/12/02 19:22:42 dries Exp $
+// $Id: system.module,v 1.53.2.1 2002/12/09 15:36:05 dries Exp $
 
 function system_help() {
   $output .= "<p>Drupal comes with system-wide defaults but the setting-module provides control over many Drupal preferences, behaviors including visual and operational settings.</p>";
@@ -235,6 +235,7 @@ function system_admin() {
           db_query("UPDATE system SET status = %d WHERE filename = '$filename'", $status);
         }
         cache_clear_all();
+        print status(t("Settings successfully updated."));
       case "modules":
         // Note: changing this also requires changing module_init() @ includes/module.inc.
         $required = array("modules/user.module", "modules/system.module", "modules/watchdog.module");
@@ -246,6 +247,7 @@ function system_admin() {
           db_query("UPDATE system SET status = %d WHERE filename = '$filename'", $status);
         }
         cache_clear_all();
+        print status(t("Settings successfully updated."));
       case "themes":
         print system_listing("theme", "themes");
         break;

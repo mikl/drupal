@@ -1,5 +1,5 @@
 <?php
-// $Id: pager.inc,v 1.16 2003/06/04 18:24:25 dries Exp $
+// $Id: pager.inc,v 1.16.4.1 2004/04/15 22:18:53 dries Exp $
 
 /* ***************************************************
  *            external functions (API)
@@ -142,7 +142,7 @@ function pager_next($text, $limit, $element = 0, $n = 1, $attributes = array()) 
 function pager_last($text, $limit, $element = 0, $attributes = array()) {
   global $pager_from_array, $pager_total;
 
-  $from_new = pager_load_array(($pager_total[$element] - $limit), $element, $pager_from_array);
+  $from_new = pager_load_array(($pager_total[$element] - ($pager_total[$element] % $limit)), $element, $pager_from_array);
   if ($from_new[$element] < ($pager_from_array[$element] + $limit)) {
     return pager_next($text, $limit, $element, 1, $attributes);
   }

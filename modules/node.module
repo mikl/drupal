@@ -1,5 +1,5 @@
 <?php
-// $Id: node.module,v 1.233 2003/07/02 17:09:08 dries Exp $
+// $Id: node.module,v 1.233.2.1 2003/07/21 15:42:28 dries Exp $
 
 function node_help() {
   global $mod;
@@ -127,14 +127,6 @@ function node_teaser($body) {
   }
 
   /*
-  ** If we have a short body, return the entire body:
-  */
-
-  if (strlen($body) < $size) {
-    return $body;
-  }
-
-  /*
   ** If a valid delimiter has been specified, use it to
   ** chop of the teaser.  The delimiter can be outside
   ** the allowed range but no more than a factor two.
@@ -143,6 +135,14 @@ function node_teaser($body) {
   $delimiter = strpos($body, "<!--break-->");
   if ($delimiter > 0) {
     return substr($body, 0, $delimiter);
+  }
+
+  /*
+  ** If we have a short body, return the entire body:
+  */
+
+  if (strlen($body) < $size) {
+    return $body;
   }
 
   /*

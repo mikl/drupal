@@ -1,5 +1,5 @@
 <?php
-// $Id: user.module,v 1.305 2004-02-29 17:16:27 dries Exp $
+// $Id: user.module,v 1.305.2.1 2004-03-12 18:42:43 dries Exp $
 
 /*** Common functions ******************************************************/
 
@@ -1430,6 +1430,7 @@ function user_admin_edit($edit = array()) {
         db_query("DELETE FROM {authmap} WHERE uid = %d", $account->uid);
         drupal_set_message(t("the account has been deleted."));
         module_invoke_all('user', "delete", $account, $user);
+        return user_admin_account();
       }
       else {
         $error = t("Failed to delete account: the account has to be blocked first.");

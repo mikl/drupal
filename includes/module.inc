@@ -1,5 +1,5 @@
 <?php
-// $Id: module.inc,v 1.58.2.3 2004-11-25 06:12:35 dries Exp $
+// $Id: module.inc,v 1.58.2.4 2004-11-30 18:31:43 dries Exp $
 
 /**
  * @file
@@ -87,7 +87,7 @@ function module_set_filename($module, $path = null) {
     $list[$module] = $path;
   }
   else {
-    return $list[$module] ? $list[$module] : "modules/$module.module";
+    return array_key_exists($module, $list) ? $list[$module] : "modules/$module.module";
   }
 }
 
@@ -126,7 +126,7 @@ function module_get_path($module) {
 function module_load($module) {
   static $loaded = array();
 
-  if (!$loaded[$module]) {
+  if (!array_key_exists($module, $loaded)) {
     $filename = module_get_filename($module);
     if (file_exists($filename)) {
       include_once($filename);

@@ -1,5 +1,5 @@
 <?php
-/* $Id: path.module,v 1.13 2003-10-27 20:54:08 dries Exp $ */
+/* $Id: path.module,v 1.13.2.1 2003-11-27 13:33:45 dries Exp $ */
 
 function path_admin() {
   $op = $_POST["op"];
@@ -60,7 +60,7 @@ function path_set_alias($path = NULL, $alias = NULL) {
 
     // We have an insert:
     if ($path_count == 0 && $alias_count == 0) {
-      db_query("INSERT INTO {url_alias} SET src = '%s', dst = '%s'", $path, $alias);
+      db_query("INSERT INTO {url_alias} (src, dst) VALUES ('%s', '%s')", $path, $alias);
       drupal_rebuild_path_map();
     }
     else if ($path_count == 1 && $alias_count == 0) {

@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.module,v 1.224.2.5 2004/04/15 14:05:57 unconed Exp $
+// $Id: comment.module,v 1.224.2.6 2004/05/01 09:25:21 dries Exp $
 
 function comment_help($section = "admin/help#comment") {
   $output = "";
@@ -537,7 +537,6 @@ function comment_render($node, $cid = 0) {
     if (empty($order)) {
       $order = $user->sort ? $user->sort : ($_SESSION["comment_sort"] ? $_SESSION["comment_sort"] : variable_get("comment_default_order", 1));
     }
-
     if (empty($threshold)) {
       $threshold = $user->threshold ? $user->threshold : ($_SESSION["comment_threshold"] ? $_SESSION["comment_threshold"] : variable_get("comment_default_threshold", 0));
     }
@@ -1325,6 +1324,9 @@ function theme_comment_threshold($threshold) {
   }
   if ($filters) {
     return "<select name=\"threshold\">$filters</select>\n";
+  }
+  else {
+    return "<input type=\"hidden\" name=\"threshold\" value=\"$threshold\" />\n";
   }
 }
 

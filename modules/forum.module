@@ -1,5 +1,5 @@
 <?php
-// $Id: forum.module,v 1.62.2.5 2003/01/02 23:26:21 dries Exp $
+// $Id: forum.module,v 1.62.2.6 2003/01/05 12:03:18 dries Exp $
 
 function forum_system($field){
   $system["description"] = t("Enable threaded discussions about general topics.");
@@ -588,7 +588,7 @@ function forum_forum_list($forums, $parents, $tid) {
         }
 
         if ($links) {
-          $output .= "<br />Jump to: ". implode(", ", $links);
+          $output .= "<br />". t("Jump to:") . " ". implode(", ", $links);
         }
 
         $output .= "</div></td></tr></table></td>";

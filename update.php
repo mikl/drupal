@@ -1,5 +1,5 @@
 <?php
-// $Id: update.php,v 1.142.2.2 2004-12-24 06:52:51 unconed Exp $
+// $Id: update.php,v 1.142.2.3 2005-01-13 19:25:30 dries Exp $
 
 /**
  * @file
@@ -85,6 +85,13 @@ function update_page() {
       print update_page_footer();
       break;
     default:
+      // NOTE: We need the following five lines in order to fix a bug with database.mysql (http://drupal.org/node/15337)
+      //       We should be able to remove them in the future.
+      $result = db_query("SELECT * FROM variable WHERE name = 'update_start' AND value LIKE '%;\"'");
+      if ($variable = db_fetch_object($result)) {
+        $variable->value = unserialize(substr($variable->value, 0, -2) .'";');
+        variable_set('update_start', $variable->value);
+      }
       $start = variable_get("update_start", 0);
       $dates[] = "All";
       $i = 1;

@@ -1,5 +1,5 @@
 <?php
-// $Id: tablesort.inc,v 1.10 2003/10/27 21:50:16 kjartan Exp $
+// $Id: tablesort.inc,v 1.10.2.1 2004/01/29 06:39:18 dries Exp $
 
 function tablesort_init($header) {
   static $ts;
@@ -41,6 +41,10 @@ function tablesort($cell, $header) {
   }
 
   $cell["data"] = l($cell["data"] . $image, $_GET["q"], array("title" => $title), "sort=". $ts["sort"]. "&order=". urlencode($cell["data"]). $ts["query_string"]);
+
+  unset($cell["field"]);
+  unset($cell["sort"]);
+
   return $cell;
 }
 

@@ -1,5 +1,5 @@
 <?php
-// $Id: user.module,v 1.110.2.13 2003/03/28 07:13:44 dries Exp $
+// $Id: user.module,v 1.110.2.14 2003/04/04 06:36:23 dries Exp $
 
 session_set_save_handler("sess_open", "sess_close", "sess_read", "sess_write", "sess_destroy", "sess_gc");
 session_start();
@@ -1026,7 +1026,7 @@ function user_page() {
   global $edit, $op, $id, $theme;
 
   switch ($op) {
-    case t("E-mail new password");
+    case t("E-mail new password"):
     case "password":
       $theme->header();
       $theme->box(t("E-mail new password"), user_pass($edit));
@@ -1052,7 +1052,7 @@ function user_page() {
       $theme->footer();
       break;
     case t("Delete account"):
-    case t("delete");
+    case t("delete"):
       $output = user_delete();
       $theme->header();
       $theme->box(t("User account"), user_menu());

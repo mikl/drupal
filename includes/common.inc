@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.260.2.4 2004-01-25 10:03:19 dries Exp $
+// $Id: common.inc,v 1.260.2.5 2004-01-28 22:19:23 dries Exp $
 
 function conf_init() {
 
@@ -246,7 +246,7 @@ function table_cell($cell, $header = 0) {
   if (is_array($cell)) {
     $data = $cell["data"];
     foreach ($cell as $key => $value) {
-      if ($key != "data")  {
+      if ($key != "data" && $key != "field")  {
         $attributes .= " $key=\"$value\"";
       }
     }

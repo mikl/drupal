@@ -1,5 +1,5 @@
 <?php
-// $Id: node.module,v 1.342.2.6 2004/06/17 18:48:39 dries Exp $
+// $Id: node.module,v 1.342.2.7 2004/09/08 20:47:19 dries Exp $
 
 define('NODE_NEW_LIMIT', time() - 30 * 24 * 60 * 60);
 
@@ -1550,14 +1550,14 @@ function node_page() {
       break;
     case t('Preview'):
       $edit = node_validate($edit, $error);
-      print theme('page', node_preview($edit, $error), t('Preview %name', array('%name' => $name)));
+      print theme('page', node_preview($edit, $error), t('Preview %name', array('%name' => node_invoke($edit, "node_name"))));
       break;
     case t('Submit'):
-      drupal_set_title(t('Submit %name', array('%name' => $name)));
+      drupal_set_title(t('Submit %name', array('%name' => node_invoke($edit, "node_name"))));
       print theme('page', node_submit($edit));
       break;
     case t('Delete'):
-      print theme('page', node_delete($edit), t('Delete %name', array('%name' => $name)));
+      print theme('page', node_delete($edit), t('Delete %name', array('%name' => node_invoke($edit, "node_name"))));
       break;
     default:
       print theme('page', node_page_default(), '');

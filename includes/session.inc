@@ -1,5 +1,5 @@
 <?php
-// $Id: session.inc,v 1.8 2004-08-21 06:42:35 dries Exp $
+// $Id: session.inc,v 1.8.2.1 2005-01-10 19:35:37 dries Exp $
 
 /**
  * @file
@@ -26,7 +26,7 @@ function sess_read($key) {
 
   if (!db_num_rows($result)) {
     $result = db_query("SELECT u.* FROM {users} u WHERE u.uid = 0");
-    db_query("INSERT INTO {sessions} (uid, sid, hostname, timestamp) values(%d, '%s', '%s', %d)", $user->uid, $key, $_SERVER["REMOTE_ADDR"], time());
+    db_query("INSERT INTO {sessions} (sid, hostname, timestamp) values('%s', '%s', %d)", $key, $_SERVER["REMOTE_ADDR"], time());
   }
 
   $user = db_fetch_object($result);

@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.module,v 1.84.2.6 2003/02/09 18:00:48 dries Exp $
+// $Id: comment.module,v 1.84.2.7 2003/03/16 12:32:54 dries Exp $
 
 $GLOBALS["cmodes"] = array(1 => t("Flat list - collapsed"), 2 => t("Flat list - expanded"), 3 => t("Threaded list - collapsed"), 4 => t("Threaded list - expanded"));
 $GLOBALS["corder"] = array(1 => t("Date - newest first"), 2 => t("Date - oldest first"));
@@ -930,7 +930,7 @@ function comment_mod_votes($edit) {
   }
 
   $output .= "<h3>Add new moderation option</h3>";
-  $form .= form_textfield(t("Vote"), "vote", $vote->vote, 32, 64, t("The name of this vote.  Example: 'offtopic', 'excellent', 'sucky'."));
+  $form .= form_textfield(t("Vote"), "vote", $vote->vote, 32, 64, t("The name of this vote.  Example: 'off topic', 'excellent', 'sucky'."));
   $form .= form_textfield(t("Weight"), "weight", $vote->weight, 32, 64, t("Used to order votes in the comment control box; heavier sink."));
   if ($mid) {
     $form .= form_submit(t("Save vote"));

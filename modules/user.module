@@ -1,5 +1,5 @@
 <?php
-// $Id: user.module,v 1.110.2.2 2002/12/29 13:51:08 dries Exp $
+// $Id: user.module,v 1.110.2.3 2003/01/05 18:37:25 dries Exp $
 
 session_set_save_handler("sess_open", "sess_close", "sess_read", "sess_write", "sess_destroy", "sess_gc");
 session_start();
@@ -1787,7 +1787,7 @@ function user_help_devel_da() {
 <pre>function blogger_info($field = NULL) {
   $info["name"] = "Blogger";
   $info["protocol"] = "XML-RPC";
-  $info["link"] = "<a href=\"module.php?mod=user&op=da_help#blogger\">Blogger</a>";
+  $info["link"] = "<a href=\"module.php?mod=user&op=help#blogger\">Blogger</a>";
   $info["maintainer"] = "Moshe Weitzman";
   $info["maintaineremail"] = "weitzman at tejasa.com";
 

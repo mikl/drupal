@@ -1,5 +1,5 @@
 <?php
-// $Id: forum.module,v 1.62.2.7 2003/01/08 19:44:18 dries Exp $
+// $Id: forum.module,v 1.62.2.8 2003/03/12 20:15:38 dries Exp $
 
 function forum_system($field){
   $system["description"] = t("Enable threaded discussions about general topics.");
@@ -7,7 +7,7 @@ function forum_system($field){
 }
 
 function forum_node($field) {
-  $info["name"] = t("discussion forum");
+  $info["name"] = t("forum topic");
   $info["description"] = t("A forum is a threaded discussion, enabling users to communicate about a particular topic.");
 
   return $info[$field];

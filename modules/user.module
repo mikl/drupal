@@ -1,5 +1,5 @@
 <?php
-// $Id: user.module,v 1.245.2.3 2003-11-28 20:59:34 dries Exp $
+// $Id: user.module,v 1.245.2.4 2003-12-05 08:21:45 dries Exp $
 
 session_set_save_handler("sess_open", "sess_close", "sess_read", "sess_write", "sess_destroy", "sess_gc");
 session_start();
@@ -630,8 +630,9 @@ function user_login($edit = array(), $msg = "") {
       }
     }
 
-     /*
-    ** Try each external authentication source in series. Register user if successful.
+    /*
+    ** Try each external authentication source in series. Register user if
+    ** successful.
     */
 
     else if (!$user->uid && $server) {
@@ -760,11 +761,11 @@ function user_pass($edit = array()) {
   global $base_url;
 
   if ($edit["name"]) {
-    $account = db_fetch_object(db_query("SELECT uid, name, mail FROM {users} WHERE name = '%s'", $edit["name"]));
+    $account = db_fetch_object(db_query("SELECT uid, name, mail FROM {users} WHERE status = 1 AND name = '%s'", $edit["name"]));
     if (!$account) $error = t("Sorry. The username <i>%s</i> is not recognized.", array("%s" => $edit["name"]));
   }
   else if ($edit["mail"]) {
-    $account = db_fetch_object(db_query("SELECT uid, name, mail FROM {users} WHERE mail = '%s'", $edit["mail"]));
+    $account = db_fetch_object(db_query("SELECT uid, name, mail FROM {users} WHERE status = 1 AND mail = '%s'", $edit["mail"]));
     if (!$account) $error = t("Sorry. The e-mail address <i>%s</i> is not recognized.", array("%s" => $edit["mail"]));
   }
   if ($account) {

@@ -1,5 +1,5 @@
 <?php
-// $Id: update.php,v 1.142.2.1 2004-12-24 06:51:47 unconed Exp $
+// $Id: update.php,v 1.142.2.2 2004-12-24 06:52:51 unconed Exp $
 
 /**
  * @file
@@ -67,7 +67,7 @@ function update_page() {
   }
 
   switch ($op) {
-      case "Update":
+    case "Update":
       // make sure we have updates to run.
       print update_page_header("Drupal database update");
       $links[] = "<a href=\"index.php\">main page</a>";

@@ -1,5 +1,5 @@
 <?php
-// $Id: statistics.module,v 1.112.2.1 2003-11-11 08:14:02 dries Exp $
+// $Id: statistics.module,v 1.112.2.2 2003-12-04 06:18:52 dries Exp $
 
 function statistics_init() {
   global $recent_activity;
@@ -687,15 +687,18 @@ function statistics_display_online_block() {
         /* Display a list of currently online users */
         $max_users = variable_get("statistics_block_online_max_cnt", 10);
         $items = array();
-        while ($uid = db_fetch_object($users)) {
+        while (($max_users--) && $uid = db_fetch_object($users)) {
           $user = user_load(array("uid" => $uid->uid));
           /* Display only max_length characters of username */
           $items[] = format_name($user);
         }
 
-  if ($items) {
+        if ($items) {
           $output .= "<br /><br />";
           $output .= theme("theme_item_list", $items, variable_get("statistics_block_online_subtitle", "Online users:"));
+          if (db_fetch_object($users)) {
+            $output .= "<br />...";
+          }
         }
       }
     }

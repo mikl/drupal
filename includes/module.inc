@@ -1,5 +1,5 @@
 <?php
-// $Id: module.inc,v 1.58.2.1 2004-10-19 18:00:26 dries Exp $
+// $Id: module.inc,v 1.58.2.2 2004-11-24 19:25:31 dries Exp $
 
 /**
  * @file
@@ -14,7 +14,6 @@
  */
 function module_init() {
   module_load_all();
-  module_invoke_all('init');
 }
 
 /**
@@ -146,7 +145,7 @@ function module_load($module) {
  *   TRUE if all modules were loaded successfully
  */
 function module_load_all() {
-  $list = module_list();
+  $list = module_list(TRUE, FALSE);
   $status = true;
   foreach ($list as $module) {
     $status &= module_load($module);

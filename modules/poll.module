@@ -1,5 +1,5 @@
 <?php
-// $Id: poll.module,v 1.131.2.1 2004/04/14 14:01:05 unconed Exp $
+// $Id: poll.module,v 1.131.2.2 2004/04/14 14:06:26 unconed Exp $
 
 function poll_help($section = 'admin/help#poll') {
   $output = '';
@@ -132,7 +132,6 @@ function poll_form(&$node, &$error) {
 
   // Poll attributes
   $_duration = array(0 => t('Unlimited')) + drupal_map_assoc(array(86400, 172800, 345600, 604800, 1209600, 2419200, 4838400, 9676800, 31536000), "format_interval");
-  print_r($_duration);
   $_active = array(0 => t('Closed'), 1 => t('Active'));
 
   if ($admin) {

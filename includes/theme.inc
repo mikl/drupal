@@ -1,5 +1,5 @@
 <?php
-/* $Id: theme.inc,v 1.189.2.1 2004-03-15 19:41:47 dries Exp $ */
+/* $Id: theme.inc,v 1.189.2.2 2004-05-24 05:11:09 dries Exp $ */
 
 /**
  * @file
@@ -361,7 +361,7 @@ function theme_table($header, $rows, $attributes = NULL) {
  * @return a string containing the @a box output.
  */
 function theme_box($title, $content, $region = 'main') {
-  $output = "<h2 class=\"title\">$title</h2><p>$content</p>";
+  $output = "<h2 class=\"title\">$title</h2><div>$content</div>";
   return $output;
 }
 

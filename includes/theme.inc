@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.119 2002/11/17 16:32:01 kjartan Exp $
+// $Id: theme.inc,v 1.119.2.1 2003/03/16 16:39:38 dries Exp $
 
 /**
 * Basic theme
@@ -139,12 +139,14 @@ function theme_init() {
   if (is_object($themes[$name])) {
     include_once($themes[$name]->filename);
     $theme_class = "Theme_$name";
-    @$obj =& new $theme_class();
-    $obj->path = dirname($themes[$name]->filename);
-    return $obj;
+    if (class_exists($theme_class)) {
+      $obj =& new $theme_class();
+      $obj->path = dirname($themes[$name]->filename);
+      return $obj;
+    }
   }
 
-  @$obj =& new BaseTheme;
+  $obj =& new BaseTheme;
   return $obj;
 }
 

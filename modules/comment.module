@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.module,v 1.224.2.11 2004/08/21 16:49:01 dries Exp $
+// $Id: comment.module,v 1.224.2.12 2004/10/09 06:45:04 dries Exp $
 
 function comment_help($section = "admin/help#comment") {
   $output = "";
@@ -1239,7 +1239,7 @@ function comment_admin() {
 function theme_comment_form($edit, $title) {
   global $user;
 
-  $form .= "<a id=\"comment\"></a>\n";
+  $form .= "<a id=\"comment-form\"></a>\n";
 
   // name field:
   $form .= form_item(t("Your name"), format_name($user));

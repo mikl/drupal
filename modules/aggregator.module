@@ -1,5 +1,5 @@
 <?php
-/* $Id: aggregator.module,v 1.165.2.4 2004-04-29 21:08:48 kjartan Exp $ */
+/* $Id: aggregator.module,v 1.165.2.5 2004-04-29 21:10:38 kjartan Exp $ */
 
 function aggregator_help($section) {
   switch ($section) {
@@ -215,7 +215,7 @@ function aggregator_get_feeds($attributes = 0) {
 
 function aggregator_remove($feed) {
   db_query("DELETE FROM {item} WHERE fid = %d", $feed["fid"]);
-  db_query('UPDATE {feed} SET checked = 0, etag = '', modified = 0 WHERE fid = %d', $feed['fid']);
+  db_query("UPDATE {feed} SET checked = 0, etag = '', modified = 0 WHERE fid = %d", $feed['fid']);
   drupal_set_message(t("removed news items from '%site'.", array("%site" => $feed["title"])));
 }
 

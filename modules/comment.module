@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.module,v 1.302.2.9 2005-01-12 16:01:55 unconed Exp $
+// $Id: comment.module,v 1.302.2.10 2005-03-16 19:32:27 dries Exp $
 
 /**
  * @file
@@ -1122,7 +1122,7 @@ function comment_role_settings() {
 
   $edit = $_POST['edit'];
 
-  $output .= '<h3>Initial comment scores</h3>';
+  $output .= '<h3>'. t('Initial comment scores') .'</h3>';
 
   if ($edit) {
     variable_set('comment_roles', $edit);

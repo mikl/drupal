@@ -1,5 +1,5 @@
 <?php
-/* $Id: file.inc,v 1.25.2.4 2004/11/02 12:43:42 unconed Exp $ */
+/* $Id: file.inc,v 1.25.2.5 2004/11/03 00:47:19 unconed Exp $ */
 
 /**
  * @file
@@ -399,7 +399,7 @@ function file_save_upload($source, $dest = 0, $replace = FILE_EXISTS_RENAME) {
  * @return A string containing the resulting filename or 0 on error
  */
 function file_save_data($data, $dest, $replace = FILE_EXISTS_RENAME) {
-  if (!valid_input_data($data)) {
+  if (!user_access('bypass input data check') && !valid_input_data($data)) {
     watchdog('error', t('Possible exploit abuse: invalid data.'));
     drupal_set_message(t('File upload failed: invalid data.'), 'error');
     return 0;

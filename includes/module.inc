@@ -1,5 +1,5 @@
 <?php
-// $Id: module.inc,v 1.58.2.4 2004/11/30 18:31:43 dries Exp $
+// $Id: module.inc,v 1.58.2.5 2004/12/01 12:09:56 dries Exp $
 
 /**
  * @file
@@ -9,11 +9,10 @@
 /**
  * Initialize all modules.
  *
- * To change the required set of modules, change this function as well as
- * system_listing() and module_list().
  */
 function module_init() {
   module_load_all();
+  module_invoke_all('init');
 }
 
 /**

@@ -1,5 +1,5 @@
 <?php
-// $Id: database.pgsql.inc,v 1.3 2004/09/20 17:58:14 dries Exp $
+// $Id: database.pgsql.inc,v 1.3.2.1 2005/01/07 19:20:01 dries Exp $
 
 /**
  * @file
@@ -204,7 +204,7 @@ function db_error() {
  * will be created.
  */
 function db_next_id($name) {
-  $id = db_result(db_query("SELECT nextval('public.%s_seq')", db_prefix_tables($name)));
+  $id = db_result(db_query("SELECT nextval('%s_seq')", db_prefix_tables($name)));
   return $id;
 }
 

@@ -1,5 +1,5 @@
 <?php
-/* $Id: menu.inc,v 1.71 2004-10-16 19:42:52 unconed Exp $ */
+/* $Id: menu.inc,v 1.71.2.1 2005-01-22 09:09:52 dries Exp $ */
 
 /**
  * @file
@@ -531,7 +531,7 @@ function menu_rebuild() {
       }
     }
 
-    if (count($new_items) > 1) {
+    if (count($new_items) > 0) {
       foreach ($new_items as $item) {
         db_query('INSERT INTO {menu} (mid, pid, path, title, description, weight, type) VALUES (%d, %d, \'%s\', \'%s\', \'%s\', %d, %d)', $item['mid'], $item['pid'], $item['path'], $item['title'], $item['description'], $item['weight'], $item['type']);
       }

@@ -1,5 +1,5 @@
 <?php
-/* $Id: file.inc,v 1.25.2.2 2004-10-26 20:57:25 unconed Exp $ */
+/* $Id: file.inc,v 1.25.2.3 2004-10-28 23:42:28 unconed Exp $ */
 
 /**
  * @file
@@ -252,7 +252,7 @@ function file_copy(&$source, $dest = 0, $replace = FILE_EXISTS_RENAME) {
       }
     }
 
-    if (!copy($source, $dest)) {
+    if (!@copy($source, $dest)) {
       drupal_set_message(t('File copy failed.'), 'error');
       return 0;
     }

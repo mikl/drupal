@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.133.2.3 2002/12/26 12:14:56 dries Exp $
+// $Id: common.inc,v 1.133.2.4 2003/01/05 08:10:48 dries Exp $
 
 function conf_init() {
   global $HTTP_HOST;
@@ -52,7 +52,7 @@ function throttle($type, $rate) {
 
 function check_php_setting($name, $value) {
   if (ini_get($name) != $value) {
-    print "<p>Note tat the value of PHP's configuration option <code><b>$name</b></code> is incorrect.  It should be set to '$value' for Drupal to work properly.  Either configure your webserver to support <code>.htaccess</code> files so Drupal's <code>.htaccess</code> file can set it to the proper value, or edit your <code>php.ini</code> file directly.  This message will automatically dissapear when the problem has been fixed.</p>";
+    print "<p>Note that the value of PHP's configuration option <code><b>$name</b></code> is incorrect.  It should be set to '$value' for Drupal to work properly.  Either configure your webserver to support <code>.htaccess</code> files so Drupal's <code>.htaccess</code> file can set it to the proper value, or edit your <code>php.ini</code> file directly.  This message will automatically dissapear when the problem has been fixed.</p>";
   }
 }
 

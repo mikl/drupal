@@ -1,9 +1,9 @@
 <?php
-// $Id: tracker.module,v 1.76 2004/02/21 22:20:21 kjartan Exp $
+// $Id: tracker.module,v 1.76.2.1 2004/03/15 19:41:47 dries Exp $
 
 function tracker_help($section = 'admin/help#tracker') {
   switch ($section) {
-    case 'admin/help#tracer':
+    case 'admin/help#tracker':
       return t('<p>The tracker module is a handy module for displaying the most recent posts.  By following the <i>recent posts</i> link in the user block, a user may quickly review all recent postings.</p>');
     case 'admin/system/modules#description':
       return t('Enables tracking of recent posts for users.');

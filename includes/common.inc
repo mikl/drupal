@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.260.2.2 2004-01-17 23:19:24 dries Exp $
+// $Id: common.inc,v 1.260.2.3 2004-01-25 09:09:39 dries Exp $
 
 function conf_init() {
 
@@ -131,6 +131,7 @@ function referer_uri() {
   if (isset($_SERVER["HTTP_REFERER"])) {
     $uri = $_SERVER["HTTP_REFERER"];
 
+    $map = array();  // make $map non-null in case no aliases are defined
     return check_url($uri);
   }
 }

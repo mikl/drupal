@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.260.2.1 2004/01/02 12:15:52 dries Exp $
+// $Id: common.inc,v 1.260.2.2 2004/01/17 23:19:24 dries Exp $
 
 function conf_init() {
 
@@ -524,7 +524,7 @@ function valid_input_data($data) {
     */
 
     foreach ($data as $key => $value) {
-      if (!valid_input_data($value)) {
+      if (!valid_input_data($key) || !valid_input_data($value)) {
         return 0;
       }
     }

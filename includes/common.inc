@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.133.2.6 2003/02/09 18:03:14 dries Exp $
+// $Id: common.inc,v 1.133.2.7 2003/02/27 22:53:43 dries Exp $
 
 function conf_init() {
   global $HTTP_HOST;
@@ -319,8 +319,7 @@ function drupal_goto($url) {
   ** "drupal_goto()" will append the user's session ID to the URI when PHP
   ** is compiled with "--enable-trans-sid".
   */
-
-  if (!ini_get("session.use_trans_sid") || !session_id() || strstr($url, $sid)) {
+  if (!ini_get("session.use_trans_sid") || !session_id() || strstr($url, session_id())) {
     header("Location: $url");
   }
   else {

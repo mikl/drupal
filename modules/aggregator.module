@@ -1,5 +1,5 @@
 <?php
-/* $Id: aggregator.module,v 1.165.2.2 2004/04/13 05:31:43 dries Exp $ */
+/* $Id: aggregator.module,v 1.165.2.3 2004/04/15 14:05:57 unconed Exp $ */
 
 function aggregator_help($section) {
   switch ($section) {
@@ -397,7 +397,7 @@ function aggregator_parse_feed(&$data, $feed) {
       $title = $item["TITLE"];
     }
     else {
-      $title = preg_replace('/^(.*)[^\w;&].*?$/', "\\1", substr($item["DESCRIPTION"], 0, 40));
+      $title = preg_replace('/^(.*)[^\w;&].*?$/', "\\1", truncate_utf8($item["DESCRIPTION"], 40));
     }
 
     /*

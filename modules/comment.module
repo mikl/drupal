@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.module,v 1.224.2.4 2004/03/20 14:32:40 dries Exp $
+// $Id: comment.module,v 1.224.2.5 2004/04/15 14:05:57 unconed Exp $
 
 function comment_help($section = "admin/help#comment") {
   $output = "";
@@ -283,7 +283,7 @@ function comment_post($edit) {
     $edit["subject"] = strip_tags($edit["subject"]);
 
     if ($edit["subject"] == "") {
-      $edit["subject"] = substr(strip_tags($edit["comment"]), 0, 29);
+      $edit["subject"] = truncate_utf8(strip_tags($edit["comment"]), 29);
     }
 
     /*

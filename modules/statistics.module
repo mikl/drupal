@@ -1,5 +1,5 @@
 <?php
-// $Id: statistics.module,v 1.39.2.1 2002/12/10 20:01:07 dries Exp $
+// $Id: statistics.module,v 1.39.2.2 2003/01/04 23:42:07 dries Exp $
 
 // Initialization hook, runs each time statistic module is loaded
 function statistics_init() {
@@ -23,7 +23,12 @@ function statistics_init() {
     $referrer = getenv("HTTP_REFERER");
     $hostname = getenv("REMOTE_ADDR");
     // log this page access
-    db_query("INSERT INTO accesslog (nid, url, hostname, uid, timestamp) values('%s', '%s', '%s', '%s', '%s')", $id, $referrer, $hostname, $user->uid, time());
+    if (isset($id) && empty($mod)) {
+      db_query("INSERT INTO accesslog (nid, url, hostname, uid, timestamp) values('%s', '%s', '%s', '%s', '%s')", $id, $referrer, $hostname, $user->uid, time());
+    }
+    else {
+      db_query("INSERT INTO accesslog (url, hostname, uid, timestamp) values('%s', '%s', '%s', '%s')", $referrer, $hostname, $user->uid, time());
+    }
   }
 
   /*

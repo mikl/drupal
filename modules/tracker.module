@@ -1,5 +1,5 @@
 <?php
-// $Id: tracker.module,v 1.76.2.1 2004-03-15 19:41:47 dries Exp $
+// $Id: tracker.module,v 1.76.2.2 2004-04-12 08:31:30 dries Exp $
 
 function tracker_help($section = 'admin/help#tracker') {
   switch ($section) {
@@ -54,7 +54,7 @@ function tracker_posts($id = 0) {
 
     $comments = array();
     while ($comment = db_fetch_object($cresult)) {
-      $comments[] = "<li>". t("%subject by %author", array("%subject" => l($comment->subject, "node/view/$node->nid#comment-$comment->cid"), "%author" => format_name($comment))) ." ". (node_is_new($comment->nid, $comment->timestamp) ? theme("mark") : "") ."</li>\n";
+      $comments[] = "<li>". t("%subject by %author", array("%subject" => l($comment->subject, "node/view/$node->nid", NULL, NULL, "comment-$comment->cid"), "%author" => format_name($comment))) ." ". (node_is_new($comment->nid, $comment->timestamp) ? theme("mark") : "") ."</li>\n";
     }
 
     if ($comments) {

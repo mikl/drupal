@@ -1,5 +1,5 @@
 <?php
-// $Id: book.module,v 1.216.2.1 2004-03-20 13:47:14 dries Exp $
+// $Id: book.module,v 1.216.2.2 2004-08-21 16:54:18 dries Exp $
 
 function book_node_name($node) {
   return t("book page");
@@ -230,7 +230,7 @@ function book_node_link($node = 0) {
 
     if ($op == t("Remove from book outline")) {
       db_query("DELETE FROM {book} WHERE nid = %d", $node->nid);
-      drupal_set_message(t("removed the node form the book."));
+      drupal_set_message(t("removed the node from the book."));
     }
 
     $output .= "<h3>". t("Edit book outline for node %booktitle", array("%booktitle" => "<em>$node->title</em>")) ."</h3>";

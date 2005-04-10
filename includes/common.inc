@@ -1,5 +1,5 @@
 <?php
-/* $Id: common.inc,v 1.434.2.1 2005-04-07 22:47:24 unconed Exp $ */
+/* $Id: common.inc,v 1.434.2.2 2005-04-10 10:23:13 unconed Exp $ */
 
 /**
  * @file
@@ -981,7 +981,7 @@ function form($form, $method = 'post', $action = NULL, $attributes = NULL) {
   if (!$action) {
     $action = request_uri();
   }
-  return '<form action="'. $action .'" method="'. $method .'"'. drupal_attributes($attributes) .">\n". $form ."\n</form>\n";
+  return '<form action="'. check_url($action) .'" method="'. $method .'"'. drupal_attributes($attributes) .">\n". $form ."\n</form>\n";
 }
 
 /**

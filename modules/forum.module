@@ -1,5 +1,5 @@
 <?php
-// $Id: forum.module,v 1.243.2.4 2005/05/06 06:33:00 unconed Exp $
+// $Id: forum.module,v 1.243.2.5 2005/05/06 06:42:43 unconed Exp $
 
 /**
  * @file
@@ -132,7 +132,7 @@ function _forum_confirm_delete($tid) {
 
   $extra = form_hidden('tid', $tid);
   $output = theme('confirm',
-                  t('Are you sure you want to delete the forum %name?', array('%name' => theme('placeholder', $term->name)),
+                  t('Are you sure you want to delete the forum %name?', array('%name' => theme('placeholder', $term->name))),
                   'admin/forums',
                   t('Deleting a forum or container will delete all sub-forums as well. This action cannot be undone.'),
                   t('Delete'),

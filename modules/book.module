@@ -1,5 +1,5 @@
 <?php
-// $Id: book.module,v 1.288.2.4 2005-04-30 21:36:48 dries Exp $
+// $Id: book.module,v 1.288.2.5 2005-05-06 08:43:15 dries Exp $
 
 /**
  * @file
@@ -641,7 +641,7 @@ function book_print($nid = 0, $depth = 1) {
     }
   }
 
-  $output .= book_print_recurse($nid, $depth);
+  $output .= book_print_recurse($nid, $depth + 1);
 
   $html = '<html><head><title>'. check_plain($node->title) .'</title>';
   $html .= '<base href="'. $base_url .'/" />';

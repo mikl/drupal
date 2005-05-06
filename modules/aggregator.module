@@ -1,5 +1,5 @@
 <?php
-/* $Id: aggregator.module,v 1.233.2.2 2005-04-27 17:17:21 unconed Exp $ */
+/* $Id: aggregator.module,v 1.233.2.3 2005-05-06 06:34:43 unconed Exp $ */
 
 /**
  * @file
@@ -198,11 +198,11 @@ function aggregator_block($op, $delta = 0, $edit = array()) {
     if ($op == 'list') {
       $result = db_query('SELECT cid, title FROM {aggregator_category} ORDER BY title');
       while ($category = db_fetch_object($result)) {
-        $block['category:'. $category->cid]['info'] = t('%title category latest items', array('%title' => theme('placeholder', $category->title)));
+        $block['category-'. $category->cid]['info'] = t('%title category latest items', array('%title' => theme('placeholder', $category->title)));
       }
       $result = db_query('SELECT fid, title FROM {aggregator_feed} ORDER BY fid');
       while ($feed = db_fetch_object($result)) {
-        $block['feed:'. $feed->fid]['info'] = t('%title feed latest items', array('%title' => theme('placeholder', $feed->title)));
+        $block['feed-'. $feed->fid]['info'] = t('%title feed latest items', array('%title' => theme('placeholder', $feed->title)));
       }
     }
     else if ($op == 'configure') {

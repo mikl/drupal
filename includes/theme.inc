@@ -1,5 +1,5 @@
 <?php
-/* $Id: theme.inc,v 1.228.2.3 2005-05-17 20:36:52 dries Exp $ */
+/* $Id: theme.inc,v 1.228.2.4 2005-05-18 21:13:51 unconed Exp $ */
 
 /**
  * @file
@@ -802,7 +802,7 @@ function theme_error($message) {
 }
 
 function theme_more_help_link($url) {
-  return '<div class="more-help-link">' . t('[<a href="%link">more help...</a>]', array('%link' => $url)) . '</div>';
+  return '<div class="more-help-link">' . t('[<a href="%link">more help...</a>]', array('%link' => check_url($url))) . '</div>';
 }
 
 /**
@@ -810,7 +810,7 @@ function theme_more_help_link($url) {
  */
 function theme_xml_icon($url) {
   if ($image = theme('image', 'misc/xml.png', t('XML feed'), t('XML feed'))) {
-    return '<div class="xml-icon"><a href="'. $url .'">'. $image. '</a></div>';
+    return '<div class="xml-icon"><a href="'. check_url($url) .'">'. $image. '</a></div>';
   }
 }
 

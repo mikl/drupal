@@ -1,5 +1,5 @@
 <?php
-/* $Id: common.inc,v 1.434.2.5 2005-05-26 23:41:12 unconed Exp $ */
+/* $Id: common.inc,v 1.434.2.6 2005-05-30 18:09:08 unconed Exp $ */
 
 /**
  * @file
@@ -1736,7 +1736,7 @@ function mime_header_encode($string) {
     $output = '';
     while ($len > 0) {
       $chunk = truncate_utf8($string, $chunk_size);
-      $output .= ' =?'. $charset .'?B?'. base64_encode($chunk) ."?=\n";
+      $output .= ' =?UTF-8?B?'. base64_encode($chunk) ."?=\n";
       $c = strlen($chunk);
       $string = substr($string, $c);
       $len -= $c;

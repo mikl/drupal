@@ -1,5 +1,5 @@
 <?php
-// $Id: throttle.module,v 1.48.2.1 2005/05/31 21:13:41 unconed Exp $
+// $Id: throttle.module,v 1.48.2.2 2005/06/01 19:40:01 unconed Exp $
 
 /**
  * @file
@@ -77,7 +77,7 @@ function throttle_exit() {
         variable_set('throttle_level', 1);
         $message = format_plural($guests,
                                  '1 guest accessing site; throttle enabled.',
-                                 '%count guests accessing site; throttle enabled.'));
+                                 '%count guests accessing site; throttle enabled.');
       }
     }
     else {

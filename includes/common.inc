@@ -1,5 +1,5 @@
 <?php
-/* $Id: common.inc,v 1.434.2.7 2005-05-31 21:13:35 unconed Exp $ */
+/* $Id: common.inc,v 1.434.2.8 2005-06-04 14:15:05 dries Exp $ */
 
 /**
  * @file
@@ -1614,7 +1614,7 @@ function drupal_map_assoc($array, $function = NULL) {
  * be used instead of xml_parser_create(), because PHP's XML parser doesn't check
  * the input encoding itself.
  *
- * This is also where unsupported encodings should be converted.
+ * This is also where unsupported encodings will be converted.
  * Callers should take this into account: $data might have been changed after
  * the call.
  *
@@ -1624,8 +1624,18 @@ function drupal_map_assoc($array, $function = NULL) {
  *   An XML parser object.
  */
 function drupal_xml_parser_create(&$data) {
+  // Default XML encoding is UTF-8
   $encoding = 'utf-8';
-  if (ereg('^<\?xml[^>]+encoding="([^"]+)"', $data, $match)) {
+  $bom = false;
+
+  // Check for UTF-8 byte order mark (PHP5's XML parser doesn't handle it).
+  if (!strncmp($data, "\xEF\xBB\xBF", 3)) {
+    $bom = true;
+    $data = substr($data, 3);
+  }
+
+  // Check for an encoding declaration in the XML prolog if no BOM was found.
+  if (!$bom && ereg('^<\?xml[^>]+encoding="([^"]+)"', $data, $match)) {
     $encoding = $match[1];
   }
 

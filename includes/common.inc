@@ -1,5 +1,5 @@
 <?php
-/* $Id: common.inc,v 1.434.2.8 2005/06/04 14:15:05 dries Exp $ */
+/* $Id: common.inc,v 1.434.2.9 2005/06/05 19:11:02 unconed Exp $ */
 
 /**
  * @file
@@ -1879,7 +1879,7 @@ function drupal_get_path($type, $name) {
  * Add a <link> tag to the page's HEAD.
  */
 function drupal_add_link($attributes) {
-  drupal_set_html_head('<link'. drupal_attributes($attributes) .">\n");
+  drupal_set_html_head('<link'. drupal_attributes($attributes) ." />\n");
 }
 
 /**

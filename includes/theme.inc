@@ -1,5 +1,5 @@
 <?php
-/* $Id: theme.inc,v 1.228.2.5 2005/05/31 21:13:36 unconed Exp $ */
+/* $Id: theme.inc,v 1.228.2.6 2005/06/19 08:14:12 dries Exp $ */
 
 /**
  * @file
@@ -633,7 +633,7 @@ function theme_table($header, $rows, $attributes = NULL) {
   $output = '<table'. drupal_attributes($attributes) .">\n";
 
   // Format the table header:
-  if (is_array($header)) {
+  if (count($header)) {
     $ts = tablesort_init($header);
     $output .= ' <tr>';
     foreach ($header as $cell) {
@@ -644,7 +644,7 @@ function theme_table($header, $rows, $attributes = NULL) {
   }
 
   // Format the table rows:
-  if (is_array($rows)) {
+  if (count($rows)) {
     foreach ($rows as $number => $row) {
       $attributes = array();
 

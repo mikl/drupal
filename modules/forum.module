@@ -1,5 +1,5 @@
 <?php
-// $Id: forum.module,v 1.243.2.9 2005-06-01 19:47:23 unconed Exp $
+// $Id: forum.module,v 1.243.2.10 2005-06-19 08:44:25 dries Exp $
 
 /**
  * @file
@@ -938,7 +938,7 @@ function _forum_icon($new_posts, $num_posts = 0, $comment_mode = 0, $sticky = 0)
     }
 
     // default
-    $file = "misc/forum-$icon.png";
+    $file = variable_get('forum_icon_path', 'misc') ."/forum-$icon.png";
 
     $output = theme('image', $file);
   }

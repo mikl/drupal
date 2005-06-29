@@ -1,5 +1,5 @@
 <?php
-// $Id: chameleon.theme,v 1.25.2.1 2005-05-27 05:19:47 unconed Exp $
+// $Id: chameleon.theme,v 1.25.2.2 2005-06-29 19:53:35 dries Exp $
 
 /**
  * @file
@@ -135,7 +135,7 @@ function chameleon_node($node, $main = 0, $page = 0) {
     $links = array_merge($links, $node->links);
   }
   if (count($links)) {
-    $output .= " <div class=\"links\">". theme('links', $links) ."</div>\n";   
+    $output .= " <div class=\"links\">". theme('links', $links) ."</div>\n";
   }
 
   $output .= "</div>\n";

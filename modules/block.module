@@ -1,5 +1,5 @@
 <?php
-// $Id: block.module,v 1.162.2.3 2005-05-22 12:50:09 dries Exp $
+// $Id: block.module,v 1.162.2.4 2005-07-03 15:27:49 dries Exp $
 
 /**
  * @file
@@ -452,7 +452,7 @@ function block_list($region, $regions = array('left' => 0, 'right' => 1, 'all' =
 
   if (!isset($blocks[$region])) {
     $blocks[$region] = array();
-    $result = db_query("SELECT * FROM {blocks} WHERE status = 1 AND region IN ('%s') ORDER BY weight, module", $regions[$region]);
+    $result = db_query("SELECT * FROM {blocks} WHERE status = 1 AND region IN (%s) ORDER BY weight, module", $regions[$region]);
     while ($block = db_fetch_array($result)) {
       // Use the user's block visibility setting, if necessary
       if ($block['custom'] != 0) {

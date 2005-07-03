@@ -1,5 +1,5 @@
 <?php
-// $Id: book.module,v 1.288.2.7 2005-06-22 20:24:35 dries Exp $
+// $Id: book.module,v 1.288.2.8 2005-07-03 16:09:12 dries Exp $
 
 /**
  * @file
@@ -295,7 +295,7 @@ function book_outline() {
 
 
 /**
- * Return the the most recent revision that matches the specified conditions.
+ * Return the most recent revision that matches the specified conditions.
  */
 function book_revision_load($page, $conditions = array()) {
 

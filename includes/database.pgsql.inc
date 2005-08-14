@@ -1,5 +1,5 @@
 <?php
-// $Id: database.pgsql.inc,v 1.6.2.1 2005/04/08 11:24:25 dries Exp $
+// $Id: database.pgsql.inc,v 1.6.2.2 2005/08/14 09:58:26 dries Exp $
 
 /**
  * @file
@@ -60,6 +60,7 @@ function _db_query($query, $debug = 0) {
   }
   else {
     trigger_error(pg_last_error() ."\nquery: ". htmlspecialchars($query), E_USER_ERROR);
+    return FALSE;
   }
 }
 

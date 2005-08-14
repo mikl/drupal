@@ -1,5 +1,5 @@
 <?php
-// $Id: xmlrpc.php,v 1.9 2004/08/21 06:42:34 dries Exp $
+// $Id: xmlrpc.php,v 1.9.4.1 2005/08/14 22:33:24 dries Exp $
 
 /**
  * @file
@@ -11,8 +11,5 @@ include_once 'includes/common.inc';
 include_once 'includes/xmlrpc.inc';
 include_once 'includes/xmlrpcs.inc';
 
-$functions = module_invoke_all('xmlrpc');
-
-$server = new xmlrpc_server($functions);
-
+xmlrpc_server(module_invoke_all('xmlrpc'));
 ?>

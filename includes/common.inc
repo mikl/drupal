@@ -1,5 +1,5 @@
 <?php
-/* $Id: common.inc,v 1.394.2.7 2004/12/28 11:04:14 dries Exp $ */
+/* $Id: common.inc,v 1.394.2.8 2005/08/15 01:42:01 dries Exp $ */
 
 /**
  * @file
@@ -36,6 +36,10 @@ function drupal_get_breadcrumb() {
   }
 
   return $breadcrumb;
+}
+
+function drupal_add_link($attributes) {
+  drupal_set_html_head('<link'. drupal_attributes($attributes) ." />\n");
 }
 
 /**

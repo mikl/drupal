@@ -1,5 +1,5 @@
 #!/usr/bin/perl -w
-# $Id: code-style.pl,v 1.9 2005/03/31 21:18:08 dries Exp $
+# $Id: code-style.pl,v 1.9.2.1 2005/08/17 20:03:29 dries Exp $
 
 # Author: Alexander Schwartz (alexander.schwartz@gmx.net)
 # Licence: GPL
@@ -8,8 +8,6 @@
 # Originally written for Drupal (http://www.drupal.org/) to ensure stylish
 # code.  This program tries to show as many improvements as possible with
 # no false positives.
-
-# $Id: code-style.pl,v 1.9 2005/03/31 21:18:08 dries Exp $
 
 $comment = 0;
 $program = 0;

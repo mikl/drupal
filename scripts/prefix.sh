@@ -1,4 +1,5 @@
 #!/bin/sh
+# $Id: prefix.sh,v 1.2.2.2 2005/08/17 20:03:29 dries Exp $
 
 if [ $# != 2 ]; then
   cat >&2 << EOH

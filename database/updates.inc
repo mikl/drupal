@@ -1,5 +1,5 @@
 <?php
-/* $Id: updates.inc,v 1.66.2.2 2005/01/05 20:17:33 dries Exp $ */
+/* $Id: updates.inc,v 1.66.2.3 2005/08/17 19:16:51 dries Exp $ */
 
 /**
  * @file
@@ -1307,9 +1307,9 @@ function update_96() {
     $ret[] = update_sql("ALTER TABLE {menu} ADD description varchar(255) DEFAULT '' NOT NULL");
   }
   else {
-    $ret[] = update_sql("ALTER TABLE {menu} ADD description smallint");
-    $ret[] = update_sql("ALTER TABLE {menu} ALTER COLUMN description SET DEFAULT '0'");
-    $ret[] = update_sql("UPDATE {menu} SET description = '0'");
+    $ret[] = update_sql("ALTER TABLE {menu} ADD description varchar(255)");
+    $ret[] = update_sql("ALTER TABLE {menu} ALTER COLUMN description SET DEFAULT ''");
+    $ret[] = update_sql("UPDATE {menu} SET description = ''");
     $ret[] = update_sql("ALTER TABLE {menu} ALTER COLUMN description SET NOT NULL");
   }
 

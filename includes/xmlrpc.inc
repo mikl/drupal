@@ -1,4 +1,6 @@
 <?php
+// $Id: xmlrpc.inc,v 1.16.2.4 2005/08/18 05:21:04 dries Exp $
+
 /*
   Drupal XML-RPC library. Based on the IXR - The Incutio XML-RPC Library - (c) Incutio Ltd 2002-2005
    Version 1.7 (beta) - Simon Willison, 23rd May 2005

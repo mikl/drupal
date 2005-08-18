@@ -1,5 +1,5 @@
 <?php
-/* $Id: common.inc,v 1.434.2.10 2005/07/29 19:05:31 unconed Exp $ */
+// $Id: common.inc,v 1.434.2.11 2005/08/18 05:21:04 dries Exp $
 
 /**
  * @file

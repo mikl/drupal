@@ -1,5 +1,5 @@
 <?php
-// $Id: search.module,v 1.88.2.2 2005/01/11 04:18:12 unconed Exp $
+// $Id: search.module,v 1.88.2.3 2005/08/29 19:40:33 dries Exp $
 
 /**
  * @file
@@ -251,7 +251,7 @@ function update_index($search_array) {
       $wordlist = $node['text1'] .' '. $node['text2'];
 
       // Strip heaps of stuff out of it.
-      $wordlist = preg_replace("'<[\/\!]*?[^<>]*?>'si", '', $wordlist);
+      $wordlist = preg_replace("'<[\/\!]*?[^<>]*?>'si", ' ', $wordlist);
 
       // Remove punctuation/special characters (same rule as do_search()).
       $wordlist = preg_replace("'(!|%|,|:|;|\(|\)|\&|\"|\'|\.|-|\/|\?|\\\)'", '', $wordlist);

@@ -1,5 +1,5 @@
 <?php
-// $Id: node.module,v 1.485.2.13 2005/08/11 12:54:17 dries Exp $
+// $Id: node.module,v 1.485.2.14 2005/09/09 06:14:24 dries Exp $
 
 /**
  * @file
@@ -709,8 +709,9 @@ function node_menu($may_cache) {
       }
     }
     else if (arg(0) == 'admin' && arg(1) == 'node' && arg(2) == 'configure' && arg(3) == 'types' && is_string(arg(4))) {
+      $arg4 = arg(4);
       $items[] = array('path' => 'admin/node/configure/types/'. arg(4),
-        'title' => t("'%name' content type", array('%name' => node_invoke(arg(4), 'node_name'))),
+        'title' => t("'%name' content type", array('%name' => node_invoke($arg4, 'node_name'))),
         'type' => MENU_CALLBACK);
     }
   }

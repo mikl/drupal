@@ -1,5 +1,5 @@
 <?php
-// $Id: file.inc,v 1.39.2.5 2005/08/17 20:03:28 dries Exp $
+// $Id: file.inc,v 1.39.2.6 2005/09/13 19:06:01 dries Exp $
 
 /**
  * @file
@@ -36,7 +36,7 @@ function file_create_url($path) {
     case FILE_DOWNLOADS_PUBLIC:
       return $GLOBALS['base_url'] .'/'. variable_get('file_directory_path', 'files') .'/'. str_replace('\\', '/', $path);
     case FILE_DOWNLOADS_PRIVATE:
-      return url('system/files', 'file='. $path);
+      return url('system/files', 'file='. $path, NULL, TRUE);
   }
 }
 

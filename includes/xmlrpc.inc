@@ -1,5 +1,5 @@
 <?php
-// $Id: xmlrpc.inc,v 1.16.2.4 2005/08/18 05:21:04 dries Exp $
+// $Id: xmlrpc.inc,v 1.16.2.5 2005/10/10 09:03:57 dries Exp $
 
 /*
   Drupal XML-RPC library. Based on the IXR - The Incutio XML-RPC Library - (c) Incutio Ltd 2002-2005
@@ -373,7 +373,7 @@ function xmlrpc() {
   }
   // Is the message a fault?
   if ($message->messagetype == 'fault') {
-    xmlrpc_error($message->faultcode, $message->faultstring);
+    xmlrpc_error($message->fault_code, $message->fault_string);
     return FALSE;
   }
   // Message must be OK

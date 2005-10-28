@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.434.2.11 2005/08/18 05:21:04 dries Exp $
+// $Id: common.inc,v 1.434.2.12 2005/10/28 01:57:35 unconed Exp $
 
 /**
  * @file
@@ -201,7 +201,7 @@ function drupal_goto($path = '', $query = NULL, $fragment = NULL) {
  * Generates a 404 error if the request can not be handled.
  */
 function drupal_not_found() {
-  header('HTTP/1.0 404 Not Found');
+  drupal_set_header('HTTP/1.0 404 Not Found');
   watchdog('page not found', t('%page not found.', array('%page' => theme('placeholder', $_GET['q']))), WATCHDOG_WARNING);
 
   $path = drupal_get_normal_path(variable_get('site_404', ''));
@@ -221,7 +221,7 @@ function drupal_not_found() {
  * Generates a 403 error if the request is not allowed.
  */
 function drupal_access_denied() {
-  header('HTTP/1.0 403 Forbidden');
+  drupal_set_header('HTTP/1.0 403 Forbidden');
   watchdog('access denied', t('%page denied access.', array('%page' => theme('placeholder', $_GET['q']))), WATCHDOG_WARNING, l(t('view'), $_GET['q']));
 
   $path = drupal_get_normal_path(variable_get('site_403', ''));

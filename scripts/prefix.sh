@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: prefix.sh,v 1.2.2.2 2005/08/17 20:03:29 dries Exp $
+# $Id: prefix.sh,v 1.2.2.3 2005/11/14 22:08:02 dries Exp $
 
 if [ $# != 2 ]; then
   cat >&2 << EOH
@@ -21,6 +21,6 @@ sed "s/^CREATE TABLE /CREATE TABLE $PRFX/;
      s/^ALTER TABLE /ALTER TABLE $PRFX/;
      s/^CREATE SEQUENCE /CREATE SEQUENCE $PRFX/;
      s/^ALTER SEQUENCE /ALTER SEQUENCE $PRFX/;
-     s/^CREATE INDEX \(.*\) ON /CREATE INDEX \\1 ON $PRFX/;
+     s/^CREATE INDEX \(.*\) ON /CREATE INDEX $PRFX\\1 ON $PRFX/;
      " $2
 

@@ -1,5 +1,5 @@
 <?php
-// $Id: menu.inc,v 1.79.2.2 2005/08/17 20:03:28 dries Exp $
+// $Id: menu.inc,v 1.79.2.3 2005/11/28 15:45:19 dries Exp $
 
 /**
  * @file
@@ -970,10 +970,12 @@ function _menu_find_parents(&$items) {
     if (!isset($item['pid'])) {
       // Parent's location has not been customized, so figure it out using the path.
       $parent = $item['path'];
-      do {
-        $parent = substr($parent, 0, strrpos($parent, '/'));
+      if ($parent) {
+        do {
+          $parent = substr($parent, 0, strrpos($parent, '/'));
+        }
+        while ($parent && !array_key_exists($parent, $_menu['path index']));
       }
-      while ($parent && !array_key_exists($parent, $_menu['path index']));
 
       $pid = $parent ? $_menu['path index'][$parent] : 1;
       $_menu['items'][$mid]['pid'] = $pid;

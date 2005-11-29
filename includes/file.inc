@@ -1,5 +1,5 @@
 <?php
-/* $Id: file.inc,v 1.25.2.6 2004/11/08 22:31:54 dries Exp $ */
+/* $Id: file.inc,v 1.25.2.7 2005/11/29 20:11:21 dries Exp $ */
 
 /**
  * @file
@@ -134,8 +134,24 @@ function file_check_upload($source) {
   elseif ($_FILES["edit"]["name"][$source] && is_uploaded_file($_FILES["edit"]["tmp_name"][$source])) {
     $file = new stdClass();
     $file->filename = trim(basename($_FILES["edit"]["name"][$source]), '.');
-    $file->filemime = $_FILES["edit"]["type"][$source];
     $file->filepath = $_FILES["edit"]["tmp_name"][$source];
+
+    if (function_exists('mime_content_type')) {
+      $file->filemime = mime_content_type($file->filepath);
+      if ($file->filemime != $_FILES["edit"]["type"][$source]) {
+        watchdog('file', t('For %file the system thinks its MIME type is %detected while the user has given %given for MIME type', array('%file' => theme('placeholder', $file->filepath), '%detected' => theme('placeholder', $file>-filemime), '%given' => theme('placeholder', $_FILES['edit']['type'][$source]))));
+      }
+    }
+    else {
+      $file->filemime = $_FILES["edit"]["type"][$source];
+    }
+    if (((substr($file->filemime, 0, 5) == 'text/' || strpos($file->filemime, 'javascript')) && (substr($file->filepath, -4) != '.txt')) || preg_match('/\.(php|pl|py|cgi|asp)$/i', $file->filename)) {
+      $file->filemime = 'text/plain';
+      rename($file->filepath, $file->filepath .'.txt');
+      $file->filepath .= '.txt';
+      $file->filename .= '.txt';
+    }
+
     $file->error = $_FILES["edit"]["error"][$source];
     $file->filesize = $_FILES["edit"]["size"][$source];
     $file->source = $source;

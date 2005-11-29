@@ -1,5 +1,5 @@
 <?php
-// $Id: upload.module,v 1.31.2.6 2005/08/17 20:03:29 dries Exp $
+// $Id: upload.module,v 1.31.2.7 2005/11/29 20:14:29 dries Exp $
 
 /**
  * @file
@@ -196,14 +196,6 @@ function upload_nodeapi(&$node, $op, $arg) {
               $error['usersize']++;
             }
           }
-        }
-
-        // Rename possibly executable scripts to prevent accidental execution.
-        // Uploaded files are attachments and should be shown in their original
-        // form, rather than run.
-        if (preg_match('/\.(php|pl|py|cgi|asp)$/i', $file->filename)) {
-          $file->filename .= '.txt';
-          $file->filemime = 'text/plain';
         }
 
         if ($error['extension'] == count($user->roles) && $user->uid != 1) {

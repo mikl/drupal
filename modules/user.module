@@ -1,5 +1,5 @@
 <?php
-// $Id: user.module,v 1.454.2.20 2005/10/07 06:54:27 dries Exp $
+// $Id: user.module,v 1.454.2.21 2005/11/29 20:14:29 dries Exp $
 
 /**
  * @file
@@ -1241,8 +1241,11 @@ function user_page() {
           print theme('page', user_login($edit));
         }
       }
-      else {
+      elseif (user_access('access user profiles') || ($user->uid == arg(1))) {
         user_view(arg(1));
+      }
+      else {
+        drupal_access_denied();
       }
   }
 

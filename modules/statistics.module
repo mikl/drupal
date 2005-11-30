@@ -1,5 +1,5 @@
 <?php
-// $Id: statistics.module,v 1.166.2.3 2004/11/29 17:59:50 dries Exp $
+// $Id: statistics.module,v 1.166.2.4 2005/11/30 22:26:14 dries Exp $
 
 /**
  * @file
@@ -96,7 +96,7 @@ function statistics_exit() {
   }
   if ((variable_get('statistics_enable_access_log', 0)) && (module_invoke('throttle', 'status') < 5)) {
     // Statistical logs are enabled.
-    $referrer = referer_uri();
+    $referrer = $_SERVER['HTTP_REFERER'];
     $hostname = $_SERVER['REMOTE_ADDR'];
     $path = (drupal_get_path_alias($_GET['q'])) ? drupal_get_path_alias($_GET['q']) : $_GET['q'];
 

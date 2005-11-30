@@ -1,5 +1,5 @@
 <?php
-// $Id: blogapi.module,v 1.39.2.10 2005/11/09 19:01:30 dries Exp $
+// $Id: blogapi.module,v 1.39.2.11 2005/11/30 10:05:16 dries Exp $
 
 /**
  * @file
@@ -204,10 +204,6 @@ function blogapi_blogger_new_post($appkey, $blogid, $username, $password, $conte
     $edit['body'] = $content;
   }
 
-  if (!valid_input_data($edit['title'], $edit['body'])) {
-    return blogapi_error(t('Terminated request because of suspicious input data.'));
-  }
-
   $node = node_validate($edit);
 
   if ($errors = form_get_errors()) {
@@ -261,10 +257,6 @@ function blogapi_blogger_edit_post($appkey, $postid, $username, $password, $cont
   else {
     $node->title = blogapi_blogger_title($content);
     $node->body = $content;
-  }
-
-  if (!valid_input_data($node->title, $node->body)) {
-    return blogapi_error(t('Terminated request because of suspicious input data.'));
   }
 
   $node = node_validate($node);

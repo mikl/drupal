@@ -1,5 +1,5 @@
 <?php
-// $Id: bootstrap.inc,v 1.44.2.1 2005/11/29 20:14:19 dries Exp $
+// $Id: bootstrap.inc,v 1.44.2.2 2005/11/30 10:05:16 dries Exp $
 
 /**
  * @file
@@ -535,17 +535,6 @@ function arg($index) {
   if (array_key_exists($index, $arguments)) {
     return $arguments[$index];
   }
-}
-
-/**
- * Prepare a URL for use in an HTML attribute. Strips harmful protocols.
- *
- */
-function check_url($uri) {
-  $uri = htmlspecialchars($uri, ENT_QUOTES);
-  $uri = filter_xss_bad_protocol($uri, FALSE);
-
-  return $uri;
 }
 
 /**

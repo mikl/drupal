@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.434.2.13 2005/11/29 20:14:19 dries Exp $
+// $Id: common.inc,v 1.434.2.14 2005/11/30 10:05:16 dries Exp $
 
 /**
  * @file
@@ -621,6 +621,17 @@ function flood_is_allowed($name, $threshold) {
 
 function check_file($filename) {
   return is_uploaded_file($filename);
+}
+
+/**
+ * Prepare a URL for use in an HTML attribute. Strips harmful protocols.
+ *
+ */
+function check_url($uri) {
+  $uri = htmlspecialchars($uri, ENT_QUOTES);
+  $uri = filter_xss_bad_protocol($uri, FALSE);
+
+  return $uri;
 }
 
 /**

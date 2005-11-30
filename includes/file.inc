@@ -1,5 +1,5 @@
 <?php
-/* $Id: file.inc,v 1.25.2.8 2005/11/30 10:07:33 dries Exp $ */
+/* $Id: file.inc,v 1.25.2.9 2005/11/30 15:29:15 dries Exp $ */
 
 /**
  * @file
@@ -437,6 +437,10 @@ function file_transfer($source, $headers) {
   ob_end_clean();
 
   foreach ($headers as $header) {
+    // To prevent HTTP header injection, we delete new lines that are
+    // not followed by a space or a tab.
+    // See http://www.w3.org/Protocols/rfc2616/rfc2616-sec4.html#sec4.2
+    $header = preg_replace('/\r?\n(?!\t| )/', '', $header);
     header($header);
   }
 

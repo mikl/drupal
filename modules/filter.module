@@ -1,5 +1,5 @@
 <?php
-// $Id: filter.module,v 1.44.2.3 2005/11/29 20:12:06 dries Exp $
+// $Id: filter.module,v 1.44.2.4 2005/11/30 00:11:40 unconed Exp $
 
 /**
  * @file
@@ -998,8 +998,7 @@ function filter_xss($string, $format) {
     <[^>]*.(>|$)  # a string that starts with a <, up until the > or the end of the string
     |             # or
     >             # just a >
-    )%x
-    ', '_filter_xss_split', $string);
+    )%x', '_filter_xss_split', $string);
 }
 
 /**
@@ -1020,7 +1019,7 @@ function _filter_xss_split($m) {
     return;
   }
 
-  $string = &$m[1];
+  $string = $m[1];
 
   if (substr($string, 0, 1) != '<') {
     // We matched a lone ">" character

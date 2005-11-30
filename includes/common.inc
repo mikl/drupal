@@ -1,5 +1,5 @@
 <?php
-/* $Id: common.inc,v 1.394.2.9 2005/11/29 20:11:21 dries Exp $ */
+/* $Id: common.inc,v 1.394.2.10 2005/11/30 10:07:33 dries Exp $ */
 
 /**
  * @file
@@ -699,6 +699,26 @@ function check_form($text) {
 
 function check_file($filename) {
   return is_uploaded_file($filename);
+}
+
+/**
+ * Prepare a URL for use in an HTML attribute. Strips harmful protocols.
+ *
+ */
+function check_url($uri) {
+  $uri = htmlspecialchars($uri, ENT_QUOTES);
+  $uri = filter_xss_bad_protocol($uri, FALSE);
+
+  return $uri;
+}
+
+/**
+ * Return the URI of the referring page.
+ */
+function referer_uri() {
+  if (isset($_SERVER['HTTP_REFERER'])) {
+    return check_url($_SERVER['HTTP_REFERER']);
+  }
 }
 
 /**

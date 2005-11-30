@@ -1,5 +1,5 @@
 <?php
-/* $Id: file.inc,v 1.25.2.7 2005/11/29 20:11:21 dries Exp $ */
+/* $Id: file.inc,v 1.25.2.8 2005/11/30 10:07:33 dries Exp $ */
 
 /**
  * @file
@@ -372,12 +372,6 @@ function file_save_upload($source, $dest = 0, $replace = FILE_EXISTS_RENAME) {
       }
     }
 
-    if (!user_access('bypass input data check') && !valid_input_data($file)) {
-      watchdog('error', t('Possible exploit abuse: invalid data.'));
-      drupal_set_message(t('File upload failed: invalid data.'), 'error');
-      return 0;
-    }
-
     // Check for file upload errors.
     switch ($file->error) {
       case 0: // UPLOAD_ERR_OK
@@ -416,12 +410,6 @@ function file_save_upload($source, $dest = 0, $replace = FILE_EXISTS_RENAME) {
  * @return A string containing the resulting filename or 0 on error
  */
 function file_save_data($data, $dest, $replace = FILE_EXISTS_RENAME) {
-  if (!user_access('bypass input data check') && !valid_input_data($data)) {
-    watchdog('error', t('Possible exploit abuse: invalid data.'));
-    drupal_set_message(t('File upload failed: invalid data.'), 'error');
-    return 0;
-  }
-
   $temp = variable_get('file_directory_temp', FILE_DIRECTORY_TEMP);
   $file = tempnam($temp, 'file');
   if (!$fp = fopen($file, 'wb')) {

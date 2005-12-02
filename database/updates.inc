@@ -1,5 +1,5 @@
 <?php
-// $Id: updates.inc,v 1.100.2.8 2005/08/18 05:21:04 dries Exp $
+// $Id: updates.inc,v 1.100.2.9 2005/12/02 21:32:31 dries Exp $
 
 /**
  * @file
@@ -2142,6 +2142,7 @@ function update_117() {
 
 function update_118() {
   $ret = array();
+  $node_types = array();
   $result = db_query('SELECT vid, nodes FROM {vocabulary}');
   while ($vocabulary = db_fetch_object($result)) {
     $node_types[$vocabulary->vid] = explode(',', $vocabulary->nodes);

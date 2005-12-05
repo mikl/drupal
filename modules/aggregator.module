@@ -1,5 +1,5 @@
 <?php
-/* $Id: aggregator.module,v 1.213.2.4 2005/11/30 10:07:39 dries Exp $ */
+/* $Id: aggregator.module,v 1.213.2.5 2005/12/05 08:59:03 dries Exp $ */
 
 /**
  * @file
@@ -486,7 +486,9 @@ function aggregator_parse_feed(&$data, $feed) {
     foreach ($item as $key => $value) {
       // TODO: Make handling of aggregated HTML more flexible/configurable.
       $value = strtr(trim($value), $tt);
-      $value = filter_xss($value);
+      if ($key != 'LINK' && $key != 'GUID') {
+        $value = filter_xss($value);
+      }
       $item[$key] = $value;
     }
 

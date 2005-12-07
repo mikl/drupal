@@ -1,5 +1,5 @@
 <?php
-// $Id: database.pgsql.inc,v 1.6.2.3 2005/11/29 20:14:19 dries Exp $
+// $Id: database.pgsql.inc,v 1.6.2.4 2005/12/07 15:41:17 dries Exp $
 
 /**
  * @file
@@ -52,14 +52,14 @@ function _db_query($query, $debug = 0) {
   }
 
   if ($debug) {
-    print '<p>query: '. $query .'<br />error:'. pg_last_error() .'</p>';
+    print '<p>query: '. $query .'<br />error:'. pg_last_error($active_db) .'</p>';
   }
 
   if ($last_result !== FALSE) {
     return $last_result;
   }
   else {
-    trigger_error(check_plain(pg_last_error() ."\nquery: ". $query), E_USER_ERROR);
+    trigger_error(check_plain(pg_last_error($active_db) ."\nquery: ". $query), E_USER_ERROR);
     return FALSE;
   }
 }
@@ -134,7 +134,8 @@ function db_result($result, $row = 0) {
  * Determine whether the previous query caused an error.
  */
 function db_error() {
-  return pg_last_error();
+  global $active_db;
+  return pg_last_error($active_db);
 }
 
 /**

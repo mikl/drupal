@@ -1,5 +1,5 @@
 <?php
-/* $Id: file.inc,v 1.25.2.10 2005/11/30 19:27:56 dries Exp $ */
+/* $Id: file.inc,v 1.25.2.11 2005/12/12 11:37:52 dries Exp $ */
 
 /**
  * @file
@@ -139,7 +139,7 @@ function file_check_upload($source) {
     if (function_exists('mime_content_type')) {
       $file->filemime = mime_content_type($file->filepath);
       if ($file->filemime != $_FILES["edit"]["type"][$source]) {
-        watchdog('file', t('For %file the system thinks its MIME type is %detected while the user has given %given for MIME type', array('%file' => theme('placeholder', $file->filepath), '%detected' => theme('placeholder', $file>-filemime), '%given' => theme('placeholder', $_FILES['edit']['type'][$source]))));
+        watchdog('file', t('For %file the system thinks its MIME type is %detected while the user has given %given for MIME type', array('%file' => theme('placeholder', $file->filepath), '%detected' => theme('placeholder', $file->filemime), '%given' => theme('placeholder', $_FILES['edit']['type'][$source]))));
       }
     }
     else {

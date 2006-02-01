@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.434.2.16 2005/12/02 10:30:59 dries Exp $
+// $Id: common.inc,v 1.434.2.17 2006/02/01 14:34:26 dries Exp $
 
 /**
  * @file
@@ -206,7 +206,7 @@ function drupal_not_found() {
 
   $path = drupal_get_normal_path(variable_get('site_404', ''));
   $status = MENU_NOT_FOUND;
-  if ($path) {
+  if ($path  && $path != $_GET['q']) {
     menu_set_active_item($path);
     $status = menu_execute_active_handler();
   }
@@ -226,7 +226,7 @@ function drupal_access_denied() {
 
   $path = drupal_get_normal_path(variable_get('site_403', ''));
   $status = MENU_NOT_FOUND;
-  if ($path) {
+  if ($path  && $path != $_GET['q']) {
     menu_set_active_item($path);
     $status = menu_execute_active_handler();
   }

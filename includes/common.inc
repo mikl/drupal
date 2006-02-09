@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.434.2.17 2006/02/01 14:34:26 dries Exp $
+// $Id: common.inc,v 1.434.2.18 2006/02/09 08:57:47 unconed Exp $
 
 /**
  * @file
@@ -1666,15 +1666,18 @@ function truncate_utf8($string, $len, $wordsafe = FALSE) {
     return $string;
   }
   if ($wordsafe) {
+    $end = $len;
     while (($string[--$len] != ' ') && ($len > 0)) {};
+    if ($len == 0) {
+      $len = $end;
+    }
   }
   if ((ord($string[$len]) < 0x80) || (ord($string[$len]) >= 0xC0)) {
     return substr($string, 0, $len);
   }
-  while (ord($string[--$len]) < 0xC0) {};
+  while (--$len >= 0 && ord($string[$len]) >= 0x80 && ord($string[$len]) < 0xC0) {};
   return substr($string, 0, $len);
 }
-
 /**
  * Encodes MIME/HTTP header values that contain non-ASCII, UTF-8 encoded
  * characters.

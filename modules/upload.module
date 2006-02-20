@@ -1,5 +1,5 @@
-down<?php
-// $Id: upload.module,v 1.31.2.9 2006/02/20 16:44:28 dries Exp $
+<?php
+// $Id: upload.module,v 1.31.2.10 2006/02/20 17:24:57 dries Exp $
 
 /**
  * @file

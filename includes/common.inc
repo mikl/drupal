@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.434.2.19 2006/03/13 21:28:04 unconed Exp $
+// $Id: common.inc,v 1.434.2.20 2006/03/13 21:29:57 unconed Exp $
 
 /**
  * @file
@@ -1694,7 +1694,7 @@ function truncate_utf8($string, $len, $wordsafe = FALSE) {
  *   have to be changed to \r\n or \r.
  */
 function mime_header_encode($string) {
-  if (!preg_match('/^[\x20-\x7E]*$/', $string)) {
+  if (preg_match('/[^\x20-\x7E]/', $string)) {
     $chunk_size = 47; // floor((75 - strlen("=?UTF-8?B??=")) * 0.75);
     $len = strlen($string);
     $output = '';

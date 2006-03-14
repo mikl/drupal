@@ -1,5 +1,5 @@
 <?php
-// $Id: user.module,v 1.407.2.12 2005/06/01 19:27:12 dries Exp $
+// $Id: user.module,v 1.407.2.13 2006/03/14 01:19:55 unconed Exp $
 
 /**
  * @file
@@ -791,6 +791,12 @@ function user_login($edit = array(), $msg = '') {
       db_query("UPDATE {users} SET changed = '%d' WHERE uid = '%s'", time(), $user->uid);
 
       user_module_invoke('login', $edit, $user);
+
+      if (function_exists('session_regenerate_id')) {
+        $old_session_id = session_id();
+        session_regenerate_id();
+        db_query("UPDATE {sessions} SET sid = '%s' WHERE sid = '%s'", session_id(), $old_session_id);      
+      }
 
       // Redirect the user to the page he logged on from.
       drupal_goto($edit['destination']);

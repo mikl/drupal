@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.module,v 1.347.2.8 2005/11/15 20:37:56 dries Exp $
+// $Id: comment.module,v 1.347.2.9 2006/04/04 02:43:32 unconed Exp $
 
 /**
  * @file
@@ -244,7 +244,7 @@ function comment_nodeapi(&$node, $op, $arg = 0) {
     case 'fields':
       return array('comment');
 
-    case 'form admin':
+    case 'form pre':
       if (user_access('administer comments')) {
         $selected = isset($node->comment) ? $node->comment : variable_get("comment_$node->type", 2);
         $output = form_radios('', 'comment', $selected, array(t('Disabled'), t('Read only'), t('Read/write')));

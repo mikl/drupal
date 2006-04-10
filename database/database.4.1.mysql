@@ -1,4 +1,4 @@
--- $Id: database.mysql,v 1.230 2006-03-14 14:04:13 killes Exp $
+-- $Id: database.4.1.mysql,v 1.1 2006-04-10 13:45:28 unconed Exp $
 
 --
 -- Table structure for table 'access'
@@ -10,7 +10,7 @@ CREATE TABLE access (
   status tinyint(2) NOT NULL default '0',
   PRIMARY KEY (aid)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'accesslog'
@@ -29,7 +29,7 @@ CREATE TABLE accesslog (
   KEY accesslog_timestamp (timestamp),
   PRIMARY KEY (aid)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'aggregator_category'
@@ -43,7 +43,7 @@ CREATE TABLE aggregator_category (
   PRIMARY KEY (cid),
   UNIQUE KEY title (title)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'aggregator_category_feed'
@@ -54,7 +54,7 @@ CREATE TABLE aggregator_category_feed (
   cid int(10) NOT NULL default '0',
   PRIMARY KEY (fid,cid)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'aggregator_category_item'
@@ -65,7 +65,7 @@ CREATE TABLE aggregator_category_item (
   cid int(10) NOT NULL default '0',
   PRIMARY KEY (iid,cid)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'aggregator_feed'
@@ -87,7 +87,7 @@ CREATE TABLE aggregator_feed (
   UNIQUE KEY link (url),
   UNIQUE KEY title (title)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'aggregator_item'
@@ -103,7 +103,7 @@ CREATE TABLE aggregator_item (
   timestamp int(11) default NULL,
   PRIMARY KEY (iid)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'authmap'
@@ -117,7 +117,7 @@ CREATE TABLE authmap (
   PRIMARY KEY (aid),
   UNIQUE KEY authname (authname)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'blocks'
@@ -135,7 +135,7 @@ CREATE TABLE blocks (
   visibility tinyint(1) DEFAULT '0' NOT NULL,
   pages text DEFAULT '' NOT NULL
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'book'
@@ -150,7 +150,7 @@ CREATE TABLE book (
   KEY nid (nid),
   KEY parent (parent)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'boxes'
@@ -165,7 +165,7 @@ CREATE TABLE boxes (
   PRIMARY KEY (bid),
   UNIQUE KEY info (info)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'cache'
@@ -180,7 +180,7 @@ CREATE TABLE cache (
   PRIMARY KEY (cid),
   INDEX expire (expire)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'comments'
@@ -206,7 +206,7 @@ CREATE TABLE comments (
   PRIMARY KEY (cid),
   KEY lid (nid)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structre for table 'contact'
@@ -222,7 +222,7 @@ CREATE TABLE contact (
   PRIMARY KEY (cid),
   UNIQUE KEY category (category)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structre for table 'node_comment_statistics'
@@ -237,7 +237,7 @@ CREATE TABLE node_comment_statistics (
   PRIMARY KEY (nid),
   KEY node_comment_timestamp (last_comment_timestamp)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'client'
@@ -257,7 +257,7 @@ CREATE TABLE client (
   changed int(11) NOT NULL default '0',
   PRIMARY KEY (cid)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'client_system'
@@ -269,7 +269,7 @@ CREATE TABLE client_system (
   type varchar(255) NOT NULL default '',
   PRIMARY KEY (cid,name)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'files'
@@ -284,7 +284,7 @@ CREATE TABLE files (
   filesize int(10) unsigned NOT NULL default 0,
   PRIMARY KEY (fid)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'file_revisions'
@@ -297,7 +297,7 @@ CREATE TABLE file_revisions (
   list tinyint(1) unsigned NOT NULL default 0,
   PRIMARY KEY (fid, vid)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'filter_formats'
@@ -311,7 +311,7 @@ CREATE TABLE filter_formats (
   PRIMARY KEY (format),
   UNIQUE KEY (name)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'filters'
@@ -324,7 +324,7 @@ CREATE TABLE filters (
   weight tinyint(2) DEFAULT '0' NOT NULL,
   INDEX (weight)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'flood'
@@ -335,7 +335,7 @@ CREATE TABLE flood (
   hostname varchar(128) NOT NULL default '',
   timestamp int(11) NOT NULL default '0'
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'forum'
@@ -349,7 +349,7 @@ CREATE TABLE forum (
   KEY nid (nid),
   KEY tid (tid)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'history'
@@ -361,7 +361,7 @@ CREATE TABLE history (
   timestamp int(11) NOT NULL default '0',
   PRIMARY KEY (uid,nid)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'locales_meta'
@@ -376,7 +376,7 @@ CREATE TABLE locales_meta (
   formula varchar(128) NOT NULL default '',
   PRIMARY KEY (locale)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'locales_source'
@@ -388,7 +388,7 @@ CREATE TABLE locales_source (
   source blob NOT NULL,
   PRIMARY KEY (lid)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'locales_target'
@@ -405,7 +405,7 @@ CREATE TABLE locales_target (
   KEY plid (plid),
   KEY plural (plural)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'menu'
@@ -421,7 +421,7 @@ CREATE TABLE menu (
   type int(2) unsigned NOT NULL default '0',
   PRIMARY KEY (mid)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'node'
@@ -452,7 +452,7 @@ CREATE TABLE node (
   KEY node_changed (changed),
   KEY node_status_type (status, type, nid)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table `node_access`
@@ -467,7 +467,7 @@ CREATE TABLE node_access (
   grant_delete tinyint(1) unsigned NOT NULL default '0',
   PRIMARY KEY (nid,gid,realm)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'node_revisions'
@@ -487,7 +487,7 @@ CREATE TABLE node_revisions (
   KEY nid (nid),
   KEY uid (uid)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'profile_fields'
@@ -510,7 +510,7 @@ CREATE TABLE profile_fields (
   UNIQUE KEY name (name),
   PRIMARY KEY (fid)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'profile_values'
@@ -523,7 +523,7 @@ CREATE TABLE profile_values (
   KEY uid (uid),
   KEY fid (fid)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 
 --
@@ -538,7 +538,7 @@ CREATE TABLE url_alias (
   UNIQUE KEY dst (dst),
   KEY src (src)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'permission'
@@ -550,7 +550,7 @@ CREATE TABLE permission (
   tid int(10) unsigned NOT NULL default '0',
   KEY rid (rid)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'poll'
@@ -562,7 +562,7 @@ CREATE TABLE poll (
   active int(2) unsigned NOT NULL default '0',
   PRIMARY KEY (nid)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'poll_votes'
@@ -576,7 +576,7 @@ CREATE TABLE poll_votes (
   INDEX (uid),
   INDEX (hostname)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'poll_choices'
@@ -591,7 +591,7 @@ CREATE TABLE poll_choices (
   PRIMARY KEY (chid),
   KEY nid (nid)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'role'
@@ -603,7 +603,7 @@ CREATE TABLE role (
   PRIMARY KEY (rid),
   UNIQUE KEY name (name)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'search_dataset'
@@ -614,7 +614,7 @@ CREATE TABLE search_dataset (
   data longtext NOT NULL,
   KEY sid_type (sid, type)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'search_index'
@@ -631,7 +631,7 @@ CREATE TABLE search_index (
   KEY from_sid_type (fromsid, fromtype),
   KEY word (word)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'search_total'
@@ -642,7 +642,7 @@ CREATE TABLE search_total (
   count float default NULL,
   PRIMARY KEY (word)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'sessions'
@@ -660,7 +660,7 @@ CREATE TABLE sessions (
   PRIMARY KEY (sid),
   KEY timestamp (timestamp)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'sequences'
@@ -671,7 +671,7 @@ CREATE TABLE sequences (
   id int(10) unsigned NOT NULL default '0',
   PRIMARY KEY (name)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'node_counter'
@@ -687,7 +687,7 @@ CREATE TABLE node_counter (
   KEY daycount (daycount),
   KEY timestamp (timestamp)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'system'
@@ -706,7 +706,7 @@ CREATE TABLE system (
   PRIMARY KEY (filename),
   KEY (weight)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'term_data'
@@ -721,7 +721,7 @@ CREATE TABLE term_data (
   PRIMARY KEY (tid),
   KEY vid (vid)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'term_hierarchy'
@@ -734,7 +734,7 @@ CREATE TABLE term_hierarchy (
   KEY parent (parent),
   PRIMARY KEY (tid, parent)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'term_node'
@@ -747,7 +747,7 @@ CREATE TABLE term_node (
   KEY tid (tid),
   PRIMARY KEY (tid,nid)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'term_relation'
@@ -759,7 +759,7 @@ CREATE TABLE term_relation (
   KEY tid1 (tid1),
   KEY tid2 (tid2)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'term_synonym'
@@ -771,7 +771,7 @@ CREATE TABLE term_synonym (
   KEY tid (tid),
   KEY name (name(3))
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'users'
@@ -800,7 +800,7 @@ CREATE TABLE users (
   UNIQUE KEY name (name),
   KEY access (access)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'users_roles'
@@ -811,7 +811,7 @@ CREATE TABLE users_roles (
   rid int(10) unsigned NOT NULL default '0',
   PRIMARY KEY (uid, rid)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'variable'
@@ -822,7 +822,7 @@ CREATE TABLE variable (
   value longtext NOT NULL,
   PRIMARY KEY (name)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'vocabulary'
@@ -842,7 +842,7 @@ CREATE TABLE vocabulary (
   weight tinyint(4) NOT NULL default '0',
   PRIMARY KEY (vid)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'vocabulary_node_types'
@@ -853,7 +853,7 @@ CREATE TABLE vocabulary_node_types (
   type varchar(32) NOT NULL DEFAULT '',
   PRIMARY KEY (vid, type)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Table structure for table 'watchdog'
@@ -872,7 +872,7 @@ CREATE TABLE watchdog (
   timestamp int(11) NOT NULL default '0',
   PRIMARY KEY (wid)
 )
-/*!40100 DEFAULT CHARACTER SET utf8 */ ;
+DEFAULT CHARACTER SET utf8;
 
 --
 -- Insert some default values

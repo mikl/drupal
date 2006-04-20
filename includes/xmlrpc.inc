@@ -1,5 +1,5 @@
 <?php
-// $Id: xmlrpc.inc,v 1.16.2.6 2005/10/28 13:13:59 dries Exp $
+// $Id: xmlrpc.inc,v 1.16.2.7 2006/04/20 05:44:50 dries Exp $
 
 /*
   Drupal XML-RPC library. Based on the IXR - The Incutio XML-RPC Library - (c) Incutio Ltd 2002-2005
@@ -211,11 +211,8 @@ function xmlrpc_message_tag_close($parser, $tag) {
       $value_flag = TRUE;
       break;
     case 'value':
-      // "If no type is indicated, the type is string."
-      if (trim($xmlrpc_message->current_tag_contents) != '') {
-        $value = (string)$xmlrpc_message->current_tag_contents;
-        $value_flag = TRUE;
-      }
+      $value = (string)$xmlrpc_message->current_tag_contents;
+      $value_flag = TRUE;
       break;
     case 'boolean':
       $value = (boolean)trim($xmlrpc_message->current_tag_contents);

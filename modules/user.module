@@ -1,5 +1,5 @@
 <?php
-// $Id: user.module,v 1.612.2.2 2006/04/30 08:27:53 killes Exp $
+// $Id: user.module,v 1.612.2.3 2006/05/03 10:52:50 killes Exp $
 
 /**
  * @file
@@ -951,7 +951,7 @@ function user_authenticate($name, $pass) {
   // Try to log in the user locally. Don't set $user unless successful.
   if ($account = user_load(array('name' => $name, 'pass' => $pass, 'status' => 1))) {
     $user = $account;
-  };
+  }
 
   // Strip name and server from ID:
   if ($server = strrchr($name, '@')) {

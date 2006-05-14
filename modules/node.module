@@ -1,5 +1,5 @@
 <?php
-// $Id: node.module,v 1.641.2.4 2006/05/14 15:07:23 killes Exp $
+// $Id: node.module,v 1.641.2.5 2006/05/14 23:57:58 killes Exp $
 
 /**
  * @file
@@ -1742,7 +1742,7 @@ function node_add($type) {
     }
 
     if (isset($item)) {
-      uasort($item, 'strnatcasecmp');
+      uksort($item, 'strnatcasecmp');
       $output = t('Choose the appropriate item from the list:') .'<dl>'. implode('', $item) .'</dl>';
     }
     else {

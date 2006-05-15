@@ -1,5 +1,5 @@
 <?php
-// $Id: form.inc,v 1.112.2.4 2006/05/02 13:04:49 killes Exp $
+// $Id: form.inc,v 1.112.2.5 2006/05/15 07:00:22 killes Exp $
 
 /**
  * @defgroup form Form generation
@@ -826,6 +826,15 @@ function expand_date($element) {
   }
 
   return $element;
+}
+
+/**
+ * Validates the FAPI date type to stop dates like 30/Feb/2006
+ */
+function date_validate($form) {
+  if (!checkdate($form['#value']['month'], $form['#value']['day'], $form['#value']['year'])) {
+    form_error($form, t('The specified date is invalid.'));
+  }
 }
 
 /**

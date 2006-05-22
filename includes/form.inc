@@ -1,5 +1,5 @@
 <?php
-// $Id: form.inc,v 1.112.2.6 2006/05/16 12:45:03 killes Exp $
+// $Id: form.inc,v 1.112.2.7 2006/05/22 17:06:10 killes Exp $
 
 /**
  * @defgroup form Form generation
@@ -525,13 +525,13 @@ function form_render(&$elements) {
       unset($elements['#prefix'], $elements['#suffix']);
     }
     /* render each of the children using form_render and concatenate them */
-    if (!$content) {
+    if (!isset($content) || $content === '') {
       foreach ($children as $key) {
         $content .= form_render($elements[$key]);
       }
     }
   }
-  if ($content) {
+  if (isset($content) && $content !== '') {
     $elements['#children'] = $content;
   }
 
@@ -541,7 +541,7 @@ function form_render(&$elements) {
     $elements['#printed'] = TRUE;
   }
 
-  if ($content) {
+  if (isset($content) && $content !== '') {
     $prefix = isset($elements['#prefix']) ? $elements['#prefix'] : '';
     $suffix = isset($elements['#suffix']) ? $elements['#suffix'] : '';
     return $prefix . $content . $suffix;

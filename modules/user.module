@@ -1,5 +1,5 @@
 <?php
-// $Id: user.module,v 1.612.2.9 2006/05/21 14:04:43 killes Exp $
+// $Id: user.module,v 1.612.2.10 2006/05/23 09:39:47 killes Exp $
 
 /**
  * @file
@@ -1444,7 +1444,7 @@ function user_view($uid = 0) {
   global $user;
 
   $account = user_load(array('uid' => $uid));
-  if ($account === FALSE) {
+  if ($account === FALSE || ($account->access == 0 && !user_access('administer users'))) {
     return drupal_not_found();
   }
   // Retrieve and merge all profile fields:

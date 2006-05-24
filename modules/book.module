@@ -1,5 +1,5 @@
 <?php
-// $Id: book.module,v 1.361.2.2 2006/05/13 10:02:47 dries Exp $
+// $Id: book.module,v 1.361.2.3 2006/05/24 11:41:07 killes Exp $
 
 /**
  * @file
@@ -881,12 +881,17 @@ function theme_book_admin_table($form) {
   $rows = array();
   foreach (element_children($form) as $key) {
     $nid = $form[$key]['nid']['#value'];
+    $pid = $form[0]['nid']['#value'];
+    if ($pid == $nid) {
+      // Don't return to the parent book page if it is deleted.
+      $pid = '';
+    }
     $rows[] = array(
       '<div style="padding-left: '. (25 * $form[$key]['depth']['#value']) .'px;">'. form_render($form[$key]['title']) .'</div>',
       form_render($form[$key]['weight']),
       l(t('view'), 'node/'. $nid),
       l(t('edit'), 'node/'. $nid .'/edit'),
-      l(t('delete'), 'node/'. $nid .'/delete')
+      l(t('delete'), 'node/'. $nid .'/delete', NULL, 'destination=admin/node/book/'. (arg(3) == 'orphan' ? 'orphan' : $pid)),
     );
   }
 

@@ -1,5 +1,5 @@
 <?php
-// $Id: updates.inc,v 1.224.2.4 2006/05/23 18:53:11 killes Exp $
+// $Id: updates.inc,v 1.224.2.5 2006/05/24 21:58:31 killes Exp $
 
 function system_update_110() {
   $ret = array();
@@ -1969,7 +1969,6 @@ function system_update_180() {
     case 'mysqli':
       $ret[] = update_sql("ALTER TABLE {node} DROP PRIMARY KEY");
       $ret[] = update_sql("ALTER TABLE {node} ADD PRIMARY KEY (nid, vid)");
-      $ret[] = update_sql("ALTER TABLE {node} DROP INDEX vid");
       $ret[] = update_sql("ALTER TABLE {node} ADD UNIQUE (vid)");
       $ret[] = update_sql("ALTER TABLE {node} ADD INDEX (nid)");
 

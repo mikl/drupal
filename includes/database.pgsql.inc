@@ -1,5 +1,5 @@
 <?php
-// $Id: database.pgsql.inc,v 1.6.2.4 2005/12/07 15:41:17 dries Exp $
+// $Id: database.pgsql.inc,v 1.6.2.5 2006/05/24 20:46:41 killes Exp $
 
 /**
  * @file
@@ -196,7 +196,7 @@ function db_query_range($query) {
     $args[0] = $query;
     $query = call_user_func_array('sprintf', $args);
   }
-  $query .= ' LIMIT '. $count .' OFFSET '. $from;
+  $query .= ' LIMIT '. (int)$count .' OFFSET '. (int)$from;
   return _db_query($query);
 }
 

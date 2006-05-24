@@ -1,5 +1,5 @@
 <?php
-// $Id: database.mysql.inc,v 1.27.2.4 2005/12/07 15:41:17 dries Exp $
+// $Id: database.mysql.inc,v 1.27.2.5 2006/05/24 20:46:41 killes Exp $
 
 /**
  * @file
@@ -203,7 +203,7 @@ function db_query_range($query) {
     $args[0] = $query;
     $query = call_user_func_array('sprintf', $args);
   }
-  $query .= ' LIMIT '. $from .', '. $count;
+  $query .= ' LIMIT '. (int)$from .', '. (int)$count;
   return _db_query($query);
 }
 

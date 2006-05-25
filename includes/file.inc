@@ -1,5 +1,5 @@
 <?php
-// $Id: file.inc,v 1.39.2.12 2006/04/12 17:23:29 unconed Exp $
+// $Id: file.inc,v 1.39.2.13 2006/05/25 01:34:05 killes Exp $
 
 /**
  * @file
@@ -102,6 +102,17 @@ function file_check_directory(&$directory, $mode = 0, $form_item = NULL) {
     else {
       form_set_error($form_item, t('The directory %directory is not writable.', array('%directory' => theme('placeholder', $directory))));
       return false;
+    }
+  }
+
+  if ((variable_get('file_directory_temp', FILE_DIRECTORY_TEMP) == $directory || variable_get('file_directory_path', 'files') == $directory) && !is_file("$directory/.htaccess")) {
+    if (($fp = fopen("$directory/.htaccess", 'w')) && fputs($fp, 'SetHandler This_is_a_Drupal_security_line_do_not_remove')) {
+      fclose($fp);
+    }
+    else {
+      $message = t("Security warning: Couldn't write .htaccess. Please create a .htaccess file in your %directory directory which contains the following line: <code>SetHandler This_is_a_Drupal_security_line_do_not_remove</code>", array('%directory' => $directory));
+      form_set_error($form_item, $message);
+      watchdog('file system', $message, WATCHDOG_ERROR);
     }
   }
 

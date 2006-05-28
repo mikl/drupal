@@ -1,5 +1,5 @@
 <?php
-// $Id: locale.inc,v 1.74.2.2 2006/05/16 13:02:21 killes Exp $
+// $Id: locale.inc,v 1.74.2.3 2006/05/28 20:32:15 killes Exp $
 
 /**
  * @file
@@ -635,7 +635,7 @@ function _locale_import_one_string($value, $mode, $lang = NULL) {
   }
   // Current string is the header information
   elseif ($value['msgid'] == '') {
-    $hdr = _locale_import_parse_header($value);
+    $hdr = _locale_import_parse_header($value['msgstr']);
 
     // Get the plural formula
     if ($hdr["Plural-Forms"] && $p = _locale_import_parse_plural_forms($hdr["Plural-Forms"], $file->filename)) {

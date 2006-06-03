@@ -1,5 +1,5 @@
 <?php
-// $Id: book.module,v 1.361.2.3 2006/05/24 11:41:07 killes Exp $
+// $Id: book.module,v 1.361.2.4 2006/06/03 09:22:12 killes Exp $
 
 /**
  * @file
@@ -381,7 +381,7 @@ function book_location($node, $nodes = array()) {
  * Accumulates the nodes up to the root of the book from the given node in the $nodes array.
  */
 function book_location_down($node, $nodes = array()) {
-  $last_direct_child = db_fetch_object(db_query(db_rewrite_sql('SELECT n.nid, n.title, b.parent, b.weight FROM {node} n INNER JOIN {book} b ON n.nid = b.nid WHERE n.status = 1 AND b.parent = %d ORDER BY b.weight DESC, n.title DESC'), $node->nid));
+  $last_direct_child = db_fetch_object(db_query(db_rewrite_sql('SELECT n.nid, n.title, b.parent, b.weight FROM {node} n INNER JOIN {book} b ON n.vid = b.vid WHERE n.status = 1 AND b.parent = %d ORDER BY b.weight DESC, n.title DESC'), $node->nid));
   if ($last_direct_child) {
     $nodes[] = $last_direct_child;
     $nodes = book_location_down($last_direct_child, $nodes);

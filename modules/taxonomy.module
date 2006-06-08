@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.module,v 1.275.2.8 2006/06/01 01:04:07 killes Exp $
+// $Id: taxonomy.module,v 1.275.2.9 2006/06/08 21:25:50 dries Exp $
 
 /**
  * @file

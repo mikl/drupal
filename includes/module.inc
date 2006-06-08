@@ -1,5 +1,5 @@
 <?php
-// $Id: module.inc,v 1.75 2006/02/27 15:04:45 killes Exp $
+// $Id: module.inc,v 1.75.2.1 2006/06/08 21:25:50 dries Exp $
 
 /**
  * @file
@@ -7,14 +7,12 @@
  */
 
 /**
- * Initialize all modules.
+ * Load all the modules that have been enabled in the system table.
  */
-function module_init() {
-  // Load all the modules that have been enabled in the system table.
+function module_load_all() {
   foreach (module_list(TRUE, FALSE) as $module) {
     drupal_load('module', $module);
   }
-  module_invoke_all('init');
 }
 
 /**

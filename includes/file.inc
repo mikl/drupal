@@ -1,5 +1,5 @@
 <?php
-// $Id: file.inc,v 1.74.2.2 2006/06/01 21:36:59 killes Exp $
+// $Id: file.inc,v 1.74.2.3 2006/06/09 05:41:43 dries Exp $
 
 /**
  * @file
@@ -28,7 +28,7 @@ define('FILE_EXISTS_ERROR', 2);
  */
 function file_create_url($path) {
   // Strip file_directory_path from $path. We only include relative paths in urls.
-  if (strpos($path, file_directory_path()) !== false) {
+  if (strpos($path, file_directory_path() . '/') === 0) {
     $path = trim(substr($path, strlen(file_directory_path())), '\\/');
   }
   switch (variable_get('file_downloads', FILE_DOWNLOADS_PUBLIC)) {

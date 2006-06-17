@@ -1,5 +1,5 @@
 <?php
-// $Id: node.module,v 1.641.2.6 2006/06/08 21:25:50 dries Exp $
+// $Id: node.module,v 1.641.2.7 2006/06/17 15:30:50 killes Exp $
 
 /**
  * @file
@@ -1404,7 +1404,7 @@ function node_feed($nodes = 0, $channel = array()) {
   global $base_url, $locale;
 
   if (!$nodes) {
-    $nodes = db_query_range(db_rewrite_sql('SELECT n.nid FROM {node} n WHERE n.promote = 1 AND n.status = 1 ORDER BY n.created DESC'), 0, variable_get('feed_default_items', 10));
+    $nodes = db_query_range(db_rewrite_sql('SELECT n.nid, n.created FROM {node} n WHERE n.promote = 1 AND n.status = 1 ORDER BY n.created DESC'), 0, variable_get('feed_default_items', 10));
   }
 
   $item_length = variable_get('feed_item_length', 'teaser');

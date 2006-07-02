@@ -1,5 +1,5 @@
 <?php
-// $Id: menu.inc,v 1.120.2.3 2006/07/02 19:00:37 killes Exp $
+// $Id: menu.inc,v 1.120.2.4 2006/07/02 19:01:51 killes Exp $
 
 /**
  * @file
@@ -839,6 +839,7 @@ function menu_primary_links($start_level = 1, $pid = 0) {
   }
 
   $menu = menu_get_menu();
+  $links = array();
   if ($pid && is_array($menu['visible'][$pid]) && isset($menu['visible'][$pid]['children'])) {
     $count = 1;
     foreach ($menu['visible'][$pid]['children'] as $cid) {

@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.292.2.4 2006/06/23 08:19:06 killes Exp $
+// $Id: theme.inc,v 1.292.2.5 2006/07/02 10:08:23 killes Exp $
 
 /**
  * @file
@@ -932,7 +932,7 @@ function theme_closure($main = 0) {
 function theme_blocks($region) {
   $output = '';
 
-  if ($list = module_invoke('block', 'list', $region)) {
+  if ($list = block_list($region)) {
     foreach ($list as $key => $block) {
       // $key == <i>module</i>_<i>delta</i>
       $output .= theme('block', $block);

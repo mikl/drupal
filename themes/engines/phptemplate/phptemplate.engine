@@ -1,5 +1,5 @@
 <?php
-// $Id: phptemplate.engine,v 1.33.2.1 2006/05/24 11:00:45 killes Exp $
+// $Id: phptemplate.engine,v 1.33.2.2 2006/07/02 19:03:10 killes Exp $
 
 /**
  * @file
@@ -248,6 +248,7 @@ function phptemplate_node($node, $teaser = 0, $page = 0) {
     $variables['picture'] = theme_get_setting('toggle_node_user_picture') ? theme('user_picture', $node) : '';
   }
   else {
+    $variables['submitted'] = '';
     $variables['picture'] = '';
   }
 

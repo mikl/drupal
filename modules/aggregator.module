@@ -1,5 +1,5 @@
 <?php
-// $Id: aggregator.module,v 1.278.2.5 2006/06/12 04:19:21 killes Exp $
+// $Id: aggregator.module,v 1.278.2.6 2006/07/03 08:09:31 killes Exp $
 
 /**
  * @file
@@ -1191,7 +1191,7 @@ function aggregator_page_rss() {
   $output .= format_rss_channel(variable_get('site_name', t('Drupal')) . ' ' . t('aggregator'), url('aggregator' . $url, NULL, NULL, TRUE), variable_get('site_name', t('Drupal')) . ' - ' . t('aggregated feeds') . $title, $items, 'en');
   $output .= "</rss>\n";
 
-  drupal_set_header('Content-Type: text/xml; charset=utf-8');
+  drupal_set_header('Content-Type: application/rss+xml; charset=utf-8');
   print $output;
 }
 

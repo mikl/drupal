@@ -1,5 +1,5 @@
 <?php
-// $Id: node.module,v 1.485.2.15 2006/07/09 11:25:50 dries Exp $
+// $Id: node.module,v 1.485.2.16 2006/07/09 11:27:38 dries Exp $
 
 /**
  * @file
@@ -1159,9 +1159,14 @@ function node_feed($nodes = 0, $channel = array()) {
     $items .= format_rss_item($item->title, $link, $item->teaser, $extra);
   }
 
+  $slogan = variable_get('site_slogan', '');
+  $spacer = ' - ';
+  if (empty($slogan)) {
+    $spacer = '';
+  }
   $channel_defaults = array(
     'version'     => '2.0',
-    'title'       => variable_get('site_name', 'drupal') .' - '. variable_get('site_slogan', ''),
+    'title'       => variable_get('site_name', 'drupal') . $spacer . $slogan,
     'link'        => $base_url,
     'description' => variable_get('site_mission', ''),
     'language'    => $locale

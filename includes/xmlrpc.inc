@@ -1,5 +1,5 @@
 <?php
-// $Id: xmlrpc.inc,v 1.34.2.2 2006/06/08 21:25:50 dries Exp $
+// $Id: xmlrpc.inc,v 1.34.2.3 2006/07/13 18:24:57 dries Exp $
 
 /*
   Drupal XML-RPC library. Based on the IXR - The Incutio XML-RPC Library - (c) Incutio Ltd 2002-2005
@@ -345,7 +345,7 @@ EOD;
 
 function xmlrpc_error($code = NULL, $message = NULL) {
   static $xmlrpc_error;
-  if ($code) {
+  if (isset($code)) {
     $xmlrpc_error = new stdClass();
     $xmlrpc_error->is_error = TRUE;
     $xmlrpc_error->code = $code;

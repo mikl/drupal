@@ -1,5 +1,5 @@
 <?php
-// $Id: forum.module,v 1.328.2.2 2006/06/12 04:17:52 killes Exp $
+// $Id: forum.module,v 1.328.2.3 2006/07/14 12:16:01 killes Exp $
 
 /**
  * @file
@@ -1073,6 +1073,10 @@ function theme_forum_topic_navigation($node) {
 
     if ($prev) {
       $output .= l(t('‹ ') . $prev->title, 'node/'. $prev->nid, array('class' => 'topic-previous', 'title' => t('Go to previous forum topic')));
+    }
+    if ($prev && $next) {
+      // Word break (a is an inline element)
+      $output .= ' ';
     }
     if ($next) {
       $output .= l($next->title . t(' ›'), 'node/'. $next->nid, array('class' => 'topic-next', 'title' => t('Go to next forum topic')));

@@ -1,3 +1,5 @@
+// $Id: LICENSE.txt,v 1.2.6.3 2006/07/27 08:26:48 killes Exp $
+
         GNU GENERAL PUBLIC LICENSE
            Version 2, June 1991
 

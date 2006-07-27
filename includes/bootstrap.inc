@@ -1,5 +1,5 @@
 <?php
-// $Id: bootstrap.inc,v 1.96.2.3 2006/07/05 05:07:53 killes Exp $
+// $Id: bootstrap.inc,v 1.96.2.4 2006/07/27 08:34:40 killes Exp $
 
 /**
  * @file
@@ -336,7 +336,7 @@ function cache_get($key) {
     // cache timer.  The cache variable is loaded into the $user object by
     // sess_read() in session.inc.
     else {
-      if ($user->cache > $cache->created) {
+      if (isset($user->cache) && ($user->cache > $cache->created)) {
         // This cache data is too old and thus not valid for us, ignore it.
         return 0;
       }

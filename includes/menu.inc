@@ -1,5 +1,5 @@
 <?php
-// $Id: menu.inc,v 1.79.2.5 2006/03/14 15:26:04 unconed Exp $
+// $Id: menu.inc,v 1.79.2.6 2006/08/14 12:53:42 dries Exp $
 
 /**
  * @file
@@ -345,7 +345,7 @@ function menu_execute_active_handler() {
   }
 
   // We found one, and are allowed to execute it.
-  $arguments = array_key_exists('callback arguments', $menu['items'][$mid]) ? $menu['items'][$mid]['callback arguments'] : array();
+  $arguments = isset($menu['items'][$mid]['callback arguments']) ? $menu['items'][$mid]['callback arguments'] : array();
   $arg = substr($_GET['q'], strlen($menu['items'][$mid]['path']) + 1);
   if (strlen($arg)) {
     $arguments = array_merge($arguments, explode('/', $arg));

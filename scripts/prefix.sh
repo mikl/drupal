@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: prefix.sh,v 1.8 2006/04/13 10:42:01 killes Exp $
+# $Id: prefix.sh,v 1.8.2.1 2006/08/14 06:52:47 killes Exp $
 
 if [ $# != 2 ]; then
   cat >&2 << EOH
@@ -15,7 +15,8 @@ exit 1;
 fi
 
 PREFIX=$1;
-sed "s/^CREATE TABLE /CREATE TABLE $PREFIX/;
+sed "s/\`//g;
+     s/^CREATE TABLE /CREATE TABLE $PREFIX/;
      s/^INSERT INTO /INSERT INTO $PREFIX/;
      s/^REPLACE /REPLACE $PREFIX/;
      s/^ALTER TABLE /ALTER TABLE $PREFIX/;

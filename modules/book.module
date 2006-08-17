@@ -1,5 +1,5 @@
 <?php
-// $Id: book.module,v 1.361.2.8 2006/07/03 14:44:39 dries Exp $
+// $Id: book.module,v 1.361.2.9 2006/08/17 09:14:41 killes Exp $
 
 /**
  * @file
@@ -251,7 +251,6 @@ function book_form(&$node) {
   $form['log'] = array(
     '#type' => 'textarea',
     '#title' => t('Log message'),
-    '#default_value' => $node->log,
     '#weight' => 5,
     '#description' => t('An explanation of the additions or updates being made to help other authors understand your motivations.'),
   );
@@ -296,7 +295,6 @@ function book_outline($nid) {
   );
   $form['log'] = array('#type' => 'textarea',
     '#title' => t('Log message'),
-    '#default_value' => $node->log,
     '#description' => t('An explanation to help other authors understand your motivations to put this post into the book.'),
   );
 

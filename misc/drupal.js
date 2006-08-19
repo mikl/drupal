@@ -1,4 +1,4 @@
-// $Id: drupal.js,v 1.22.2.1 2006/05/29 14:23:32 killes Exp $
+// $Id: drupal.js,v 1.22.2.2 2006/08/19 19:55:20 killes Exp $
 
 /**
  * Only enable Javascript functionality if all required features are supported.
@@ -48,15 +48,14 @@ function HTTPGet(uri, callbackFunction, callbackParameter) {
   if (!callbackFunction) {
     bAsync = false;
   }
+
   xmlHttp.open('GET', uri, bAsync);
   xmlHttp.send(null);
 
   if (bAsync) {
-    if (callbackFunction) {
-      xmlHttp.onreadystatechange = function() {
-        if (xmlHttp.readyState == 4) {
-          callbackFunction(xmlHttp.responseText, xmlHttp, callbackParameter);
-        }
+    xmlHttp.onreadystatechange = function() {
+      if (xmlHttp.readyState == 4) {
+        callbackFunction(xmlHttp.responseText, xmlHttp, callbackParameter);
       }
     }
     return xmlHttp;
@@ -93,11 +92,9 @@ function HTTPPost(uri, callbackFunction, callbackParameter, object) {
   xmlHttp.send(toSend);
 
   if (bAsync) {
-    if (callbackFunction) {
-      xmlHttp.onreadystatechange = function() {
-        if (xmlHttp.readyState == 4) {
-          callbackFunction(xmlHttp.responseText, xmlHttp, callbackParameter);
-        }
+    xmlHttp.onreadystatechange = function() {
+      if (xmlHttp.readyState == 4) {
+        callbackFunction(xmlHttp.responseText, xmlHttp, callbackParameter);
       }
     }
     return xmlHttp;

@@ -1,5 +1,5 @@
 <?php
-// $Id: pager.inc,v 1.54 2006/04/13 08:25:27 killes Exp $
+// $Id: pager.inc,v 1.54.2.1 2006/08/24 08:54:36 killes Exp $
 
 /**
  * @file
@@ -62,7 +62,7 @@ function pager_query($query, $limit = 10, $element = 0, $count_query = NULL) {
 
   // Construct a count query if none was given.
   if (!isset($count_query)) {
-    $count_query = preg_replace(array('/SELECT.*?FROM/As', '/ORDER BY .*/'), array('SELECT COUNT(*) FROM', ''), $query);
+    $count_query = preg_replace(array('/SELECT.*?FROM /As', '/ORDER BY .*/'), array('SELECT COUNT(*) FROM ', ''), $query);
   }
 
   // Convert comma-separated $page to an array, used by other functions.

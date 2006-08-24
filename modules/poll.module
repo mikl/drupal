@@ -1,5 +1,5 @@
 <?php
-// $Id: poll.module,v 1.195 2006/04/14 09:05:19 killes Exp $
+// $Id: poll.module,v 1.195.2.1 2006/08/24 09:41:47 killes Exp $
 
 /**
  * @file
@@ -421,6 +421,7 @@ function poll_vote(&$node) {
 
         $node->allowvotes = FALSE;
         $node->choice[$choice]['chvotes']++;
+        cache_clear_all();
         drupal_set_message(t('Your vote was recorded.'));
       }
       else {

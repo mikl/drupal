@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.292.2.6 2006/08/24 00:04:05 unconed Exp $
+// $Id: theme.inc,v 1.292.2.7 2006/09/05 10:22:24 killes Exp $
 
 /**
  * @file
@@ -417,7 +417,7 @@ function theme_page($content) {
   $output .= "\n<!-- end content -->\n";
 
   $output .= '</td></tr></table>';
-  $output .= theme_closure();
+  $output .= theme('closure');
   $output .= '</body></html>';
 
   return $output;

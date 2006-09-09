@@ -1,5 +1,5 @@
 <?php
-// $Id: path.inc,v 1.4.2.2 2006/08/23 08:18:31 killes Exp $
+// $Id: path.inc,v 1.4.2.3 2006/09/09 11:53:01 killes Exp $
 
 /**
  * @file
@@ -70,6 +70,9 @@ function drupal_lookup_path($action, $path = '') {
         if ($src = db_result(db_query("SELECT src FROM {url_alias} WHERE dst = '%s'", $path))) {
           $map[$src] = $path;
           return $src;
+        }
+        else {
+          $map[$path] = $path;
         }
       }
     }

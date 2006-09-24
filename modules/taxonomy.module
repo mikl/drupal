@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.module,v 1.275.2.12 2006/09/16 18:27:45 killes Exp $
+// $Id: taxonomy.module,v 1.275.2.13 2006/09/24 12:27:31 killes Exp $
 
 /**
  * @file
@@ -243,7 +243,7 @@ function taxonomy_form_vocabulary($edit = array()) {
   );
 
   // Add extra vocabulary form elements.
-  $extra = module_invoke_all('taxonomy', 'form', 'vocabulary');
+  $extra = module_invoke_all('taxonomy', 'form', 'vocabulary', $edit);
   if (is_array($extra)) {
     foreach ($extra as $key => $element) {
       $extra[$key]['#weight'] = isset($extra[$key]['#weight']) ? $extra[$key]['#weight'] : -18;
@@ -378,7 +378,7 @@ function taxonomy_form_term($edit = array()) {
   $form['weight'] = array('#type' => 'weight', '#title' => t('Weight'), '#default_value' => $edit['weight'], '#description' => t('In listings, the heavier terms will sink and the lighter terms will be positioned nearer the top.'));
 
   // Add extra term form elements.
-  $extra = module_invoke_all('taxonomy', 'form', 'term');
+  $extra = module_invoke_all('taxonomy', 'form', 'term', $edit);
   if (is_array($extra)) {
     foreach ($extra as $key => $element) {
       $extra[$key]['#weight'] = isset($extra[$key]['#weight']) ? $extra[$key]['#weight'] : -18;

@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.537.2.8 2006/08/26 14:19:09 killes Exp $
+// $Id: common.inc,v 1.537.2.9 2006/09/27 08:15:11 killes Exp $
 
 /**
  * @file
@@ -524,6 +524,7 @@ function fix_gpc_magic() {
     array_walk($_POST, '_fix_gpc_magic');
     array_walk($_COOKIE, '_fix_gpc_magic');
     array_walk($_REQUEST, '_fix_gpc_magic');
+    array_walk($_FILES, '_fix_gpc_magic');
     $fixed = true;
   }
 }

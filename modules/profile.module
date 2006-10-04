@@ -1,5 +1,5 @@
 <?php
-// $Id: profile.module,v 1.154.2.2 2006/09/04 10:15:55 killes Exp $
+// $Id: profile.module,v 1.154.2.3 2006/10/04 20:29:29 unconed Exp $
 
 /**
  * @file
@@ -732,7 +732,7 @@ function profile_validate_profile($edit, $category) {
 function profile_categories() {
   $result = db_query("SELECT DISTINCT(category) FROM {profile_fields}");
   while ($category = db_fetch_object($result)) {
-    $data[] = array('name' => check_plain($category->category), 'title' => $category->category, 'weight' => 3);
+    $data[] = array('name' => $category->category, 'title' => $category->category, 'weight' => 3);
   }
   return $data;
 }

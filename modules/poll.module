@@ -1,5 +1,5 @@
 <?php
-// $Id: poll.module,v 1.195.2.1 2006/08/24 09:41:47 killes Exp $
+// $Id: poll.module,v 1.195.2.2 2006/10/05 11:29:35 killes Exp $
 
 /**
  * @file
@@ -301,7 +301,7 @@ function poll_view_voting(&$node, $teaser, $page, $block) {
     foreach ($node->choice as $i => $choice) {
       $list[$i] = check_plain($choice['chtext']);
     }
-    $form['choice'] = array('#type' => 'radios', '#title' => $page ? '' : check_plain($node->title), '#default_value' => -1, '#options' => $list);
+    $form['choice'] = array('#type' => 'radios', '#title' => $block ? check_plain($node->title) : '', '#default_value' => -1, '#options' => $list);
   }
   $form['nid'] = array('#type' => 'hidden', '#value' => $node->nid);
   $form['vote'] = array('#type' => 'submit', '#value' => t('Vote'));

@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.537.2.11 2006/10/12 19:53:55 killes Exp $
+// $Id: common.inc,v 1.537.2.12 2006/10/15 20:02:52 dries Exp $
 
 /**
  * @file
@@ -980,7 +980,7 @@ function url($path = NULL, $query = NULL, $fragment = NULL, $absolute = FALSE) {
   // Only call the slow filter_xss_bad_protocol if $path contains a ':'.
   if (strpos($path, ':') !== FALSE && filter_xss_bad_protocol($path, FALSE) == check_plain($path)) {
     // Split off the fragment
-    if (strpos($path, '#')) {
+    if (strpos($path, '#') !== FALSE) {
       list($path, $old_fragment) = explode('#', $path, 2);
       if (isset($old_fragment) && !isset($fragment)) {
         $fragment = '#'. $old_fragment;
@@ -988,7 +988,7 @@ function url($path = NULL, $query = NULL, $fragment = NULL, $absolute = FALSE) {
     }
     // Append the query
     if (isset($query)) {
-      $path .= (strpos($path, '?') ? '&' : '?') . $query;
+      $path .= (strpos($path, '?') !== FALSE ? '&' : '?') . $query;
     }
     // Reassemble
     return $path . $fragment;

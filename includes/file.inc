@@ -1,5 +1,5 @@
 <?php
-// $Id: file.inc,v 1.74.2.6 2006/10/12 15:06:45 dries Exp $
+// $Id: file.inc,v 1.74.2.7 2006/10/17 19:30:39 dries Exp $
 
 /**
  * @file
@@ -319,7 +319,7 @@ function file_copy(&$source, $dest = 0, $replace = FILE_EXISTS_RENAME) {
   if ($basename === false) {
     $source = is_object($source) ? $source->filepath : $source;
     drupal_set_message(t('The selected file %file could not be uploaded, because the destination %directory is not properly configured.', array('%file' => theme('placeholder', $source), '%directory' => theme('placeholder', $dest))), 'error');
-    watchdog('file system', t('The selected file %file could not not be uploaded, because the destination %directory could not be found, or because its permissions do not allow the file to be written.', array('%file' => theme('placeholder', $source), '%directory' => theme('placeholder', $dest))), WATCHDOG_ERROR);
+    watchdog('file system', t('The selected file %file could not be uploaded, because the destination %directory could not be found, or because its permissions do not allow the file to be written.', array('%file' => theme('placeholder', $source), '%directory' => theme('placeholder', $dest))), WATCHDOG_ERROR);
     return 0;
   }
 

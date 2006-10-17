@@ -1,5 +1,5 @@
 <?php
-// $Id: aggregator.module,v 1.278.2.8 2006/10/05 19:02:41 killes Exp $
+// $Id: aggregator.module,v 1.278.2.9 2006/10/17 19:17:14 dries Exp $
 
 /**
  * @file
@@ -245,7 +245,7 @@ function aggregator_cron() {
  *
  * Generates blocks for the latest news items in each category and feed.
  */
-function aggregator_block($op, $delta = 0, $edit = array()) {
+function aggregator_block($op = 'list', $delta = 0, $edit = array()) {
   if (user_access('access news feeds')) {
     if ($op == 'list') {
       $result = db_query('SELECT cid, title FROM {aggregator_category} ORDER BY title');

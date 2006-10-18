@@ -1,5 +1,5 @@
 <?php
-// $Id: profile.module,v 1.90.2.3 2005/11/24 21:18:48 unconed Exp $
+// $Id: profile.module,v 1.90.2.4 2006/10/18 20:14:08 killes Exp $
 
 /**
  * @file
@@ -117,7 +117,7 @@ function profile_browse() {
     }
     $output .= '</div>';
 
-    drupal_set_title($title);
+    drupal_set_title(check_plain($title));
     print theme('page', $output);
   }
   else if ($name && !$field->id) {
@@ -491,7 +491,7 @@ function profile_admin_edit($fid) {
     $data = db_fetch_array(db_query('SELECT * FROM {profile_fields} WHERE fid = %d', $fid));
   }
 
-  drupal_set_title(t('Edit %type', array('%type' => $data['type'])));
+  drupal_set_title(t('Edit %type', array('%type' => check_plain($data['type']))));
   print theme('page', _profile_field_form($data['type'], $data));
 }
 

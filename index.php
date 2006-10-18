@@ -1,5 +1,5 @@
 <?php
-// $Id: index.php,v 1.82 2004/08/21 06:42:34 dries Exp $
+// $Id: index.php,v 1.82.4.1 2006/10/18 20:14:08 killes Exp $
 
 /**
  * @file
@@ -14,6 +14,7 @@ drupal_page_header();
 include_once 'includes/common.inc';
 
 fix_gpc_magic();
+drupal_check_token();
 
 $status = menu_execute_active_handler();
 switch ($status) {

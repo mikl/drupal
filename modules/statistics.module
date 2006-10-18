@@ -1,5 +1,5 @@
 <?php
-// $Id: statistics.module,v 1.186.2.5 2005/05/31 21:13:39 unconed Exp $
+// $Id: statistics.module,v 1.186.2.6 2006/10/18 20:14:08 killes Exp $
 
 /**
  * @file
@@ -211,7 +211,7 @@ function statistics_user_tracker() {
       $rows[] = array(array('data' => $pager, 'colspan' => '3'));
     }
 
-    drupal_set_title($account->name);
+    drupal_set_title(check_plain($account->name));
     print theme('page', theme('table', $header, $rows));
   }
   else {

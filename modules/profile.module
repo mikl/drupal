@@ -1,5 +1,5 @@
 <?php
-// $Id: profile.module,v 1.154.2.4 2006/10/13 13:50:38 killes Exp $
+// $Id: profile.module,v 1.154.2.5 2006/10/18 20:14:42 killes Exp $
 
 /**
  * @file
@@ -137,7 +137,7 @@ function profile_block($op = 'list', $delta = 0, $edit = array()) {
       }
 
       if ($output) {
-         $block['subject'] = t('About %name', array('%name' => $account->name));
+         $block['subject'] = t('About %name', array('%name' => check_plain($account->name)));
          $block['content'] = $output;
          return $block;
       }
@@ -184,7 +184,7 @@ function profile_field_form($arg = NULL) {
         drupal_not_found();
         return;
       }
-      drupal_set_title(t('edit %title', array('%title' => $edit['title'])));
+      drupal_set_title(t('edit %title', array('%title' => check_plain($edit['title']))));
       $form['fid'] = array('#type' => 'value',
         '#value' => $fid,
       );
@@ -460,7 +460,7 @@ function profile_browse() {
     }
     $output .= '</div>';
 
-    drupal_set_title($title);
+    drupal_set_title(check_plain($title));
     return $output;
   }
   else if ($name && !$field->fid) {

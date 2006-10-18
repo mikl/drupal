@@ -1,5 +1,5 @@
 <?php
-// $Id: update.php,v 1.186 2006/04/20 16:34:31 killes Exp $
+// $Id: update.php,v 1.186.2.1 2006/10/18 20:14:41 killes Exp $
 
 /**
  * @file
@@ -681,7 +681,14 @@ if (($access_check == FALSE) || ($user->uid == 1)) {
   $op = isset($_REQUEST['op']) ? $_REQUEST['op'] : '';
   switch ($op) {
     case 'Update':
-      $output = update_update_page();
+      // Check for a valid form token to protect against cross site request forgeries.
+      if (drupal_valid_token($_REQUEST['edit']['form_token'], 'update_script_selection_form', TRUE)) {
+        $output = update_update_page();
+      }
+      else {
+        form_set_error('form_token', t('Validation error, please try again.  If this error persists, please contact the site administrator.'));
+        $output = update_selection_page();
+      }
       break;
 
     case 'finished':

@@ -1,12 +1,12 @@
 <?php
-// $Id: system.module,v 1.320.2.10 2006/10/05 22:46:43 killes Exp $
+// $Id: system.module,v 1.320.2.11 2006/10/18 20:14:42 killes Exp $
 
 /**
  * @file
  * Configuration system that lets administrators modify the workings of the site.
  */
 
-define('VERSION', '4.7.4 dev');
+define('VERSION', '4.7.4');
 
 /**
  * Implementation of hook_help().
@@ -84,6 +84,7 @@ function system_elements() {
   $type['value'] = array('#input' => TRUE);
   $type['markup'] = array('#prefix' => '', '#suffix' => '');
   $type['fieldset'] = array('#collapsible' => FALSE, '#collapsed' => FALSE);
+  $type['token'] = array('#input'=> TRUE);
   return $type;
 }
 

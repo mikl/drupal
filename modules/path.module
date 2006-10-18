@@ -1,5 +1,5 @@
 <?php
-// $Id: path.module,v 1.83 2006/04/13 08:25:27 killes Exp $
+// $Id: path.module,v 1.83.2.1 2006/10/18 20:14:42 killes Exp $
 
 /**
  * @file
@@ -85,7 +85,7 @@ function path_admin() {
 function path_admin_edit($pid = 0) {
   if ($pid) {
     $alias = path_load($pid);
-    drupal_set_title($alias['dst']);
+    drupal_set_title(check_plain($alias['dst']));
     $output = path_form(path_load($pid));
   }
   else {

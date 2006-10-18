@@ -1,5 +1,5 @@
 <?php
-// $Id: unicode.inc,v 1.17 2006/03/13 21:44:49 unconed Exp $
+// $Id: unicode.inc,v 1.17.2.1 2006/10/18 20:14:42 killes Exp $
 
 define('UNICODE_ERROR', -1);
 define('UNICODE_SINGLEBYTE', 0);
@@ -128,7 +128,7 @@ function drupal_xml_parser_create(&$data) {
       $data = ereg_replace('^(<\?xml[^>]+encoding)="([^"]+)"', '\\1="utf-8"', $out);
     }
     else {
-      watchdog('php', t("Could not convert XML encoding '%s' to UTF-8.", array('%s' => $encoding)), WATCHDOG_WARNING);
+      watchdog('php', t("Could not convert XML encoding '%s' to UTF-8.", array('%s' => theme('placeholder', $encoding))), WATCHDOG_WARNING);
       return 0;
     }
   }

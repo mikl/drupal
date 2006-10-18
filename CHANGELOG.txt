@@ -1,4 +1,10 @@
-// $Id: CHANGELOG.txt,v 1.117.2.6 2006/08/02 18:13:26 killes Exp $
+// $Id: CHANGELOG.txt,v 1.117.2.7 2006/10/18 20:14:41 killes Exp $
+
+Drupal 4.7.4, 2006-10-18
+------------------------
+- fixed security issue (XSS), see SA-2006-024
+- fixed security issue (CSRF), see SA-2006-025
+- fixed security issue (Form action attribute injection), see SA-2006-026
 
 Drupal 4.7.3, 2006-08-02
 ------------------------

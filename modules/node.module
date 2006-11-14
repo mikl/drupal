@@ -1,5 +1,5 @@
 <?php
-// $Id: node.module,v 1.641.2.19 2006/11/14 10:32:14 killes Exp $
+// $Id: node.module,v 1.641.2.20 2006/11/14 10:34:08 killes Exp $
 
 /**
  * @file
@@ -349,7 +349,7 @@ function node_load($param = array(), $revision = NULL, $reset = NULL) {
   if (is_numeric($param)) {
     $cachable = $revision == NULL;
     if ($cachable && isset($nodes[$param])) {
-      return $nodes[$param];
+      return drupal_clone($nodes[$param]);
     }
     $cond = 'n.nid = %d';
     $arguments[] = $param;
@@ -390,7 +390,7 @@ function node_load($param = array(), $revision = NULL, $reset = NULL) {
   }
 
   if ($cachable) {
-    $nodes[$param] = $node;
+    $nodes[$param] = drupal_clone($node);
   }
 
   return $node;

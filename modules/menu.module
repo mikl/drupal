@@ -1,5 +1,5 @@
 <?php
-// $Id: menu.module,v 1.73.2.1 2006/10/18 20:14:42 killes Exp $
+// $Id: menu.module,v 1.73.2.2 2006/11/14 10:38:39 killes Exp $
 
 /**
  * @file
@@ -517,11 +517,13 @@ function menu_overview() {
  * @return mid
  */
 function menu_edit_item_save($edit) {
-  if ($edit['expanded']) {
-    $edit['type'] |= MENU_EXPANDED;
-  }
-  else {
-    $edit['type'] &= ~MENU_EXPANDED;
+  if (isset($edit['expanded'])) {
+    if ($edit['expanded']) {
+      $edit['type'] |= MENU_EXPANDED;
+    }
+    else {
+      $edit['type'] &= ~MENU_EXPANDED;
+    }
   }
 
   $edit['type'] = $edit['type'] | MENU_MODIFIED_BY_ADMIN;

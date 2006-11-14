@@ -1,5 +1,5 @@
 <?php
-// $Id: system.module,v 1.320.2.12 2006/10/18 20:37:08 killes Exp $
+// $Id: system.module,v 1.320.2.13 2006/11/14 10:49:36 killes Exp $
 
 /**
  * @file
@@ -1007,7 +1007,7 @@ function system_modules_submit($form_id, $edit) {
 
   module_list(TRUE, FALSE);
 
-  include './includes/install.inc';
+  include_once './includes/install.inc';
   foreach ($new_modules as $module) {
     // Set the installed schema version for newly-enabled modules
     $versions = drupal_get_schema_versions($module);

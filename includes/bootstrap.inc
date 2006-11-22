@@ -1,5 +1,5 @@
 <?php
-// $Id: bootstrap.inc,v 1.96.2.5 2006/08/03 13:53:15 killes Exp $
+// $Id: bootstrap.inc,v 1.96.2.6 2006/11/22 12:32:30 killes Exp $
 
 /**
  * @file
@@ -167,7 +167,7 @@ function conf_init() {
     // Create base URL
     $base_root = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 'https' : 'http';
     $base_url = $base_root .= '://'. $_SERVER['HTTP_HOST'];
-    if ($dir = trim(dirname($_SERVER['SCRIPT_NAME']), '\,/')) {
+    if ($dir = trim(dirname($_SERVER['PHP_SELF']), '\,/')) {
       $base_path = "/$dir";
       $base_url .= $base_path;
       $base_path .= '/';

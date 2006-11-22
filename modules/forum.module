@@ -1,5 +1,5 @@
 <?php
-// $Id: forum.module,v 1.328.2.6 2006/10/18 20:14:42 killes Exp $
+// $Id: forum.module,v 1.328.2.7 2006/11/22 10:41:36 killes Exp $
 
 /**
  * @file
@@ -1086,7 +1086,7 @@ function theme_forum_topic_navigation($node) {
       $output .= l($next->title . t(' ›'), 'node/'. $next->nid, array('class' => 'topic-next', 'title' => t('Go to next forum topic')));
     }
 
-    $output .= '</div>';
+    $output .= '<br class="clear" /></div>';
   }
 
   return $output;

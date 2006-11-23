@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.537.2.15 2006/11/14 10:41:04 killes Exp $
+// $Id: common.inc,v 1.537.2.16 2006/11/23 21:52:37 killes Exp $
 
 /**
  * @file
@@ -517,6 +517,24 @@ function _fix_gpc_magic(&$item) {
 }
 
 /**
+ * Helper function to strip slashes from $_FILES skipping over the tmp_name keys
+ * since PHP generates single backslashes for file paths on Windows systems.
+ *
+ * tmp_name does not have backslashes added see
+ * http://us2.php.net/manual/en/features.file-upload.php#42280
+ */
+function _fix_gpc_magic_files(&$item, $key) {
+  if ($key != 'tmp_name') {
+    if (is_array($item)) {
+      array_walk($item, '_fix_gpc_magic_files');
+    }
+    else {
+      $item = stripslashes($item);
+    }
+  }
+}
+
+/**
  * Correct double-escaping problems caused by "magic quotes" in some PHP
  * installations.
  */
@@ -527,7 +545,7 @@ function fix_gpc_magic() {
     array_walk($_POST, '_fix_gpc_magic');
     array_walk($_COOKIE, '_fix_gpc_magic');
     array_walk($_REQUEST, '_fix_gpc_magic');
-    array_walk($_FILES, '_fix_gpc_magic');
+    array_walk($_FILES, '_fix_gpc_magic_files');
     $fixed = true;
   }
 }

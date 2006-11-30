@@ -1,5 +1,5 @@
 <?php
-// $Id: user.module,v 1.612.2.22 2006/10/23 06:34:29 dries Exp $
+// $Id: user.module,v 1.612.2.23 2006/11/30 16:43:33 killes Exp $
 
 /**
  * @file
@@ -1675,7 +1675,7 @@ function _user_admin_access_form($edit) {
   $form['status'] = array(
     '#type' => 'radios',
     '#title' => t('Access type'),
-    '#default_value' => 0,
+    '#default_value' => $edit['status'],
     '#options' => array('1' => t('Allow'), '0' => t('Deny')),
   );
   $type_options = array('user' => t('Username'), 'mail' => t('E-mail'), 'host' => t('Host'));

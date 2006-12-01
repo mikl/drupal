@@ -1,5 +1,5 @@
 <?php
-// $Id: locale.inc,v 1.74.2.8 2006/09/05 12:54:01 killes Exp $
+// $Id: locale.inc,v 1.74.2.9 2006/12/01 10:01:26 killes Exp $
 
 /**
  * @file
@@ -408,7 +408,7 @@ function _locale_string_edit($lid) {
 function _locale_string_edit_submit($form_id, $form_values) {
   $lid = $form_values['lid'];
   foreach ($form_values['translations'] as $key => $value) {
-    $value = filter_xss_admin($value);
+    $value = str_replace('&amp;', '&', filter_xss_admin($value));
     $trans = db_fetch_object(db_query("SELECT translation FROM {locales_target} WHERE lid = %d AND locale = '%s'", $lid, $key));
     if (isset($trans->translation)) {
       db_query("UPDATE {locales_target} SET translation = '%s' WHERE lid = %d AND locale = '%s'", $value, $lid, $key);

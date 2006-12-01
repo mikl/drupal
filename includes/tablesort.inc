@@ -1,5 +1,5 @@
 <?php
-// $Id: tablesort.inc,v 1.38.2.1 2006/07/18 11:40:56 killes Exp $
+// $Id: tablesort.inc,v 1.38.2.2 2006/12/01 09:40:03 killes Exp $
 
 /**
  * @file
@@ -66,7 +66,12 @@ function tablesort_header($cell, $header, $ts) {
     $title = t('sort by %s', array('%s' => $cell['data']));
     if ($cell['data'] == $ts['name']) {
       $ts['sort'] = (($ts['sort'] == 'asc') ? 'desc' : 'asc');
-      $cell['class'] = 'active';
+      if (isset($cell['class'])) {
+        $cell['class'] .= ' active';
+      }
+      else {
+        $cell['class'] = 'active';
+      }
       $image = theme('tablesort_indicator', $ts['sort']);
     }
     else {

@@ -1,5 +1,5 @@
 <?php
-// $Id: book.module,v 1.361.2.13 2006/12/01 09:47:39 killes Exp $
+// $Id: book.module,v 1.361.2.14 2006/12/01 10:11:36 killes Exp $
 
 /**
  * @file
@@ -212,8 +212,7 @@ function book_submit(&$node) {
   if (!user_access('administer nodes')) {
     $node->weight = 0;
     $node->revision = 1;
-    $book->uid = $user->uid;
-    $book->name = $user->uid ? $user->name : '';
+    $node->uid = $user->uid;
   }
 }
 

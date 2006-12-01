@@ -1,5 +1,5 @@
 <?php
-// $Id: book.module,v 1.361.2.12 2006/11/22 10:41:36 killes Exp $
+// $Id: book.module,v 1.361.2.13 2006/12/01 09:47:39 killes Exp $
 
 /**
  * @file
@@ -57,7 +57,7 @@ function book_link($type, $node = 0, $main = 0) {
 
   if ($type == 'node' && isset($node->parent)) {
     if (!$main) {
-      if (book_access('create', $node)) {
+      if (book_access('create', $node) && $node->status == 1) {
         $links[] = l(t('add child page'), "node/add/book/parent/$node->nid");
       }
       if (user_access('see printer-friendly version')) {

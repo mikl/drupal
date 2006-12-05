@@ -1,5 +1,5 @@
 <?php
-// $Id: form.inc,v 1.112.2.15 2006/10/18 20:14:42 killes Exp $
+// $Id: form.inc,v 1.112.2.16 2006/12/05 13:23:04 killes Exp $
 
 /**
  * @defgroup form Form generation
@@ -1100,9 +1100,9 @@ function theme_markup($element) {
 */
 function theme_password($element) {
   $size = $element['#size'] ? ' size="'. $element['#size'] .'" ' : '';
-
+  $maxlength = $element['#maxlength'] ? ' maxlength="'. $element['#maxlength'] .'" ' : '';
   _form_set_class($element, array('form-text'));
-  $output = '<input type="password" maxlength="'. $element['#maxlength'] .'" name="'. $element['#name'] .'" id="'. $element['#id'] .'" '. $size . drupal_attributes($element['#attributes']) .' />';
+  $output = '<input type="password" name="'. $element['#name'] .'" id="'. $element['#id'] .'" '. $maxlength . $size . drupal_attributes($element['#attributes']) .' />';
 
   return theme('form_element', $element['#title'], $output, $element['#description'], $element['#id'], $element['#required'], form_get_error($element));
 }

@@ -1,5 +1,5 @@
 <?php
-// $Id: updates.inc,v 1.224.2.6 2006/06/08 21:25:50 dries Exp $
+// $Id: updates.inc,v 1.224.2.7 2006/12/05 13:11:09 killes Exp $
 
 function system_update_110() {
   $ret = array();
@@ -508,8 +508,8 @@ function system_update_133() {
   if ($GLOBALS['db_type'] == 'mysql') {
     $ret[] = update_sql("CREATE TABLE {contact} (
       subject varchar(255) NOT NULL default '',
-      recipients longtext NOT NULL default '',
-      reply longtext NOT NULL default ''
+      recipients longtext NOT NULL,
+      reply longtext NOT NULL
       )");
     $ret[] = update_sql("ALTER TABLE {users} ADD login int(11) NOT NULL default '0'");
   }

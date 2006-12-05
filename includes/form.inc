@@ -1,5 +1,5 @@
 <?php
-// $Id: form.inc,v 1.112.2.16 2006/12/05 13:23:04 killes Exp $
+// $Id: form.inc,v 1.112.2.17 2006/12/05 22:38:43 killes Exp $
 
 /**
  * @defgroup form Form generation
@@ -85,7 +85,11 @@ function drupal_get_form($form_id, &$form, $callback = NULL) {
   }
   else if ($user->uid) {
     $form['#token'] = $form_id;
-    $form['form_token'] = array('#type' => 'token', '#default_value' => drupal_get_token($form['#token']));
+    $form['form_token'] = array(
+      '#id' => 'edit-'. str_replace('_', '-', $form_id) .'-form-token',
+      '#type' => 'token',
+      '#default_value' => drupal_get_token($form['#token']),
+    );
   }
 
   if (isset($form_id)) {

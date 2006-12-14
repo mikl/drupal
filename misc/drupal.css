@@ -1,4 +1,4 @@
-/* $Id: drupal.css,v 1.147.2.7 2006/12/01 14:57:29 killes Exp $ */
+/* $Id: drupal.css,v 1.147.2.8 2006/12/14 20:20:21 killes Exp $ */
 
 /*
 ** HTML elements
@@ -137,7 +137,7 @@ tr.odd .form-item, tr.even .form-item {
   margin-bottom: 0;
   white-space: nowrap;
 }
-.form-item input.error, .form-item textarea.error {
+.form-item input.error, .form-item textarea.error, .form-item select.error {
   border: 2px solid red;
 }
 .form-item .description {

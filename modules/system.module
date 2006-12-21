@@ -1,5 +1,5 @@
 <?php
-// $Id: system.module,v 1.320.2.15 2006/12/12 21:49:13 killes Exp $
+// $Id: system.module,v 1.320.2.16 2006/12/21 19:21:58 killes Exp $
 
 /**
  * @file
@@ -759,7 +759,7 @@ function system_theme_settings_submit($form_id, $values) {
   $key = $values['var'];
 
   // Exclude unnecessary elements.
-  unset($values['var'], $values['submit'], $values['reset'], $values['form_id']);
+  unset($values['var'], $values['submit'], $values['reset'], $values['form_id'], $values['op'], $values['form_token']);
 
   if ($op == t('Reset to defaults')) {
     variable_del($key);

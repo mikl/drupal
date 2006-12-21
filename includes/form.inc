@@ -1,5 +1,5 @@
 <?php
-// $Id: form.inc,v 1.112.2.17 2006/12/05 22:38:43 killes Exp $
+// $Id: form.inc,v 1.112.2.18 2006/12/21 19:24:17 killes Exp $
 
 /**
  * @defgroup form Form generation
@@ -533,8 +533,10 @@ function form_render(&$elements) {
     if (isset($elements['#theme']) && !$elements['#theme_used']) {
       $elements['#theme_used'] = TRUE;
 
-      $previous_value = $elements['#value'];
-      $previous_type = $elements['#type'];
+      $previous = array();
+      foreach (array('#value', '#type', '#prefix', '#suffix') as $key) {
+        $previous[$key] = isset($elements[$key]) ? $elements[$key] : NULL;
+      }
       // If we rendered a single element, then we will skip the renderer.
       if (empty($children)) {
         $elements['#printed'] = TRUE;
@@ -544,11 +546,12 @@ function form_render(&$elements) {
       }
       $elements['#type'] = 'markup';
 
+      unset($elements['#prefix'], $elements['#suffix']);
       $content = theme($elements['#theme'], $elements);
 
-      $elements['#value'] = $previous_value;
-      $elements['#type'] = $previous_type;
-      unset($elements['#prefix'], $elements['#suffix']);
+      foreach (array('#value', '#type', '#prefix', '#suffix') as $key) {
+        $elements[$key] = isset($previous[$key]) ? $previous[$key] : NULL;
+      }
     }
     /* render each of the children using form_render and concatenate them */
     if (!isset($content) || $content === '') {

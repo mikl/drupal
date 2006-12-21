@@ -1,5 +1,5 @@
 <?php
-// $Id: upload.module,v 1.100.2.10 2006/12/01 09:59:36 killes Exp $
+// $Id: upload.module,v 1.100.2.11 2006/12/21 19:26:15 killes Exp $
 
 /**
  * @file
@@ -190,13 +190,10 @@ function upload_file_download($file) {
       if (node_access('view', $node)) {
         $name = mime_header_encode($file->filename);
         $type = mime_header_encode($file->filemime);
-        // Serve images and text inline for the browser to display rather than download.
-        $disposition = ereg('^(text/|image/)', $file->filemime) ? 'inline' : 'attachment';
         return array(
           'Content-Type: '. $type .'; name='. $name,
           'Content-Length: '. $file->filesize,
-          'Content-Disposition: '. $disposition .'; filename='. $name,
-	  'Expires: 0', 'Pragma: cache', 'Cache-Control: private'
+          'Expires: 0', 'Pragma: cache', 'Cache-Control: private'
         );
       }
       else {

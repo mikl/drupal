@@ -1,5 +1,5 @@
 <?php
-// $Id: updates.inc,v 1.224.2.7 2006/12/05 13:11:09 killes Exp $
+// $Id: updates.inc,v 1.224.2.8 2007/01/01 18:02:20 killes Exp $
 
 function system_update_110() {
   $ret = array();
@@ -2009,6 +2009,21 @@ function system_update_182() {
   if ($GLOBALS['db_type'] == 'pgsql') {
     $ret[] = update_sql('ALTER TABLE {locales_target} DROP CONSTRAINT {locales_target}_lid_key');
     $ret[] = update_sql('CREATE INDEX {locales_target}_lid_idx ON {locales_target} (lid)');
+  }
+
+  return $ret;
+}
+
+function system_update_183() {
+  $ret = array();
+  switch ($GLOBALS['db_type']) {
+    case 'mysql':
+    case 'mysqli':
+      $ret[] = update_sql("ALTER TABLE {access} CHANGE aid aid int(10) NOT NULL AUTO_INCREMENT ");
+      $ret[] = update_sql("ALTER TABLE {boxes} CHANGE bid bid int NOT NULL AUTO_INCREMENT ");
+      break;
+    case 'pgsql':
+       // No database update required for PostgreSQL because it already uses big SERIAL numbers.
   }
 
   return $ret;

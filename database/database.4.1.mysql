@@ -1,10 +1,10 @@
--- $Id: database.4.1.mysql,v 1.1.2.2 2006/12/05 13:11:09 killes Exp $
+-- $Id: database.4.1.mysql,v 1.1.2.3 2007/01/01 18:02:20 killes Exp $
 
 --
 -- Table structure for table 'access'
 --
 CREATE TABLE access (
-  aid tinyint(10) NOT NULL auto_increment,
+  aid int(10) NOT NULL auto_increment,
   mask varchar(255) NOT NULL default '',
   type varchar(255) NOT NULL default '',
   status tinyint(2) NOT NULL default '0',
@@ -157,7 +157,7 @@ DEFAULT CHARACTER SET utf8;
 --
 
 CREATE TABLE boxes (
-  bid tinyint(4) NOT NULL auto_increment,
+  bid int NOT NULL auto_increment,
   title varchar(64) NOT NULL default '',
   body longtext,
   info varchar(128) NOT NULL default '',

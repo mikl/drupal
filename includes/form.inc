@@ -1,5 +1,5 @@
 <?php
-// $Id: form.inc,v 1.112.2.18 2006/12/21 19:24:17 killes Exp $
+// $Id: form.inc,v 1.112.2.19 2007/01/01 21:29:27 killes Exp $
 
 /**
  * @defgroup form Form generation
@@ -247,13 +247,13 @@ function _form_validate($elements, $form_id = NULL) {
           foreach ($value as $v) {
             if (!isset($options[$v])) {
               form_error($elements, t('An illegal choice has been detected. Please contact the site administrator.'));
-              watchdog('form', t('Illegal choice %choice in %name element.', array('%choice' => theme('placeholder', check_plain($v)), '%name' => theme_placeholder(empty($elements['#title']) ? $elements['#parents'][0] : $elements['#title']))), WATCHDOG_ERROR);
+              watchdog('form', t('Illegal choice %choice in %name element.', array('%choice' => theme('placeholder', check_plain($v)), '%name' => theme('placeholder', empty($elements['#title']) ? $elements['#parents'][0] : $elements['#title']))), WATCHDOG_ERROR);
             }
           }
         }
         elseif (!isset($options[$elements['#value']])) {
           form_error($elements, t('An illegal choice has been detected. Please contact the site administrator.'));
-          watchdog('form', t('Illegal choice %choice in %name element.', array('%choice' => theme_placeholder(check_plain($v)), '%name' => theme('placeholder', empty($elements['#title']) ? $elements['#parents'][0] : $elements['#title']))), WATCHDOG_ERROR);
+          watchdog('form', t('Illegal choice %choice in %name element.', array('%choice' => theme('placeholder', $elements['#value']), '%name' => theme('placeholder', empty($elements['#title']) ? $elements['#parents'][0] : $elements['#title']))), WATCHDOG_ERROR);
         }
       }
     }

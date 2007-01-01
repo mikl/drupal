@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.537.2.19 2006/12/22 17:14:08 killes Exp $
+// $Id: common.inc,v 1.537.2.20 2007/01/01 22:10:37 killes Exp $
 
 /**
  * @file
@@ -165,8 +165,6 @@ function drupal_get_headers() {
  *   The array to be processed e.g. $_GET
  * @param $exclude
  *   The array filled with keys to be excluded. Use parent[child] to exclude nested items.
- * @param $urlencode
- *   If TRUE, the keys and values are both urlencoded.
  * @param $parent
  *   Should not be passed, only used in recursive calls
  * @return

@@ -1,5 +1,5 @@
 <?php
-// $Id: database.mysql.inc,v 1.52.2.3 2006/11/15 21:51:38 killes Exp $
+// $Id: database.mysql.inc,v 1.52.2.4 2007/01/01 17:52:00 killes Exp $
 
 /**
  * @file
@@ -228,11 +228,6 @@ function db_affected_rows() {
  * returned.
  * User-supplied arguments to the query should be passed in as separate parameters
  * so that they can be properly escaped to avoid SQL injection attacks.
- *
- * Note that if you need to know how many results were returned, you should do
- * a SELECT COUNT(*) on the temporary table afterwards. db_num_rows() and
- * db_affected_rows() do not give consistent result across different database
- * types in this case.
  *
  * @param $query
  *   A string containing an SQL query.

@@ -1,4 +1,4 @@
-/* $Id: style.css,v 1.13 2006/04/03 22:20:48 unconed Exp $ */
+/* $Id: style.css,v 1.13.2.1 2007/01/01 17:41:59 killes Exp $ */
 
 /*
 ** HTML elements
@@ -237,7 +237,7 @@ table {
 .node .taxonomy {
   color: #999;
   font-size: 0.8em;
-  padding: 1.5em;
+  padding-left: 1.5em;
 }
 .node .picture {
   border: 1px solid #ddd;

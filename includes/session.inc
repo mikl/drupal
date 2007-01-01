@@ -1,5 +1,5 @@
 <?php
-// $Id: session.inc,v 1.27.2.1 2006/11/12 17:14:57 killes Exp $
+// $Id: session.inc,v 1.27.2.2 2007/01/01 18:25:17 killes Exp $
 
 /**
  * @file
@@ -77,6 +77,26 @@ function sess_write($key, $value) {
   }
 
   return TRUE;
+}
+
+/**
+ * Called when an anonymous user becomes authenticated or vice-versa.
+ */
+function sess_regenerate() {
+  $old_session_id = session_id();
+
+  // We code around http://bugs.php.net/bug.php?id=32802 by destroying
+  // the session cookie by setting expiration in the past (a negative
+  // value).  This issue only arises in PHP versions before 4.4.0,
+  // regardless of the Drupal configuration.
+  // TODO: remove this when we require at least PHP 4.4.0
+  if (isset($_COOKIE[session_name()])) {
+    setcookie(session_name(), '', time() - 42000, '/');
+  }
+
+  session_regenerate_id();
+
+  db_query("UPDATE {sessions} SET sid = '%s' WHERE sid = '%s'", session_id(), $old_session_id);
 }
 
 function sess_destroy($key) {

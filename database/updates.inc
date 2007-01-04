@@ -1,5 +1,5 @@
 <?php
-// $Id: updates.inc,v 1.224.2.8 2007/01/01 18:02:20 killes Exp $
+// $Id: updates.inc,v 1.224.2.9 2007/01/04 22:01:17 killes Exp $
 
 function system_update_110() {
   $ret = array();
@@ -2014,7 +2014,21 @@ function system_update_182() {
   return $ret;
 }
 
+/**
+ * Cid matching by MySQL should be case-sensitive.
+ */
 function system_update_183() {
+  $ret = array();
+  switch ($GLOBALS['db_type']) {
+    case 'mysql':
+    case 'mysqli':
+      $ret[] = update_sql("ALTER TABLE {cache} CHANGE cid cid varchar(255) BINARY NOT NULL default ''");
+      break;
+  }
+  return $ret;
+}
+
+function system_update_184() {
   $ret = array();
   switch ($GLOBALS['db_type']) {
     case 'mysql':

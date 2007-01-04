@@ -1,5 +1,5 @@
 <?php
-// $Id: session.inc,v 1.14.2.1 2005/08/10 20:43:03 dries Exp $
+// $Id: session.inc,v 1.14.2.2 2007/01/04 21:28:53 killes Exp $
 
 /**
  * @file
@@ -21,6 +21,11 @@ function sess_close() {
 
 function sess_read($key) {
   global $user;
+
+  // Write and Close handlers are called after destructing objects since PHP 5.0.5
+  // Thus destructors can use sessions but session handler can't use objects.
+  // So we are moving session closure before destructing objects.
+  register_shutdown_function('session_write_close');
 
   $result = db_query_range("SELECT u.*, s.* FROM {users} u INNER JOIN {sessions} s ON u.uid = s.uid WHERE s.sid = '%s' AND u.status < 3", $key, 0, 1);
 

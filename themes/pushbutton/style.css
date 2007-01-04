@@ -1,4 +1,4 @@
-/* $Id: style.css,v 1.14.2.2 2006/05/23 09:53:42 killes Exp $ */
+/* $Id: style.css,v 1.14.2.3 2007/01/04 21:19:48 killes Exp $ */
 
 /*
 ** HTML elements
@@ -604,6 +604,8 @@ table#footer-menu {
 }
 .calendar .day-selected {
   background-color: #369;
+}
+.calendar .day-selected a {
   color: #fff;
 }
 .calendar .header-week {

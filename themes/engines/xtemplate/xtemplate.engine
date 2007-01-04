@@ -1,5 +1,5 @@
 <?php
-// $Id: xtemplate.engine,v 1.12.2.2 2006/03/13 21:28:05 unconed Exp $
+// $Id: xtemplate.engine,v 1.12.2.3 2007/01/04 21:31:59 killes Exp $
 
 /**
  * @file
@@ -176,7 +176,8 @@ function xtemplate_page($content) {
           //"search" => search_form(),
           "search_url" => url("search"),
           "search_button_text" => t("Search"),
-          "search_description" => t("Enter the terms you wish to search for.")
+          "search_description" => t("Enter the terms you wish to search for."),
+          "form_token" => form_token()
           ));
     $xtemplate->template->parse("header.search_box");
   }

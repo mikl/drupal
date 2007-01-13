@@ -1,5 +1,5 @@
 <?php
-// $Id: settings.php,v 1.27 2006/04/24 19:25:37 dries Exp $
+// $Id: settings.php,v 1.27.2.1 2007/01/13 11:03:20 killes Exp $
 
 /**
  * @file
@@ -129,6 +129,15 @@ ini_set('session.save_handler',     'user');
 ini_set('session.use_only_cookies', 1);
 ini_set('session.use_trans_sid',    0);
 ini_set('url_rewriter.tags',        '');
+
+/**
+ * We try to set the correct cookie domain. If you are experiencing problems
+ * try commenting out the code below or specifying the cookie domain by hand.
+ */
+if (isset($_SERVER['HTTP_HOST'])) {
+  $domain = '.'. preg_replace('`^www.`', '', $_SERVER['HTTP_HOST']);
+  ini_set('session.cookie_domain', $domain);
+}
 
 /**
  * Variable overrides:

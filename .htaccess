@@ -42,8 +42,13 @@ DirectoryIndex index.php
   php_value session.auto_start              0
 </IfModule>
 
-# Reduce the time dynamically generated pages are cache-able.
+# Requires mod_expires to be enabled.
 <IfModule mod_expires.c>
+  # Enable expirations.
+  ExpiresActive On
+  # Cache all files for 2 weeks after access (A).
+  ExpiresDefault A1209600
+  # Do not cache dynamically generated pages.
   ExpiresByType text/html A1
 </IfModule>
 
@@ -85,4 +90,4 @@ DirectoryIndex index.php
   RewriteRule ^(.*)$ index.php?q=$1 [L,QSA]
 </IfModule>
 
-# $Id: .htaccess,v 1.73.2.1 2007/01/01 17:47:24 killes Exp $
+# $Id: .htaccess,v 1.73.2.2 2007/01/26 00:09:37 killes Exp $

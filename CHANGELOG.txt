@@ -1,4 +1,8 @@
-// $Id: CHANGELOG.txt,v 1.117.2.10 2007/01/23 19:03:38 dries Exp $
+// $Id: CHANGELOG.txt,v 1.117.2.11 2007/01/29 21:48:20 killes Exp $
+Drupal 4.7.6, 2007-01-29
+------------------------
+- fixed security issue (code execution), see SA-2007-005
+
 Drupal 4.7.5, 2007-01-05
 ------------------------
 - fixed security issue (XSS), see SA-2007-001

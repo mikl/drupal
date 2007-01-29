@@ -1,5 +1,5 @@
 <?php
-// $Id: form.inc,v 1.174.2.1 2007/01/23 19:18:11 dries Exp $
+// $Id: form.inc,v 1.174.2.2 2007/01/29 19:10:03 dries Exp $
 
 /**
  * @defgroup form Form generation
@@ -59,6 +59,7 @@ function drupal_get_form($form_id) {
     $stored = TRUE;
     $args = $_SESSION['form'][$_POST['form_build_id']]['args'];
     $form = call_user_func_array('drupal_retrieve_form', $args);
+    $form['#build_id'] = $_POST['form_build_id'];
   }
   else {
     // We're coming in fresh; build things as they would be. If the

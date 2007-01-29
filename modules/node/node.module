@@ -1,5 +1,5 @@
 <?php
-// $Id: node.module,v 1.776 2007/01/14 02:12:29 unconed Exp $
+// $Id: node.module,v 1.776.2.1 2007/01/29 21:51:53 drumm Exp $
 
 /**
  * @file
@@ -2069,6 +2069,10 @@ function node_form_add_preview($form) {
 
   $op = isset($form_values['op']) ? $form_values['op'] : '';
   if ($op == t('Preview')) {
+    // Invoke full validation for the form, to protect against cross site
+    // request forgeries (CSRF) and setting arbitrary values for fields such as
+    // the input format. Preview the node only when form validation does not
+    // set any errors.
     drupal_validate_form($form['form_id']['#value'], $form);
     if (!form_get_errors()) {
       // Because the node preview may display a form, we must render it

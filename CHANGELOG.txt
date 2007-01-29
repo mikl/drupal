@@ -1,4 +1,10 @@
-// $Id: CHANGELOG.txt,v 1.173.2.2 2007/01/23 18:59:55 dries Exp $
+// $Id: CHANGELOG.txt,v 1.173.2.3 2007/01/29 21:51:53 drumm Exp $
+
+Drupal 5.1, 2007-01-29
+----------------------
+- fixed security issue (code execution), see SA-2007-005
+- fixed a variety of small bugs.
+
 
 Drupal 5.0, 2007-01-15
 ------------------------

@@ -1,5 +1,5 @@
 <?php
-// $Id: system.module,v 1.440.2.6 2007/01/30 20:50:35 drumm Exp $
+// $Id: system.module,v 1.440.2.7 2007/02/02 04:39:23 drumm Exp $
 
 /**
  * @file
@@ -1541,7 +1541,7 @@ function theme_system_modules($form) {
   $modules = $form['validation_modules']['#value'];
   foreach ($modules as $module) {
     if (!isset($module->info['package']) || !$module->info['package']) {
-      $module->info['package'] = 'Other';
+      $module->info['package'] = t('Other');
     }
     $packages[$module->info['package']][$module->name] = $module->info;
   }

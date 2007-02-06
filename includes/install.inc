@@ -1,5 +1,5 @@
 <?php
-// $Id: install.inc,v 1.31 2007/01/02 05:05:38 drumm Exp $
+// $Id: install.inc,v 1.31.2.1 2007/02/06 08:20:17 drumm Exp $
 
 define('SCHEMA_UNINSTALLED', -1);
 define('SCHEMA_INSTALLED', 0);
@@ -62,10 +62,10 @@ function drupal_get_schema_versions($module) {
  *   The currently installed schema version.
  */
 function drupal_get_installed_schema_version($module, $reset = FALSE) {
-  static $versions;
+  static $versions = array();
 
   if ($reset) {
-    unset($versions);
+    $versions = array();
   }
 
   if (!$versions) {

@@ -1,5 +1,5 @@
 <?php
-// $Id: node.module,v 1.776.2.1 2007/01/29 21:51:53 drumm Exp $
+// $Id: node.module,v 1.776.2.2 2007/02/06 08:23:20 unconed Exp $
 
 /**
  * @file
@@ -554,7 +554,7 @@ function node_save(&$node) {
     $node->is_new = TRUE;
 
     $node->nid = db_next_id('{node}_nid');
-    $node->vid = db_next_id('{node_revisions}_vid');;
+    $node->vid = db_next_id('{node_revisions}_vid');
   }
   else {
     // We need to ensure that all node fields are filled.

@@ -1,5 +1,5 @@
 <?php
-// $Id: database.inc,v 1.39.2.1 2005/04/08 14:24:10 dries Exp $
+// $Id: database.inc,v 1.39.2.2 2007/02/27 12:03:02 dries Exp $
 
 /**
  * @file
@@ -178,7 +178,7 @@ function db_queryd($query) {
 /**
  * Helper function for db_rewrite_sql.
  *
- * Collects JOIN and WHERE statements via hook_sql.
+ * Collects JOIN and WHERE statements via hook_db_rewrite_sql()
  * Decides whether to select primary_key or DISTINCT(primary_key)
  *
  * @param $query

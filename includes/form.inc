@@ -1,5 +1,5 @@
 <?php
-// $Id: form.inc,v 1.174.2.4 2007/02/27 19:58:10 drumm Exp $
+// $Id: form.inc,v 1.174.2.5 2007/03/07 03:55:13 drumm Exp $
 
 /**
  * @defgroup form Form generation
@@ -21,10 +21,9 @@
  *
  *
  * For information on the format of the structured arrays used to define forms,
- * and more detailed explanations of the Form API workflow, see the reference at
- * http://api.drupal.org/api/HEAD/file/developer/topics/forms_api_reference.html
- * and the quickstart guide at
- * http://api.drupal.org/api/HEAD/file/developer/topics/forms_api.html
+ * and more detailed explanations of the Form API workflow, see the
+ * @link http://api.drupal.org/api/HEAD/file/developer/topics/forms_api_reference.html reference @endlink
+ * and the @link http://api.drupal.org/api/HEAD/file/developer/topics/forms_api.html quickstart guide. @endlink
  */
 
 /**

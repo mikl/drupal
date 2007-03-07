@@ -1,5 +1,5 @@
 <?php
-// $Id: profile.module,v 1.189.2.1 2007/01/23 19:09:58 dries Exp $
+// $Id: profile.module,v 1.189.2.2 2007/03/07 03:39:59 drumm Exp $
 
 /**
  * @file
@@ -623,7 +623,7 @@ function _profile_form_explanation($field) {
 
 function profile_form_profile($edit, $user, $category, $register = FALSE) {
   $result = _profile_get_fields($category, $register);
-  $w = 0;
+  $w = 1;
   while ($field = db_fetch_object($result)) {
     $category = $field->category;
     if (!isset($fields[$category])) {

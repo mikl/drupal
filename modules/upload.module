@@ -1,5 +1,5 @@
 <?php
-// $Id: upload.module,v 1.100.2.12 2007/01/01 18:10:05 killes Exp $
+// $Id: upload.module,v 1.100.2.13 2007/03/08 08:22:07 killes Exp $
 
 /**
  * @file
@@ -479,8 +479,10 @@ function theme_upload_attachments($files) {
   $header = array(t('Attachment'), t('Size'));
   $rows = array();
   foreach ($files as $file) {
-    if ($file->list) {
-      $href = $file->fid ? file_create_url($file->filepath) : url(file_create_filename($file->filename, file_create_path()));
+    $file = (object)$file;
+    if ($file->list && !$file->remove) {
+      // Generate valid URL for both existing attachments and preview of new attachments (these have 'upload' in fid)
+      $href = file_create_url((strpos($file->fid, 'upload') === FALSE ? $file->filepath : file_create_filename($file->filename, file_create_path())));
       $text = $file->description ? $file->description : $file->filename;
       $rows[] = array(l($text, $href), format_size($file->filesize));
     }

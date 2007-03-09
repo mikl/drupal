@@ -1,5 +1,5 @@
 <?php
-// $Id: form.inc,v 1.174.2.5 2007/03/07 03:55:13 drumm Exp $
+// $Id: form.inc,v 1.174.2.6 2007/03/09 04:05:35 drumm Exp $
 
 /**
  * @defgroup form Form generation
@@ -282,7 +282,9 @@ function drupal_prepare_form($form_id, &$form) {
   global $user;
 
   $form['#type'] = 'form';
-  $form['#skip_duplicate_check'] = FALSE;
+  if (!isset($form['#skip_duplicate_check'])) {
+    $form['#skip_duplicate_check'] = FALSE;
+  }
 
   if (!isset($form['#post'])) {
     $form['#post'] = $_POST;

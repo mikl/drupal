@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.module,v 1.520.2.3 2007/03/06 16:16:14 dries Exp $
+// $Id: comment.module,v 1.520.2.4 2007/03/12 13:08:36 dries Exp $
 
 /**
  * @file
@@ -1810,10 +1810,10 @@ function theme_comment_post_forbidden($nid) {
   else {
     // we cannot use drupal_get_destination() because these links sometimes appear on /node and taxo listing pages
     if (variable_get('comment_form_location', COMMENT_FORM_SEPARATE_PAGE) == COMMENT_FORM_SEPARATE_PAGE) {
-      $destination = "destination=". drupal_urlencode("comment/reply/$nid#comment_form");
+      $destination = "destination=". drupal_urlencode("comment/reply/$nid#comment-form");
     }
     else {
-      $destination = "destination=". drupal_urlencode("node/$nid#comment_form");
+      $destination = "destination=". drupal_urlencode("node/$nid#comment-form");
     }
 
     if (variable_get('user_register', 1)) {

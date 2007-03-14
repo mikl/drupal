@@ -1,5 +1,5 @@
 <?php
-// $Id: settings.php,v 1.39.2.1 2007/02/14 04:11:24 drumm Exp $
+// $Id: settings.php,v 1.39.2.2 2007/03/14 19:33:40 dries Exp $
 
 /**
  * @file
@@ -140,7 +140,7 @@ ini_set('url_rewriter.tags',        '');
  * We try to set the correct cookie domain.
  */
 if (isset($_SERVER['HTTP_HOST'])) {
-  $domain = '.'. preg_replace('`^www.`', '', $_SERVER['HTTP_HOST']);
+  $domain = '.'. preg_replace('`^www\.`', '', $_SERVER['HTTP_HOST']);
   // Per RFC 2109, cookie domains must contain at least one dot other than the
   // first. For hosts such as 'localhost', we don't set a cookie domain.
   if (count(explode('.', $domain)) > 2) {

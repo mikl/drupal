@@ -1,5 +1,5 @@
 <?php
-// $Id: block.module,v 1.246.2.1 2007/03/25 20:50:26 drumm Exp $
+// $Id: block.module,v 1.246.2.2 2007/03/25 21:49:07 drumm Exp $
 
 /**
  * @file
@@ -148,8 +148,6 @@ function _block_rehash() {
 
   init_theme();
 
-  db_lock_table('blocks');
-
   $result = db_query("SELECT * FROM {blocks} WHERE theme = '%s'", $theme_key);
   while ($old_block = db_fetch_object($result)) {
     $old_blocks[$old_block->module][$old_block->delta] = $old_block;
@@ -189,6 +187,7 @@ function _block_rehash() {
     }
   }
 
+  db_lock_table('blocks');
   // Remove all blocks from table.
   db_query("DELETE FROM {blocks} WHERE theme = '%s'", $theme_key);
 

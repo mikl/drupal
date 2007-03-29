@@ -1,5 +1,5 @@
 <?php
-// $Id: install.php,v 1.34 2007/01/10 10:15:07 unconed Exp $
+// $Id: install.php,v 1.34.2.1 2007/03/29 05:06:19 drumm Exp $
 
 require_once './includes/install.inc';
 
@@ -527,6 +527,7 @@ function install_missing_modules_error($profile) {
  */
 function install_complete($profile) {
   global $base_url;
+  $output = '';
   // Store install profile for later use.
   variable_set('install_profile', $profile);
 

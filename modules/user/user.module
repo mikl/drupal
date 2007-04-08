@@ -1,5 +1,5 @@
 <?php
-// $Id: user.module,v 1.745.2.3 2007/04/08 01:13:03 drumm Exp $
+// $Id: user.module,v 1.745.2.4 2007/04/08 01:21:23 drumm Exp $
 
 /**
  * @file
@@ -1256,7 +1256,7 @@ function user_register_submit($form_id, $form_values) {
       $body = _user_mail_text('welcome_body', $variables);
       drupal_mail('user-register-welcome', $mail, $subject, $body, $from);
       user_authenticate($account->name, trim($pass));
-      drupal_goto();
+      return '';
     }
     else if ($account->status || $notify) {
       // Create new user account, no administrator approval required.

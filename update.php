@@ -1,5 +1,5 @@
 <?php
-// $Id: update.php,v 1.211.2.1 2007/03/29 05:18:55 drumm Exp $
+// $Id: update.php,v 1.211.2.2 2007/04/08 00:54:04 drumm Exp $
 
 /**
  * @file
@@ -512,8 +512,8 @@ function update_progress_page_nojs() {
 function update_finished_page($success) {
   drupal_set_title('Drupal database update');
   // NOTE: we can't use l() here because the URL would point to 'update.php?q=admin'.
-  $links[] = '<a href="'. base_path() .'">main page</a>';
-  $links[] = '<a href="'. base_path() .'?q=admin">administration pages</a>';
+  $links[] = '<a href="'. base_path() .'">Main page</a>';
+  $links[] = '<a href="'. base_path() .'?q=admin">Administration pages</a>';
 
   // Report end result
   if ($success) {

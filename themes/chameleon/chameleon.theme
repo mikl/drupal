@@ -1,5 +1,5 @@
 <?php
-// $Id: chameleon.theme,v 1.56 2006/11/29 06:36:12 drumm Exp $
+// $Id: chameleon.theme,v 1.56.2.1 2007/04/08 00:48:46 drumm Exp $
 
 /**
  * @file
@@ -175,5 +175,3 @@ function chameleon_help() {
     return '<div class="help">'. $help .'</div><hr />';
   }
 }
-
-?>

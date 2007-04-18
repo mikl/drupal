@@ -1,10 +1,12 @@
-// $Id: textarea.js,v 1.11 2006/09/07 08:05:31 dries Exp $
+// $Id: textarea.js,v 1.11.2.1 2007/04/18 02:41:19 drumm Exp $
 
 Drupal.textareaAttach = function() {
   $('textarea.resizable:not(.processed)').each(function() {
     var textarea = $(this).addClass('processed'), staticOffset = null;
 
-    $(this).wrap('<div class="resizable-textarea"></div>')
+    // When wrapping the text area, work around an IE margin bug.  See:
+    // http://jaspan.com/ie-inherited-margin-bug-form-elements-and-haslayout
+    $(this).wrap('<div class="resizable-textarea"><span></span></div>')
       .parent().append($('<div class="grippie"></div>').mousedown(startDrag));
 
     var grippie = $('div.grippie', $(this).parent())[0];

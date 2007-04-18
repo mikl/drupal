@@ -1,4 +1,6 @@
 <?php
+// $Id: template.php,v 1.4.2.1 2007/04/18 03:38:59 drumm Exp $
+
 /**
  * Sets the body-tag class attribute.
  *

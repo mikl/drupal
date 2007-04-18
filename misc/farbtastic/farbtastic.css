@@ -1,3 +1,5 @@
+/* $Id: farbtastic.css,v 1.2.2.1 2007/04/18 03:38:58 drumm Exp $ */
+
 .farbtastic {
   position: relative;
 }
@@ -30,4 +32,3 @@
   overflow: hidden;
   background: url(marker.png) no-repeat;
 }
-

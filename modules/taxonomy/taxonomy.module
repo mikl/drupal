@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.module,v 1.330.2.4 2007/04/18 02:48:22 drumm Exp $
+// $Id: taxonomy.module,v 1.330.2.5 2007/04/18 04:32:01 drumm Exp $
 
 /**
  * @file
@@ -1265,6 +1265,7 @@ function taxonomy_select_nodes($tids = array(), $operator = 'or', $depth = 0, $p
  * taxonomy_select_nodes(), and formats each node along with a pager.
 */
 function taxonomy_render_nodes($result) {
+  $output = '';
   if (db_num_rows($result) > 0) {
     while ($node = db_fetch_object($result)) {
       $output .= node_view(node_load($node->nid), 1);

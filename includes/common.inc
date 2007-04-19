@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.611.2.3 2007/03/23 20:49:11 drumm Exp $
+// $Id: common.inc,v 1.611.2.4 2007/04/19 02:05:15 drumm Exp $
 
 /**
  * @file
@@ -429,6 +429,7 @@ function drupal_http_request($url, $headers = array(), $method = 'GET', $data = 
   // Make sure the socket opened properly.
   if (!$fp) {
     $result->error = trim($errno .' '. $errstr);
+    $result->code = -$errno;
     return $result;
   }
 

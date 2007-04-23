@@ -1,5 +1,5 @@
 <?php
-// $Id: profile.module,v 1.189.2.3 2007/03/29 05:55:00 drumm Exp $
+// $Id: profile.module,v 1.189.2.4 2007/04/23 17:02:45 dries Exp $
 
 /**
  * @file
@@ -511,7 +511,7 @@ function profile_browse() {
     $output .= '</div>';
     $output .= theme('pager', NULL, 20);
 
-    drupal_set_title(t('user list'));
+    drupal_set_title(t('User list'));
     return $output;
   }
 }

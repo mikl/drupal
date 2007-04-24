@@ -1,5 +1,5 @@
 <?php
-// $Id: node.module,v 1.776.2.9 2007/04/18 04:50:02 drumm Exp $
+// $Id: node.module,v 1.776.2.10 2007/04/24 07:09:47 drumm Exp $
 
 /**
  * @file
@@ -1532,7 +1532,6 @@ function node_admin_content() {
 }
 
 function node_admin_nodes() {
-  global $form_values;
   $filter = node_build_filter_query();
 
   $result = pager_query('SELECT n.*, u.name, u.uid FROM {node} n '. $filter['join'] .' INNER JOIN {users} u ON n.uid = u.uid '. $filter['where'] .' ORDER BY n.changed DESC', 50, 0, NULL, $filter['args']);

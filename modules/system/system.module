@@ -1,5 +1,5 @@
 <?php
-// $Id: system.module,v 1.440.2.11 2007/05/04 08:56:30 drumm Exp $
+// $Id: system.module,v 1.440.2.12 2007/05/07 03:28:03 drumm Exp $
 
 /**
  * @file
@@ -2156,9 +2156,6 @@ function confirm_form($form, $question, $path, $description = NULL, $yes = NULL,
   $cancel = l($no ? $no : t('Cancel'), $path, array(), $query, $fragment);
 
   drupal_set_title($question);
-
-  // Confirm form fails duplication check, as the form values rarely change -- so skip it.
-  $form['#skip_duplicate_check'] = TRUE;
 
   $form['#attributes'] = array('class' => 'confirmation');
   $form['description'] = array('#value' => $description);

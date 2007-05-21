@@ -1,5 +1,5 @@
 <?php
-// $Id: unicode.inc,v 1.23.2.1 2007/05/10 07:01:31 unconed Exp $
+// $Id: unicode.inc,v 1.23.2.2 2007/05/21 01:09:21 drumm Exp $
 
 /**
  * Indicates an error during check for PHP unicode support.
@@ -441,6 +441,7 @@ function drupal_substr($text, $start, $length = NULL) {
   else {
     $strlen = strlen($text);
     // Find the starting byte offset
+    $bytes = 0;
     if ($start > 0) {
       // Count all the continuation bytes from the start until we have found
       // $start characters

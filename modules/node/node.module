@@ -1,5 +1,5 @@
 <?php
-// $Id: node.module,v 1.776.2.13 2007/05/21 00:28:29 drumm Exp $
+// $Id: node.module,v 1.776.2.14 2007/05/21 00:52:27 drumm Exp $
 
 /**
  * @file
@@ -2271,7 +2271,7 @@ function node_delete_confirm($node) {
 
  return confirm_form($form,
    t('Are you sure you want to delete %title?', array('%title' => $node->title)),
-   $_GET['destination'] ? $_GET['destination'] : 'node/'. $node->nid,
+   isset($_GET['destination']) ? $_GET['destination'] : 'node/'. $node->nid,
    t('This action cannot be undone.'),
    t('Delete'), t('Cancel'));
 }

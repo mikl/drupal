@@ -1,5 +1,5 @@
 <?php
-// $Id: block.module,v 1.246.2.3 2007/05/21 01:20:04 drumm Exp $
+// $Id: block.module,v 1.246.2.4 2007/05/21 01:38:40 drumm Exp $
 
 /**
  * @file
@@ -359,7 +359,7 @@ function theme_block_admin_display($form) {
 }
 
 function block_box_get($bid) {
-  return db_fetch_array(db_query("SELECT bx.*, title FROM {boxes} bx INNER JOIN {blocks} bl ON bx.bid = bl.delta WHERE module = 'block' AND bid = %d", $bid));
+  return db_fetch_array(db_query("SELECT bx.*, bl.title FROM {boxes} bx INNER JOIN {blocks} bl ON bx.bid = bl.delta WHERE bl.module = 'block' AND bx.bid = %d", $bid));
 }
 
 /**

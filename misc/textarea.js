@@ -1,4 +1,4 @@
-// $Id: textarea.js,v 1.9.2.2 2006/12/01 14:57:29 killes Exp $
+// $Id: textarea.js,v 1.9.2.3 2007/05/27 20:54:42 killes Exp $
 
 if (isJsEnabled()) {
   addLoadEvent(textAreaAutoAttach);
@@ -47,9 +47,11 @@ function textArea(element) {
   this.element.style.width = '100%';
   this.element.style.height = this.dimensions.height +'px';
 
-  // Wrap textarea
+  // Wrap textarea, working around an IE margin bug.
   removeNode(this.element);
-  this.wrapper.insertBefore(this.element, this.grippie);
+  this.iewrap = document.createElement('span');
+  this.iewrap.appendChild(this.element);
+  this.wrapper.insertBefore(this.iewrap, this.grippie);
 
   // Measure difference between desired and actual textarea dimensions to account for padding/borders
   this.widthOffset = dimensions(this.wrapper).width - this.dimensions.width;

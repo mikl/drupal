@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.337.2.1 2007/04/10 07:06:47 drumm Exp $
+// $Id: theme.inc,v 1.337.2.2 2007/05/31 05:52:42 drumm Exp $
 
 /**
  * @file
@@ -340,6 +340,9 @@ function theme_get_setting($setting_name, $refresh = FALSE) {
       }
       elseif ($settings['favicon_path']) {
         $settings['favicon'] = base_path() . $settings['favicon_path'];
+      }
+      else {
+        $settings['toggle_favicon'] = FALSE;
       }
     }
   }

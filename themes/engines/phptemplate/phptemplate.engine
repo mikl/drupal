@@ -1,5 +1,5 @@
 <?php
-// $Id: phptemplate.engine,v 1.54.2.1 2007/03/25 22:46:38 drumm Exp $
+// $Id: phptemplate.engine,v 1.54.2.2 2007/05/31 06:21:32 drumm Exp $
 
 /**
  * @file
@@ -250,7 +250,7 @@ function phptemplate_page($content, $show_blocks = TRUE) {
   return _phptemplate_callback('page', $variables, $suggestions);
 }
 
-/*
+/**
  * Prepare the values passed to the theme_node function to be passed
  * into a pluggable template engine.
  */

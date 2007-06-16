@@ -1,5 +1,5 @@
 <?php
-// $Id: tablesort.inc,v 1.43 2006/12/01 08:50:33 dries Exp $
+// $Id: tablesort.inc,v 1.43.2.1 2007/06/16 22:29:25 drumm Exp $
 
 /**
  * @file
@@ -148,11 +148,11 @@ function tablesort_get_order($headers) {
   $order = isset($_GET['order']) ? $_GET['order'] : '';
   foreach ($headers as $header) {
     if (isset($header['data']) && $order == $header['data']) {
-      return array('name' => $header['data'], 'sql' => $header['field']);
+      return array('name' => $header['data'], 'sql' => isset($header['field']) ? $header['field'] : '');
     }
 
     if (isset($header['sort']) && ($header['sort'] == 'asc' || $header['sort'] == 'desc')) {
-      $default = array('name' => $header['data'], 'sql' => $header['field']);
+      $default = array('name' => $header['data'], 'sql' => isset($header['field']) ? $header['field'] : '');
     }
   }
 

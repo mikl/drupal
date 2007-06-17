@@ -1,5 +1,5 @@
 <?php
-// $Id: menu.inc,v 1.146 2007/01/14 01:37:48 unconed Exp $
+// $Id: menu.inc,v 1.146.2.1 2007/06/17 01:50:50 drumm Exp $
 
 /**
  * @file
@@ -396,7 +396,7 @@ function menu_execute_active_handler() {
     $path = substr($path, 0, strrpos($path, '/'));
   }
 
-  if (!isset($menu['callbacks'][$path])) {
+  if ($path === '' || !isset($menu['callbacks'][$path])) {
     return MENU_NOT_FOUND;
   }
 

@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.611.2.6 2007/06/14 06:11:12 drumm Exp $
+// $Id: common.inc,v 1.611.2.7 2007/07/03 20:13:23 dries Exp $
 
 /**
  * @file
@@ -409,6 +409,7 @@ function drupal_http_request($url, $headers = array(), $method = 'GET', $data = 
 
   // Parse the URL, and make sure we can handle the schema.
   $uri = parse_url($url);
+
   switch ($uri['scheme']) {
     case 'http':
       $port = isset($uri['port']) ? $uri['port'] : 80;
@@ -1893,8 +1894,7 @@ function page_set_cache() {
 
 /**
  * Send an e-mail message, using Drupal variables and default settings.
- * More information in the <a href="http://php.net/manual/en/function.mail.php">
- * PHP function reference for mail()</a>
+ * More information in the PHP function reference for mail()
  * @param $mailkey
  *   A key to identify the mail sent, for altering.
  * @param $to

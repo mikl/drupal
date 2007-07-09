@@ -1,4 +1,4 @@
-/* $Id: style.css,v 1.14.2.3 2007/04/18 03:38:59 drumm Exp $ */
+/* $Id: style.css,v 1.14.2.4 2007/07/09 03:50:59 drumm Exp $ */
 
 /**
  * Garland, for Drupal 5.0
@@ -289,6 +289,11 @@ table .form-button, table .form-submit {
   line-height: 1.5em;
   margin-top: 0;
   margin-bottom: 0;
+}
+
+/* Avoid displaying content of script tags */
+#header-region script {
+  display: none;
 }
 
 #header-region p, #header-region img {

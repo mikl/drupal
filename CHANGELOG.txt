@@ -1,16 +1,14 @@
-// $Id: CHANGELOG.txt,v 1.173.2.6 2007/07/12 07:54:02 drumm Exp $
+// $Id: CHANGELOG.txt,v 1.173.2.7 2007/07/12 07:54:44 drumm Exp $
 
 Drupal 5.2, xxxx-xx-xx
 ----------------------
 - changed hook_link() $teaser argument to match documentation.
 - fixed a variety of small bugs.
 
-
 Drupal 5.1, 2007-01-29
 ----------------------
 - fixed security issue (code execution), see SA-2007-005
 - fixed a variety of small bugs.
-
 
 Drupal 5.0, 2007-01-15
 ------------------------

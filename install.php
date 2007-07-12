@@ -1,5 +1,5 @@
 <?php
-// $Id: install.php,v 1.34.2.1 2007/03/29 05:06:19 drumm Exp $
+// $Id: install.php,v 1.34.2.2 2007/07/12 06:53:03 drumm Exp $
 
 require_once './includes/install.inc';
 
@@ -316,8 +316,8 @@ function _install_settings_form_validate($db_prefix, $db_type, $db_user, $db_pas
   }
 
   // Verify the table prefix
-  if (!empty($db_prefix) && is_string($db_prefix) && !preg_match('/^[A-Za-z0-9_.]+$/', $db_prefix)) {
-    form_set_error('db_prefix', st('The database table prefix you have entered, %db_prefix, is invalid. The table prefix can only contain alphanumeric characters, underscores or dots.', array('%db_prefix' => $db_prefix)), 'error');
+  if (!empty($db_prefix) && is_string($db_prefix) && !preg_match('/^[A-Za-z0-9_]+$/', $db_prefix)) {
+    form_set_error('db_prefix', st('The database table prefix you have entered, %db_prefix, is invalid. The table prefix can only contain alphanumeric characters or underscores.', array('%db_prefix' => $db_prefix)), 'error');
   }
 
   if (!empty($db_port) && !is_numeric($db_port)) {

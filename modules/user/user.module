@@ -1,5 +1,5 @@
 <?php
-// $Id: user.module,v 1.745.2.11 2007/07/09 04:32:06 drumm Exp $
+// $Id: user.module,v 1.745.2.12 2007/07/12 06:40:04 drumm Exp $
 
 /**
  * @file
@@ -1263,6 +1263,8 @@ function user_register_submit($form_id, $form_values) {
       $body = _user_mail_text('welcome_body', $variables);
       drupal_mail('user-register-welcome', $mail, $subject, $body, $from);
       user_authenticate($account->name, trim($pass));
+      $edit = array();
+      user_module_invoke('login', $edit, $account);
       return '';
     }
     else if ($account->status || $notify) {

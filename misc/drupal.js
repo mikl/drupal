@@ -1,4 +1,4 @@
-// $Id: drupal.js,v 1.29 2006/10/14 02:39:48 unconed Exp $
+// $Id: drupal.js,v 1.29.2.1 2007/07/15 23:07:06 drumm Exp $
 
 var Drupal = Drupal || {};
 
@@ -196,8 +196,8 @@ Drupal.unfreezeHeight = function () {
  */
 Drupal.encodeURIComponent = function (item, uri) {
   uri = uri || location.href;
-  item = encodeURIComponent(item).replace('%2F', '/');
-  return uri.indexOf('?q=') ? item : item.replace('%26', '%2526').replace('%23', '%2523');
+  item = encodeURIComponent(item).replace(/%2F/g, '/');
+  return (uri.indexOf('?q=') != -1) ? item : item.replace(/%26/g, '%2526').replace(/%23/g, '%2523').replace(/\/\//g, '/%252F');
 };
 
 // Global Killswitch on the <html> element

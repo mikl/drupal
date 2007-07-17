@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.module,v 1.330.2.8 2007/07/15 23:34:02 drumm Exp $
+// $Id: taxonomy.module,v 1.330.2.9 2007/07/17 06:46:01 drumm Exp $
 
 /**
  * @file
@@ -394,6 +394,7 @@ function taxonomy_vocabulary_confirm_delete_submit($form_id, $form_values) {
 
 function taxonomy_form_term($vocabulary_id, $edit = array()) {
   $vocabulary = taxonomy_get_vocabulary($vocabulary_id);
+  drupal_set_title(check_plain($vocabulary->name));
 
   $form['name'] = array(
     '#type' => 'textfield',

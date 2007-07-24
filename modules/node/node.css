@@ -1,9 +1,9 @@
-/* $Id: node.css,v 1.2 2006/09/05 03:50:56 unconed Exp $ */
+/* $Id: node.css,v 1.2.2.1 2007/07/24 18:38:58 drumm Exp $ */
 
-.node-unpublished, .comment-unpublished {
+.node-unpublished {
   background-color: #fff4f4;
 }
-.preview .node, .preview .comment {
+.preview .node {
   background-color: #ffffea;
 }
 #node-admin-filter ul {

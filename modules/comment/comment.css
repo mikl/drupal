@@ -1,5 +1,11 @@
-/* $Id: comment.css,v 1.1.2.1 2007/04/18 03:38:59 drumm Exp $ */
+/* $Id: comment.css,v 1.1.2.2 2007/07/24 18:38:58 drumm Exp $ */
 
 .indented {
   margin-left: 25px;
+}
+.comment-unpublished {
+  background-color: #fff4f4;
+}
+.preview .comment {
+  background-color: #ffffea;
 }

@@ -1,5 +1,5 @@
 <?php
-// $Id: form.inc,v 1.174.2.10 2007/06/14 06:27:45 drumm Exp $
+// $Id: form.inc,v 1.174.2.11 2007/07/26 19:16:45 drumm Exp $
 
 /**
  * @defgroup form Form generation
@@ -248,7 +248,7 @@ function drupal_process_form($form_id, &$form) {
   $form_button_counter = array(0, 0);
 
   drupal_prepare_form($form_id, $form);
-  if (($form['#programmed']) || (!empty($_POST) && (($_POST['form_id'] == $form_id) || ($_POST['form_id'] == $form['#base'])))) {
+  if (($form['#programmed']) || (!empty($_POST) && (($_POST['form_id'] == $form_id)))) {
     drupal_validate_form($form_id, $form);
     // IE does not send a button value when there is only one submit button (and no non-submit buttons)
     // and you submit by pressing enter.

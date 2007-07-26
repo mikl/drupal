@@ -1,5 +1,5 @@
 <?php
-// $Id: search.module,v 1.209.2.4 2007/07/15 23:45:23 drumm Exp $
+// $Id: search.module,v 1.209.2.5 2007/07/26 19:16:48 drumm Exp $
 
 /**
  * @file
@@ -1233,7 +1233,7 @@ function theme_search_item($item, $type) {
   $output = ' <dt class="title"><a href="'. check_url($item['link']) .'">'. check_plain($item['title']) .'</a></dt>';
   $info = array();
   if ($item['type']) {
-    $info[] = $item['type'];
+    $info[] = check_plain($item['type']);
   }
   if ($item['user']) {
     $info[] = $item['user'];

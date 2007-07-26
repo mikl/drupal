@@ -1,5 +1,5 @@
 <?php
-// $Id: tracker.module,v 1.143.2.1 2007/07/09 03:33:58 drumm Exp $
+// $Id: tracker.module,v 1.143.2.2 2007/07/26 19:16:50 drumm Exp $
 
 /**
  * @file
@@ -106,7 +106,7 @@ function tracker_page($uid = 0) {
     }
 
     $rows[] = array(
-      node_get_types('name', $node->type),
+      check_plain(node_get_types('name', $node->type)),
       l($node->title, "node/$node->nid") .' '. theme('mark', node_mark($node->nid, $node->changed)),
       theme('username', $node),
       array('class' => 'replies', 'data' => $comments),

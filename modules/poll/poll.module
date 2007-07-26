@@ -1,5 +1,5 @@
 <?php
-// $Id: poll.module,v 1.222 2006/12/25 09:48:42 drumm Exp $
+// $Id: poll.module,v 1.222.2.1 2007/07/26 19:16:48 drumm Exp $
 
 /**
  * @file
@@ -354,7 +354,9 @@ function poll_teaser($node) {
   $teaser = NULL;
   if (is_array($node->choice)) {
     foreach ($node->choice as $k => $choice) {
-      $teaser .= '* '. $choice['chtext'] .'\n';
+      if ($choice['chtext'] != '') {
+        $teaser .= '* '. check_plain($choice['chtext']) ."\n";
+      }
     }
   }
   return $teaser;

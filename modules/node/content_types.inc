@@ -1,5 +1,5 @@
 <?php
-// $Id: content_types.inc,v 1.24.2.1 2007/02/11 00:17:58 drumm Exp $
+// $Id: content_types.inc,v 1.24.2.2 2007/07/26 19:16:46 drumm Exp $
 
 /**
  * @file
@@ -18,7 +18,6 @@ function node_overview_types() {
   foreach ($names as $key => $name) {
     $type = $types[$key];
     if (function_exists($type->module .'_form')) {
-      $name = check_plain($name);
       $type_url_str = str_replace('_', '-', $type->type);
       // Populate the operations field.
       $operations = array();

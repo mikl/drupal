@@ -1,5 +1,5 @@
 <?php
-// $Id: node.module,v 1.776.2.17 2007/07/26 04:48:05 drumm Exp $
+// $Id: node.module,v 1.776.2.18 2007/07/26 05:21:25 drumm Exp $
 
 /**
  * @file
@@ -2908,7 +2908,12 @@ function node_access_rebuild() {
     }
     $result = db_query("SELECT nid FROM {node}");
     while ($node = db_fetch_object($result)) {
-      node_access_acquire_grants(node_load($node->nid, NULL, TRUE));
+      $loaded_node = node_load($node->nid, NULL, TRUE);
+      // To preserve database integrity, only aquire grants if the node
+      // loads successfully.
+      if (!empty($loaded_node)) {
+        node_access_acquire_grants($loaded_node);
+      }
     }
   }
   else {

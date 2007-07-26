@@ -1,5 +1,5 @@
 <?php
-// $Id: bootstrap.inc,v 1.145.2.4 2007/07/09 04:28:12 drumm Exp $
+// $Id: bootstrap.inc,v 1.145.2.5 2007/07/26 04:44:56 drumm Exp $
 
 /**
  * @file
@@ -275,8 +275,9 @@ function conf_init() {
     $session_name = $cookie_domain;
   }
   else {
-    // Otherwise use $base_url for session name.
-    $session_name = $base_url;
+    // Otherwise use $base_url as session name, without the protocol
+    // to use the same session identifiers across http and https.
+    list( , $session_name) = explode('://', $base_url, 2);
     // We try to set the cookie domain to the hostname.
     if (!empty($_SERVER['HTTP_HOST'])) {
       $cookie_domain = $_SERVER['HTTP_HOST'];

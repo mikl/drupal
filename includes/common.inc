@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.537.2.22 2007/03/14 07:55:48 killes Exp $
+// $Id: common.inc,v 1.537.2.23 2007/07/26 19:11:07 killes Exp $
 
 /**
  * @file
@@ -1333,17 +1333,19 @@ function drupal_to_js($var) {
  * Notes:
  * - For esthetic reasons, we do not escape slashes. This also avoids a 'feature'
  *   in Apache where it 404s on any path containing '%2F'.
- * - mod_rewrite's unescapes %-encoded ampersands and hashes when clean URLs
- *   are used, which are interpreted as delimiters by PHP. These characters are
- *   double escaped so PHP will still see the encoded version.
+ * - mod_rewrite unescapes %-encoded ampersands, hashes, and slashes when clean
+ *   URLs are used, which are interpreted as delimiters by PHP. These
+ *   characters are double escaped so PHP will still see the encoded version.
+ * - With clean URLs, Apache changes '//' to '/', so every second slash is
+ *   double escaped.
  *
  * @param $text
  *   String to encode
  */
 function drupal_urlencode($text) {
   if (variable_get('clean_url', '0')) {
-    return str_replace(array('%2F', '%26', '%23'),
-                       array('/', '%2526', '%2523'),
+    return str_replace(array('%2F', '%26', '%23', '//'),
+                       array('/', '%2526', '%2523', '/%252F'),
                        urlencode($text));
   }
   else {

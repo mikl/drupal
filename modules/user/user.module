@@ -1,5 +1,5 @@
 <?php
-// $Id: user.module,v 1.745.2.16 2007/08/14 06:50:41 drumm Exp $
+// $Id: user.module,v 1.745.2.17 2007/09/12 07:10:58 drumm Exp $
 
 /**
  * @file
@@ -1290,7 +1290,7 @@ function user_register_submit($form_id, $form_values) {
       drupal_mail('user-register-approval-user', $mail, $subject, $body, $from);
       drupal_mail('user-register-approval-admin', $from, $subject, t("!username has applied for an account.\n\n!edit_uri", $variables), $from);
       drupal_set_message(t('Thank you for applying for an account. Your account is currently pending approval by the site administrator.<br />In the meantime, your password and further instructions have been sent to your e-mail address.'));
-
+      return '';
     }
   }
 }

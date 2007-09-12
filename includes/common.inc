@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.611.2.9 2007/07/26 19:16:45 drumm Exp $
+// $Id: common.inc,v 1.611.2.10 2007/09/12 07:29:57 drumm Exp $
 
 /**
  * @file
@@ -1511,6 +1511,8 @@ function drupal_build_css_cache($types, $filename) {
       foreach ($type as $file => $cache) {
         if ($cache) {
           $contents = file_get_contents($file);
+          // Remove multiple charset declarations for standards compliance (and fixing Safari problems)
+          $contents = preg_replace('/^@charset\s+[\'"](\S*)\b[\'"];/i', '', $contents);
           // Return the path to where this CSS file originated from, stripping off the name of the file at the end of the path.
           $path = base_path() . substr($file, 0, strrpos($file, '/')) .'/';
           // Wraps all @import arguments in url().

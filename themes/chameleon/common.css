@@ -1,4 +1,4 @@
-/* $Id: common.css,v 1.9 2006/01/20 09:09:18 dries Exp $ */
+/* $Id: common.css,v 1.9.2.1 2007/09/13 18:53:32 killes Exp $ */
 
 /*
 ** HTML elements
@@ -82,6 +82,7 @@ br {
  font-size: 0.8em;
  padding-top: 2em;
  text-align: center;
+ clear: both;
 }
 
 /*

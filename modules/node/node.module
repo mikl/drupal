@@ -1,5 +1,5 @@
 <?php
-// $Id: node.module,v 1.776.2.20 2007/09/12 07:49:35 drumm Exp $
+// $Id: node.module,v 1.776.2.21 2007/09/29 23:41:28 drumm Exp $
 
 /**
  * @file
@@ -2523,6 +2523,9 @@ function node_update_index() {
     // Build the node body.
     $node = node_build_content($node, FALSE, FALSE);
     $node->body = drupal_render($node->content);
+
+    // Allow modules to modify the fully-built node.
+    node_invoke_nodeapi($node, 'alter');
 
     $text = '<h1>'. check_plain($node->title) .'</h1>'. $node->body;
 

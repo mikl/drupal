@@ -1,5 +1,5 @@
 <?php
-// $Id: help.module,v 1.69 2006/12/23 22:06:05 dries Exp $
+// $Id: help.module,v 1.69.2.1 2007/10/16 06:57:22 drumm Exp $
 
 /**
  * @file
@@ -126,9 +126,14 @@ function help_page() {
       $output .= $temp;
     }
 
+    // Only print list of administration pages if the module in question has
+    // any such pages associated to it.
     $admin_tasks = system_get_module_admin_tasks($name);
-    ksort($admin_tasks);
-    $output .= theme('item_list', $admin_tasks, t('@module administration pages', array('@module' => $module['name'])));
+    if (!empty($admin_tasks)) {
+      ksort($admin_tasks);
+      $output .= theme('item_list', $admin_tasks, t('@module administration pages', array('@module' => $module['name'])));
+    }
+
   }
   return $output;
 }

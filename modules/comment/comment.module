@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.module,v 1.520.2.8 2007/10/07 00:30:10 drumm Exp $
+// $Id: comment.module,v 1.520.2.9 2007/10/16 06:18:10 drumm Exp $
 
 /**
  * @file
@@ -1232,7 +1232,7 @@ function comment_admin_overview_submit($form_id, $form_values) {
     }
     cache_clear_all();
     drupal_set_message(t('The update has been performed.'));
-    drupal_goto('admin/content/comment');
+    return 'admin/content/comment';
   }
 }
 

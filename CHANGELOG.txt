@@ -1,4 +1,10 @@
-// $Id: CHANGELOG.txt,v 1.117.2.12 2007/07/26 19:17:24 killes Exp $
+// $Id: CHANGELOG.txt,v 1.117.2.13 2007/10/17 21:35:41 goba Exp $
+
+Drupal 4.7.8, 2007-10-17
+----------------------
+- fixed a security issue (HTTP response splitting), see SA-2007-024
+- fixed a security issue (Cross site scripting via uploads), see SA-2007-026
+- fixed a security issue (API handling of unpublished comment), see SA-2007-030
 
 Drupal 4.7.7, 2007-07-26
 ------------------------

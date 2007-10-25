@@ -1,5 +1,5 @@
 <?php
-// $Id: system.install,v 1.69.2.6 2007/10/16 06:20:39 drumm Exp $
+// $Id: system.install,v 1.69.2.7 2007/10/25 20:47:59 dries Exp $
 
 define('DRUPAL_MINIMUM_PHP',    '4.3.3');
 define('DRUPAL_MINIMUM_MYSQL',  '3.23.17'); // If using MySQL
@@ -1385,7 +1385,7 @@ function system_update_120() {
     list(, $page, $op, $uid) = explode('/', $alias->src);
     if ($page == 'feed') {
       $new = "blog/$uid/feed";
-      update_sql("UPDATE {url_alias} SET src = '%s' WHERE pid = '%s'", $new, $alias->pid);
+      db_query("UPDATE {url_alias} SET src = '%s' WHERE pid = %d", $new, $alias->pid);
     }
   }
 

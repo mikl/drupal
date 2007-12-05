@@ -1,4 +1,8 @@
-// $Id: CHANGELOG.txt,v 1.117.2.13 2007/10/17 21:35:41 goba Exp $
+// $Id: CHANGELOG.txt,v 1.117.2.14 2007/12/05 21:09:32 drumm Exp $
+
+Drupal 4.7.9, 2007-12-05
+------------------------
+- fixed a security issue (SQL injection), see SA-2007-031
 
 Drupal 4.7.8, 2007-10-17
 ----------------------

@@ -1,6 +1,6 @@
-// $Id: CHANGELOG.txt,v 1.173.2.13 2007/12/05 21:52:31 drumm Exp $
+// $Id: CHANGELOG.txt,v 1.173.2.14 2007/12/05 21:53:50 drumm Exp $
 
-DRUPAL 5.5, xxxx-xx-xx
+Drupal 5.5, xxxx-xx-xx
 ----------------------
 
 Drupal 5.4, 2007-12-05

@@ -1,5 +1,5 @@
 <?php
-// $Id: locale.inc,v 1.105.2.4 2007/05/21 00:20:02 drumm Exp $
+// $Id: locale.inc,v 1.105.2.5 2007/12/17 01:53:52 drumm Exp $
 
 /**
  * @file
@@ -526,6 +526,10 @@ function _locale_import_read_po($op, $file, $mode = NULL, $lang = NULL) {
 
   while (!feof($fd)) {
     $line = fgets($fd, 10*1024); // A line should not be this long
+    if ($lineno == 0) {
+      // The first line might come with a UTF-8 BOM, which should be removed.
+      $line = str_replace("\xEF\xBB\xBF", '', $line);
+    }
     $lineno++;
     $line = trim(strtr($line, array("\\\n" => "")));
 

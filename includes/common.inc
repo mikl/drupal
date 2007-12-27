@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.611.2.12 2007/10/17 21:28:59 drumm Exp $
+// $Id: common.inc,v 1.611.2.13 2007/12/27 08:16:31 drumm Exp $
 
 /**
  * @file
@@ -1267,7 +1267,7 @@ function drupal_attributes($attributes = array()) {
  *   an HTML string containing a link to the given path.
  */
 function l($text, $path, $attributes = array(), $query = NULL, $fragment = NULL, $absolute = FALSE, $html = FALSE) {
-  if ($path == $_GET['q']) {
+  if (($path == $_GET['q']) || ($path == '<front>' && drupal_is_front_page())) {
     if (isset($attributes['class'])) {
       $attributes['class'] .= ' active';
     }

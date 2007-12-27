@@ -1,5 +1,5 @@
 <?php
-// $Id: form.inc,v 1.174.2.12 2007/11/10 02:24:47 drumm Exp $
+// $Id: form.inc,v 1.174.2.13 2007/12/27 08:41:52 drumm Exp $
 
 /**
  * @defgroup form Form generation
@@ -1430,7 +1430,7 @@ function theme_textfield($element) {
 function theme_form($element) {
   // Anonymous div to satisfy XHTML compliance.
   $action = $element['#action'] ? 'action="' . check_url($element['#action']) . '" ' : '';
-  return '<form '. $action . ' method="'. $element['#method'] .'" '. 'id="'. $element['#id'] .'"'. drupal_attributes($element['#attributes']) .">\n<div>". $element['#children'] ."\n</div></form>\n";
+  return '<form '. $action .' accept-charset="UTF-8" method="'. $element['#method'] .'" '. 'id="'. $element['#id'] .'"'. drupal_attributes($element['#attributes']) .">\n<div>". $element['#children'] ."\n</div></form>\n";
 }
 
 /**

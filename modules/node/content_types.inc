@@ -1,5 +1,5 @@
 <?php
-// $Id: content_types.inc,v 1.24.2.2 2007/07/26 19:16:46 drumm Exp $
+// $Id: content_types.inc,v 1.24.2.3 2007/12/27 09:57:47 drumm Exp $
 
 /**
  * @file
@@ -226,9 +226,6 @@ function node_type_form_validate($form_id, $form_values) {
 
   // Work out what the type was before the user submitted this form
   $old_type = trim($form_values['old_type']);
-  if (empty($old_type)) {
-    $old_type = $type->type;
-  }
 
   $types = node_get_types('names');
 
@@ -248,7 +245,7 @@ function node_type_form_validate($form_id, $form_values) {
   $names = array_flip($types);
 
   if (isset($names[$type->name]) && $names[$type->name] != $old_type) {
-    form_set_error('name', t('The human-readable name %name is already taken.', array('%name' => $names[$type->name])));
+    form_set_error('name', t('The human-readable name %name is already taken.', array('%name' => $type->name)));
   }
 }
 

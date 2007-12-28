@@ -1,5 +1,5 @@
 <?php
-// $Id: user.module,v 1.745.2.24 2007/12/27 09:45:21 drumm Exp $
+// $Id: user.module,v 1.745.2.25 2007/12/28 05:38:27 drumm Exp $
 
 /**
  * @file
@@ -885,10 +885,8 @@ function user_set_authmaps($account, $authmaps) {
 
 function user_auth_help_links() {
   $links = array();
-  foreach (module_list() as $module) {
-    if (module_hook($module, 'auth')) {
-      $links[] = l(module_invoke($module, 'info', 'name'), 'user/help', array(), NULL, $module);
-    }
+  foreach (module_implements('auth') as $module) {
+    $links[] = l(module_invoke($module, 'info', 'name'), 'user/help', array(), NULL, $module);
   }
   return $links;
 }

@@ -1,5 +1,5 @@
 <?php
-// $Id: node.module,v 1.776.2.21 2007/09/29 23:41:28 drumm Exp $
+// $Id: node.module,v 1.776.2.22 2008/01/07 01:31:26 drumm Exp $
 
 /**
  * @file
@@ -1223,12 +1223,14 @@ function node_menu($may_cache) {
           $items[] = array(
             'path' => 'node/'. arg(1) .'/revisions/'. arg(3) .'/delete',
             'callback' => 'node_revision_delete',
-            'callback arguments' => array(arg(1), arg(3)), 
+            'callback arguments' => array(arg(1), arg(3)),
+            'type' => MENU_CALLBACK,
           );
           $items[] = array(
             'path' => 'node/'. arg(1) .'/revisions/'. arg(3) .'/revert',
             'callback' => 'node_revision_revert',
-            'callback arguments' => array(arg(1), arg(3)), 
+            'callback arguments' => array(arg(1), arg(3)),
+            'type' => MENU_CALLBACK,
           );
         }
       }

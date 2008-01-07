@@ -1,5 +1,5 @@
 <?php
-// $Id: user.module,v 1.745.2.25 2007/12/28 05:38:27 drumm Exp $
+// $Id: user.module,v 1.745.2.26 2008/01/07 02:30:35 drumm Exp $
 
 /**
  * @file
@@ -2446,6 +2446,8 @@ function _user_categories($account) {
 }
 
 function _user_sort($a, $b) {
+  $a = (array)$a + array('weight' => 0, 'title' => '');
+  $b = (array)$b + array('weight' => 0, 'title' => '');
   return $a['weight'] < $b['weight'] ? -1 : ($a['weight'] > $b['weight'] ? 1 : ($a['title'] < $b['title'] ? -1 : 1));
 }
 

@@ -1,5 +1,5 @@
 <?php
-// $Id: system.module,v 1.320.2.30 2007/12/06 20:27:40 killes Exp $
+// $Id: system.module,v 1.320.2.31 2008/01/10 19:00:04 killes Exp $
 
 /**
  * @file
@@ -169,7 +169,7 @@ function system_user($type, $edit, &$user, $category = NULL) {
   }
 }
 
-/*
+/**
  * Returns a fieldset containing the theme select form.
  *
  * @param $description

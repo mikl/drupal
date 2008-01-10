@@ -1,5 +1,5 @@
 <?php
-// $Id: watchdog.module,v 1.143 2006/04/13 08:25:27 killes Exp $
+// $Id: watchdog.module,v 1.143.2.1 2008/01/10 22:18:19 killes Exp $
 
 /**
  * @file
@@ -74,6 +74,9 @@ function watchdog_user($op, &$edit, &$user) {
  * Menu callback; displays a listing of log messages.
  */
 function watchdog_overview() {
+  if (ini_get('register_globals')) {
+    drupal_set_message(t('<em>register_globals</em> is enabled. Drupal requires this configuration directive to be disabled. Your site may not be secure when <em>register_globals</em> is enabled. The PHP manual has instructions for <a href="http://php.net/configuration.changes">how to change configuration settings</a>.'), 'error');
+  }
   $icons = array(WATCHDOG_NOTICE  => '',
                  WATCHDOG_WARNING => theme('image', 'misc/watchdog-warning.png', t('warning'), t('warning')),
                  WATCHDOG_ERROR   => theme('image', 'misc/watchdog-error.png', t('error'), t('error')));

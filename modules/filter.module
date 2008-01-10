@@ -1,5 +1,5 @@
 <?php
-// $Id: filter.module,v 1.122.2.7 2007/07/02 19:05:22 killes Exp $
+// $Id: filter.module,v 1.122.2.8 2008/01/10 22:18:19 killes Exp $
 
 /**
  * @file
@@ -1135,6 +1135,11 @@ function filter_xss_admin($string) {
  *   The format to use.
  */
 function filter_xss($string, $allowed_tags = array('a', 'em', 'strong', 'cite', 'code', 'ul', 'ol', 'li', 'dl', 'dt', 'dd')) {
+  // Only operate on valid UTF-8 strings. This is necessary to prevent cross
+  // site scripting issues on Internet Explorer 6.
+  if (!drupal_validate_utf8($string)) {
+    return '';
+  }
   // Store the input format
   _filter_xss_split($allowed_tags, TRUE);
   // Remove NUL characters (ignored by some browsers)

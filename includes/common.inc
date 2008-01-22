@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.611.2.14 2007/12/27 09:21:23 drumm Exp $
+// $Id: common.inc,v 1.611.2.15 2008/01/22 09:36:49 drumm Exp $
 
 /**
  * @file
@@ -554,7 +554,7 @@ function error_handler($errno, $message, $filename, $line) {
   }
 
   if ($errno & (E_ALL ^ E_NOTICE)) {
-    $types = array(1 => 'error', 2 => 'warning', 4 => 'parse error', 8 => 'notice', 16 => 'core error', 32 => 'core warning', 64 => 'compile error', 128 => 'compile warning', 256 => 'user error', 512 => 'user warning', 1024 => 'user notice', 2048 => 'strict warning');
+    $types = array(1 => 'error', 2 => 'warning', 4 => 'parse error', 8 => 'notice', 16 => 'core error', 32 => 'core warning', 64 => 'compile error', 128 => 'compile warning', 256 => 'user error', 512 => 'user warning', 1024 => 'user notice', 2048 => 'strict warning', 4096 => 'recoverable fatal error');
     $entry = $types[$errno] .': '. $message .' in '. $filename .' on line '. $line .'.';
 
     // Force display of error messages in update.php

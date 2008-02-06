@@ -1,5 +1,5 @@
 <?php
-// $Id: menu.inc,v 1.255 2008/02/04 12:07:23 goba Exp $
+// $Id: menu.inc,v 1.255.2.1 2008/02/06 12:11:22 goba Exp $
 
 /**
  * @file
@@ -652,6 +652,14 @@ function _menu_link_translate(&$item) {
 
     _menu_item_localize($item, $map, TRUE);
   }
+  
+  // Allow other customizations - e.g. adding a page-specific query string to the
+  // options array. For performance reasons we only invoke this hook if the link
+  // has the 'alter' flag set in the options array.
+  if (!empty($item['options']['alter'])) {
+    drupal_alter('translated_menu_link', $item, $map);
+  }
+  
   return $map;
 }
 

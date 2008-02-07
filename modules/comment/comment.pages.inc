@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.pages.inc,v 1.2 2007/12/16 21:01:44 goba Exp $
+// $Id: comment.pages.inc,v 1.2.2.1 2008/02/07 18:53:38 goba Exp $
 
 /**
  * @file
@@ -57,7 +57,7 @@ function comment_reply($node, $pid = NULL) {
 
   if (user_access('access comments')) {
     // The user is previewing a comment prior to submitting it.
-    if ($op == t('Preview comment')) {
+    if ($op == t('Preview')) {
       if (user_access('post comments')) {
         $output .= comment_form_box(array('pid' => $pid, 'nid' => $node->nid), NULL);
       }

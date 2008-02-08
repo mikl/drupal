@@ -1,5 +1,5 @@
 <?php
-// $Id: menu.admin.inc,v 1.26.2.1 2008/02/08 17:07:54 goba Exp $
+// $Id: menu.admin.inc,v 1.26.2.2 2008/02/08 18:54:11 goba Exp $
 
 /**
  * @file
@@ -80,6 +80,7 @@ function _menu_overview_tree_form($tree) {
       );
       $form[$mlid]['weight'] = array(
         '#type' => 'weight',
+        '#delta' => 50,
         '#default_value' => isset($form_state[$mlid]['weight']) ? $form_state[$mlid]['weight'] : $item['weight'],
       );
       $form[$mlid]['mlid'] = array(

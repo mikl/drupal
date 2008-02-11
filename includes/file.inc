@@ -1,5 +1,5 @@
 <?php
-// $Id: file.inc,v 1.90.2.3 2008/01/07 01:00:22 drumm Exp $
+// $Id: file.inc,v 1.90.2.4 2008/02/11 05:45:48 drumm Exp $
 
 /**
  * @file
@@ -728,8 +728,7 @@ function file_upload_max_size() {
 
   if ($max_size < 0) {
     $upload_max = parse_size(ini_get('upload_max_filesize'));
-    // sanity check- a single upload should not be more than 50% the size limit of the total post
-    $post_max = parse_size(ini_get('post_max_size')) / 2;
+    $post_max = parse_size(ini_get('post_max_size'));
     $max_size = ($upload_max < $post_max) ? $upload_max : $post_max;
   }
   return $max_size;

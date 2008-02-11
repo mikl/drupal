@@ -1,5 +1,5 @@
 <?php
-// $Id: menu.inc,v 1.146.2.1 2007/06/17 01:50:50 drumm Exp $
+// $Id: menu.inc,v 1.146.2.2 2008/02/11 05:26:53 drumm Exp $
 
 /**
  * @file
@@ -975,7 +975,7 @@ function _menu_get_active_trail_in_submenu($pid) {
     $count = 0;
     while ($path && !$count) {
       foreach ($menu['items'] as $key => $item) {
-        if (isset($item['path']) && $item['path'] == $path) {
+        if (isset($item['path']) && ($item['path'] == $path || ($item['path'] == '<front>' && drupal_is_front_page()))) {
           $trails[$count] = array();
           $mid = $key;
           while ($mid && $menu['items'][$mid]) {

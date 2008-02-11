@@ -1,5 +1,5 @@
 <?php
-// $Id: content_types.inc,v 1.24.2.3 2007/12/27 09:57:47 drumm Exp $
+// $Id: content_types.inc,v 1.24.2.4 2008/02/11 07:54:44 drumm Exp $
 
 /**
  * @file
@@ -236,9 +236,11 @@ function node_type_form_validate($form_id, $form_values) {
     if (!preg_match('!^[a-z0-9_]+$!', $type->type)) {
       form_set_error('type', t('The machine-readable name can only consist of lowercase letters, underscores, and numbers.'));
     }
-    // The type cannot be just the character '0', since elsewhere we check it using empty().
-    if ($type->type === '0') {
-      form_set_error('type', t("Invalid type. Please enter a type name other than '0' (the character zero)."));
+    // 'theme' conflicts with theme_node_form()
+    // 'add' and 'list' conflict with menu paths
+    // '0' is invalid, since elsewhere we check it using empty().
+    if (in_array($type->type, array('0', 'theme', 'add', 'list'))) {
+      form_set_error('type', t("Invalid machine-readable name. Please enter a name other than %invalid.", array('%invalid' => $type->type)));
     }
   }
 

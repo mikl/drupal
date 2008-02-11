@@ -1,5 +1,5 @@
 <?php
-// $Id: bootstrap.inc,v 1.206 2008/01/10 22:47:17 goba Exp $
+// $Id: bootstrap.inc,v 1.206.2.1 2008/02/11 13:11:14 goba Exp $
 
 /**
  * @file
@@ -494,8 +494,13 @@ function variable_del($name) {
  *
  * Note: we do not serve cached pages when status messages are waiting (from
  * a redirected form submission which was completed).
+ *
+ * @param $status_only
+ *   When set to TRUE, retrieve the status of the page cache only
+ *   (whether it was started in this request or not).
  */
-function page_get_cache() {
+function page_get_cache($status_only = FALSE) {
+  static $status = FALSE;
   global $user, $base_root;
 
   $cache = NULL;
@@ -505,10 +510,11 @@ function page_get_cache() {
 
     if (empty($cache)) {
       ob_start();
+      $status = TRUE;
     }
   }
 
-  return $cache;
+  return $status_only ? $status : $cache;
 }
 
 /**

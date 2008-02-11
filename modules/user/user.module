@@ -1,5 +1,5 @@
 <?php
-// $Id: user.module,v 1.745.2.27 2008/02/10 02:28:44 drumm Exp $
+// $Id: user.module,v 1.745.2.28 2008/02/11 04:06:13 drumm Exp $
 
 /**
  * @file
@@ -1007,7 +1007,7 @@ function user_authenticate($name, $pass) {
         if ($server) {
           $name .= '@'. $server;
         }
-        $registered_user = user_load(array('name' => $name));,
+        $registered_user = user_load(array('name' => $name));
         if (!$registered_user->uid) { // Register this new user.
           $userinfo = array('name' => $name, 'pass' => user_password(), 'init' => $name, 'status' => 1);
           if ($server) {

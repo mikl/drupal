@@ -1,5 +1,5 @@
 <?php
-// $Id: install.inc,v 1.56.2.1 2008/02/08 22:00:45 goba Exp $
+// $Id: install.inc,v 1.56.2.2 2008/02/11 15:10:26 goba Exp $
 
 define('SCHEMA_UNINSTALLED', -1);
 define('SCHEMA_INSTALLED', 0);
@@ -373,12 +373,15 @@ function drupal_install_system() {
  *   The module to uninstall.
  */
 function drupal_uninstall_module($module) {
+  // First, retrieve all the module's menu paths from db.
+  drupal_load('module', $module);
+  $paths = module_invoke($module, 'menu');
+
+  // Uninstall the module(s).
   module_load_install($module);
   module_invoke($module, 'uninstall');
 
-  // Remove menu links for paths declared by this module.
-  drupal_load('module', $module);
-  $paths = module_invoke($module, 'menu');
+  // Now remove the menu links for all paths declared by this module.
   if (!empty($paths)) {
     $paths = array_keys($paths);
     // Clean out the names of load functions.

@@ -1,5 +1,5 @@
 <?php
-// $Id: path.module,v 1.105.2.1 2007/05/21 00:52:28 drumm Exp $
+// $Id: path.module,v 1.105.2.2 2008/02/11 05:11:58 drumm Exp $
 
 /**
  * @file
@@ -211,7 +211,7 @@ function path_form($edit = '') {
  * than through the administrative interface.
  */
 function path_nodeapi(&$node, $op, $arg) {
-  if (user_access('create url aliases') || user_access('administer url aliases')) {
+  if (user_access('create url aliases') || user_access('administer url aliases') || ($op == 'load')) {
     switch ($op) {
       case 'validate':
         $node->path = trim($node->path);

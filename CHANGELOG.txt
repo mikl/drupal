@@ -1,4 +1,8 @@
-// $Id: CHANGELOG.txt,v 1.253.2.3 2008/02/13 14:25:42 goba Exp $
+// $Id: CHANGELOG.txt,v 1.253.2.4 2008/02/13 15:39:26 goba Exp $
+
+Drupal 6.1-dev, xxxx-xx-xx (development version)
+-----------------------
+
 
 Drupal 6.0, 2008-02-13
 ----------------------

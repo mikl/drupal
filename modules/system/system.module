@@ -1,5 +1,5 @@
 <?php
-// $Id: system.module,v 1.585.2.4 2008/02/08 23:23:19 goba Exp $
+// $Id: system.module,v 1.585.2.5 2008/02/13 10:08:34 goba Exp $
 
 /**
  * @file
@@ -514,7 +514,7 @@ function system_menu() {
  * Menu item access callback - only admin or enabled themes can be accessed.
  */
 function _system_themes_access($theme) {
-  return $theme->status || $theme->name == variable_get('admin_theme', '0');
+  return user_access('administer site configuration') && ($theme->status || $theme->name == variable_get('admin_theme', '0'));
 }
 
 /**

@@ -1,4 +1,4 @@
-# $Id: robots.txt,v 1.7.2.1 2007/03/23 18:57:07 drumm Exp $
+# $Id: robots.txt,v 1.7.2.2 2008/02/25 02:18:25 drumm Exp $
 #
 # robots.txt
 #
@@ -43,7 +43,6 @@ Disallow: /LICENSE.txt
 Disallow: /UPGRADE.txt
 # Paths (clean URLs)
 Disallow: /admin/
-Disallow: /aggregator/
 Disallow: /comment/reply/
 Disallow: /contact/
 Disallow: /logout/
@@ -54,7 +53,6 @@ Disallow: /user/password/
 Disallow: /user/login/
 # Paths (no clean URLs)
 Disallow: /?q=admin/
-Disallow: /?q=aggregator/
 Disallow: /?q=comment/reply/
 Disallow: /?q=contact/
 Disallow: /?q=logout/

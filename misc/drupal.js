@@ -1,4 +1,4 @@
-// $Id: drupal.js,v 1.41.2.1 2008/02/06 12:18:04 goba Exp $
+// $Id: drupal.js,v 1.41.2.2 2008/02/27 19:44:44 goba Exp $
 
 var Drupal = Drupal || { 'settings': {}, 'behaviors': {}, 'themes': {}, 'locale': {} };
 
@@ -51,7 +51,8 @@ Drupal.checkPlain = function(str) {
   str = String(str);
   var replace = { '&': '&amp;', '"': '&quot;', '<': '&lt;', '>': '&gt;' };
   for (var character in replace) {
-    str = str.replace(character, replace[character]);
+    var regex = new RegExp(character, 'g');
+    str = str.replace(regex, replace[character]);
   }
   return str;
 };

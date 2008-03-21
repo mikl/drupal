@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.415 2008/01/27 19:47:06 goba Exp $
+// $Id: theme.inc,v 1.415.2.1 2008/03/21 22:05:55 goba Exp $
 
 /**
  * @file
@@ -1552,7 +1552,7 @@ function theme_username($object) {
     }
 
     if (user_access('access user profiles')) {
-      $output = l($name, 'user/'. $object->uid, array('title' => t('View user profile.')));
+      $output = l($name, 'user/'. $object->uid, array('attributes' => array('title' => t('View user profile.'))));
     }
     else {
       $output = check_plain($name);

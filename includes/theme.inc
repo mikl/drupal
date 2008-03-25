@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.415.2.1 2008/03/21 22:05:55 goba Exp $
+// $Id: theme.inc,v 1.415.2.2 2008/03/25 11:55:08 goba Exp $
 
 /**
  * @file
@@ -1103,7 +1103,7 @@ function theme_links($links, $attributes = array('class' => 'links')) {
       if ($i == $num_links) {
         $class .= ' last';
       }
-      if (isset($link['href']) && $link['href'] == $_GET['q']) {
+      if (isset($link['href']) && ($link['href'] == $_GET['q'] || ($link['href'] == '<front>' && drupal_is_front_page()))) {
         $class .= ' active';
       }
       $output .= '<li class="'. $class .'">';

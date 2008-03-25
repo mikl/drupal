@@ -1,5 +1,5 @@
 <?php
-// $Id: system.admin.inc,v 1.63 2008/02/04 12:35:48 goba Exp $
+// $Id: system.admin.inc,v 1.63.2.1 2008/03/25 11:58:16 goba Exp $
 
 /**
  * @file
@@ -1359,7 +1359,7 @@ function system_performance_settings() {
  */
 function system_clear_cache_submit(&$form_state, $form) {
   drupal_flush_all_caches();
-  drupal_set_message('Caches cleared.');
+  drupal_set_message(t('Caches cleared.'));
 }
 
 /**

@@ -1,5 +1,5 @@
 <?php
-// $Id: openid.module,v 1.19 2008/01/30 22:11:22 goba Exp $
+// $Id: openid.module,v 1.19.2.1 2008/04/09 21:11:48 goba Exp $
 
 /**
  * @file
@@ -30,6 +30,8 @@ function openid_menu() {
     'title' => 'Delete OpenID',
     'page callback' => 'openid_user_delete',
     'page arguments' => array(1),
+    'access callback' => 'user_edit_access',
+    'access arguments' => array(1),
     'type' => MENU_CALLBACK,
     'file' => 'openid.pages.inc',
   );

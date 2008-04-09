@@ -1,5 +1,5 @@
 <?php
-// $Id: help.module,v 1.78 2007/12/14 18:08:46 goba Exp $
+// $Id: help.module,v 1.78.2.1 2008/04/09 21:11:48 goba Exp $
 
 /**
  * @file
@@ -23,6 +23,7 @@ function help_menu() {
       'title' => $module,
       'page callback' => 'help_page',
       'page arguments' => array(2),
+      'access arguments' => array('access administration pages'),
       'type' => MENU_CALLBACK,
       'file' => 'help.admin.inc',
     );

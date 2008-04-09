@@ -1,5 +1,5 @@
 <?php
-// $Id: path.module,v 1.138 2008/02/03 19:20:35 goba Exp $
+// $Id: path.module,v 1.138.2.1 2008/04/09 21:11:48 goba Exp $
 
 /**
  * @file
@@ -46,6 +46,7 @@ function path_menu() {
   $items['admin/build/path/edit'] = array(
     'title' => 'Edit alias',
     'page callback' => 'path_admin_edit',
+    'access arguments' => array('administer url aliases'),
     'type' => MENU_CALLBACK,
     'file' => 'path.admin.inc',
   );
@@ -53,6 +54,7 @@ function path_menu() {
     'title' => 'Delete alias',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('path_admin_delete_confirm'),
+    'access arguments' => array('administer url aliases'),
     'type' => MENU_CALLBACK,
     'file' => 'path.admin.inc',
   );

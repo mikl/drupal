@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.module,v 1.617 2008/01/25 16:19:12 goba Exp $
+// $Id: comment.module,v 1.617.2.1 2008/04/09 21:11:46 goba Exp $
 
 /**
  * @file
@@ -211,6 +211,7 @@ function comment_menu() {
   $items['admin/content/comment/approval'] = array(
     'title' => 'Approval queue',
     'page arguments' => array('approval'),
+    'access arguments' => array('administer comments'),
     'type' => MENU_LOCAL_TASK,
     'file' => 'comment.admin.inc',
   );

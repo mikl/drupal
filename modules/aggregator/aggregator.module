@@ -1,5 +1,5 @@
 <?php
-// $Id: aggregator.module,v 1.374 2008/01/15 08:06:32 dries Exp $
+// $Id: aggregator.module,v 1.374.2.1 2008/04/09 21:11:44 goba Exp $
 
 /**
  * @file
@@ -201,6 +201,7 @@ function aggregator_menu() {
   $items['aggregator/sources/%aggregator_feed'] = array(
     'page callback' => 'aggregator_page_source',
     'page arguments' => array(2),
+    'access arguments' => array('access news feeds'),
     'type' => MENU_CALLBACK,
     'file' => 'aggregator.pages.inc',
   );

@@ -1,5 +1,5 @@
 <?php
-// $Id: xmlrpc.inc,v 1.47.2.1 2008/03/21 22:12:56 goba Exp $
+// $Id: xmlrpc.inc,v 1.47.2.2 2008/04/14 18:01:19 dries Exp $
 
 /**
  * @file
@@ -465,7 +465,7 @@ function _xmlrpc() {
  */
 function xmlrpc_errno() {
   $error = xmlrpc_error();
-  return $error->code;
+  return ($error != NULL ? $error->code : NULL);
 }
 
 /**
@@ -473,5 +473,5 @@ function xmlrpc_errno() {
  */
 function xmlrpc_error_msg() {
   $error = xmlrpc_error();
-  return $error->message;
+  return ($error != NULL ? $error->message : NULL);
 }

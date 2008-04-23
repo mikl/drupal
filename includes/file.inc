@@ -1,5 +1,5 @@
 <?php
-// $Id: file.inc,v 1.121.2.1 2008/02/07 18:20:37 goba Exp $
+// $Id: file.inc,v 1.121.2.2 2008/04/23 18:18:09 dries Exp $
 
 /**
  * @file
@@ -884,7 +884,7 @@ function file_scan_directory($dir, $mask, $nomask = array('.', '..', 'CVS'), $ca
   $files = array();
 
   if (is_dir($dir) && $handle = opendir($dir)) {
-    while ($file = readdir($handle)) {
+    while (false !== ($file = readdir($handle))) {
       if (!in_array($file, $nomask) && $file[0] != '.') {
         if (is_dir("$dir/$file") && $recurse) {
           // Give priority to files in this folder by merging them in after any subdirectory files.

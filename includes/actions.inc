@@ -1,5 +1,5 @@
 <?php
-// $Id: actions.inc,v 1.8 2007/12/31 14:51:04 goba Exp $
+// $Id: actions.inc,v 1.8.2.1 2008/04/23 18:06:36 dries Exp $
 
 /**
  * @file
@@ -43,7 +43,7 @@ function actions_do($action_ids, &$object, $context = NULL, $a1 = NULL, $a2 = NU
   static $stack;
   $stack++;
   if ($stack > variable_get('actions_max_stack', 35)) {
-    watchdog('actions', 'Stack overflow: too many calls to actions_do(). Aborting to prevent infinite recursion.', WATCHDOG_ERROR);
+    watchdog('actions', 'Stack overflow: too many calls to actions_do(). Aborting to prevent infinite recursion.', array(), WATCHDOG_ERROR);
     return;
   }
   $actions = array();

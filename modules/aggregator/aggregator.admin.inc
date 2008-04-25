@@ -1,5 +1,5 @@
 <?php
-// $Id: aggregator.admin.inc,v 1.7 2008/01/10 22:47:17 goba Exp $
+// $Id: aggregator.admin.inc,v 1.7.2.1 2008/04/25 21:11:57 goba Exp $
 
 /**
  * @file
@@ -117,10 +117,10 @@ function aggregator_form_feed_validate($form, &$form_state) {
     }
     // Check for duplicate titles.
     if (isset($form_state['values']['fid'])) {
-      $result = db_query("SELECT title, url FROM {aggregator_feed} WHERE (title = '%s' OR url='%s') AND fid != %d", $form_state['values']['title'], $form_state['values']['url'], $form_state['values']['fid']);
+      $result = db_query("SELECT title, url FROM {aggregator_feed} WHERE (title = '%s' OR url = '%s') AND fid <> %d", $form_state['values']['title'], $form_state['values']['url'], $form_state['values']['fid']);
     }
     else {
-      $result = db_query("SELECT title, url FROM {aggregator_feed} WHERE title = '%s' OR url='%s'", $form_state['values']['title'], $form_state['values']['url']);
+      $result = db_query("SELECT title, url FROM {aggregator_feed} WHERE title = '%s' OR url = '%s'", $form_state['values']['title'], $form_state['values']['url']);
     }
     while ($feed = db_fetch_object($result)) {
       if (strcasecmp($feed->title, $form_state['values']['title']) == 0) {
@@ -286,7 +286,7 @@ function aggregator_form_category_validate($form, &$form_state) {
   if ($form_state['values']['op'] == t('Save')) {
     // Check for duplicate titles
     if (isset($form_state['values']['cid'])) {
-      $category = db_fetch_object(db_query("SELECT cid FROM {aggregator_category} WHERE title = '%s' AND cid != %d", $form_state['values']['title'], $form_state['values']['cid']));
+      $category = db_fetch_object(db_query("SELECT cid FROM {aggregator_category} WHERE title = '%s' AND cid <> %d", $form_state['values']['title'], $form_state['values']['cid']));
     }
     else {
       $category = db_fetch_object(db_query("SELECT cid FROM {aggregator_category} WHERE title = '%s'", $form_state['values']['title']));

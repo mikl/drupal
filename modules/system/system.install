@@ -1,5 +1,5 @@
 <?php
-// $Id: system.install,v 1.238.2.2 2008/04/15 07:45:42 dries Exp $
+// $Id: system.install,v 1.238.2.3 2008/04/25 21:24:20 goba Exp $
 
 /**
  * Test and report Drupal installation requirements.
@@ -1717,7 +1717,7 @@ function system_update_6021() {
     'secondary-links' => array(
       'menu_name' => 'secondary-links',
       'title' => 'Secondary links',
-      'description' => 'Secondary links are often used for pages like legal notices, contact details, and other secondary navigation items that play a lesser role than primary links',
+      'description' => 'Secondary links are often used for pages like legal notices, contact details, and other secondary navigation items that play a lesser role than primary links.',
     ),
   );
   // Multi-part update

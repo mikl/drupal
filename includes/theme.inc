@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.415.2.2 2008/03/25 11:55:08 goba Exp $
+// $Id: theme.inc,v 1.415.2.3 2008/04/25 20:54:55 goba Exp $
 
 /**
  * @file
@@ -330,8 +330,13 @@ function _theme_process_registry(&$cache, $name, $type, $theme, $path) {
           if (function_exists($prefix .'_preprocess')) {
             $info['preprocess functions'][] = $prefix .'_preprocess';
           }
+
           if (function_exists($prefix .'_preprocess_'. $hook)) {
             $info['preprocess functions'][] = $prefix .'_preprocess_'. $hook;
+          }
+
+          if (!empty($info['original hook']) && function_exists($prefix .'_preprocess_'. $info['original hook'])) {
+            $info['preprocess functions'][] = $prefix .'_preprocess_'. $info['original hook'];
           }
         }
       }
@@ -725,6 +730,8 @@ function drupal_find_theme_functions($cache, $prefixes) {
             $templates[$new_hook] = array(
               'function' => $match,
               'arguments' => $info['arguments'],
+              'original hook' => $hook,
+              'preprocess functions' => $info['preprocess functions'],
             );
           }
         }
@@ -817,6 +824,8 @@ function drupal_find_theme_templates($cache, $extension, $path) {
             'template' => $file,
             'path' => dirname($files[$match]->filename),
             'arguments' => $info['arguments'],
+            'original hook' => $hook,
+            'preprocess functions' => $info['preprocess functions'],
           );
         }
       }

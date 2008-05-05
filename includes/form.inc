@@ -1,5 +1,5 @@
 <?php
-// $Id: form.inc,v 1.265.2.5 2008/04/25 21:08:04 goba Exp $
+// $Id: form.inc,v 1.265.2.6 2008/05/05 21:33:30 dries Exp $
 
 /**
  * @defgroup forms Form builder functions
@@ -232,11 +232,12 @@ function form_get_cache($form_build_id, &$form_state) {
  * Store a form in the cache
  */
 function form_set_cache($form_build_id, $form, $form_state) {
-  $expire = max(ini_get('session.cookie_lifetime'), 86400);
+  // 6 hours cache life time for forms should be plenty.
+  $expire = 21600;
 
-  cache_set('form_'. $form_build_id, $form, 'cache_form', $expire);
+  cache_set('form_'. $form_build_id, $form, 'cache_form', time() + $expire);
   if (!empty($form_state['storage'])) {
-    cache_set('storage_'. $form_build_id, $form_state['storage'], 'cache_form', $expire);
+    cache_set('storage_'. $form_build_id, $form_state['storage'], 'cache_form', time() + $expire);
   }
 }
 

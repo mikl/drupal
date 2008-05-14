@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.756.2.11 2008/05/05 21:40:46 dries Exp $
+// $Id: common.inc,v 1.756.2.12 2008/05/14 13:15:37 dries Exp $
 
 /**
  * @file
@@ -2008,10 +2008,10 @@ function drupal_add_js($data = NULL, $type = 'module', $scope = 'header', $defer
  * are added to the page. Then, all settings are output, followed by 'inline'
  * JavaScript code. If running update.php, all preprocessing is disabled.
  *
- * @parameter $scope
+ * @param $scope
  *   (optional) The scope for which the JavaScript rules should be returned.
  *   Defaults to 'header'.
- * @parameter $javascript
+ * @param $javascript
  *   (optional) An array with all JavaScript code. Defaults to the default
  *   JavaScript array for the given scope.
  * @return

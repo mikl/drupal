@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.756.2.12 2008/05/14 13:15:37 dries Exp $
+// $Id: common.inc,v 1.756.2.13 2008/05/14 15:54:56 goba Exp $
 
 /**
  * @file
@@ -3225,6 +3225,11 @@ function drupal_write_record($table, &$object, $update = array()) {
     $update = array($update);
   }
 
+  $schema = drupal_get_schema($table);
+  if (empty($schema)) {
+    return FALSE;
+  }
+  
   // Convert to an object if needed.
   if (is_array($object)) {
     $object = (object) $object;
@@ -3232,11 +3237,6 @@ function drupal_write_record($table, &$object, $update = array()) {
   }
   else {
     $array = FALSE;
-  }
-
-  $schema = drupal_get_schema($table);
-  if (empty($schema)) {
-    return FALSE;
   }
 
   $fields = $defs = $values = $serials = $placeholders = array();
@@ -3307,16 +3307,17 @@ function drupal_write_record($table, &$object, $update = array()) {
         $object->$field = db_last_insert_id($table, $field);
       }
     }
-
-    // If we began with an array, convert back so we don't surprise the caller.
-    if ($array) {
-      $object = (array) $object;
-    }
-
-    return $return;
+  }
+  else {
+    $return = FALSE;
   }
 
-  return FALSE;
+  // If we began with an array, convert back so we don't surprise the caller.
+  if ($array) {
+    $object = (array) $object;
+  }
+
+  return $return;
 }
 
 /**

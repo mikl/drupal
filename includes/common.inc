@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.756.2.13 2008/05/14 15:54:56 goba Exp $
+// $Id: common.inc,v 1.756.2.14 2008/05/19 08:04:33 goba Exp $
 
 /**
  * @file
@@ -1712,6 +1712,8 @@ function drupal_get_css($css = NULL) {
         // If the theme supplies its own style using the name of the module style, skip its inclusion.
         // This includes any RTL styles associated with its main LTR counterpart.
         if ($type == 'module' && in_array(str_replace('-rtl.css', '.css', basename($file)), $theme_styles)) {
+          // Unset the file to prevent its inclusion when CSS aggregation is enabled.
+          unset($types[$type][$file]);
           continue;
         }
         if (!$preprocess || !($is_writable && $preprocess_css)) {

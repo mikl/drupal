@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.611.2.16 2008/02/11 05:31:54 drumm Exp $
+// $Id: common.inc,v 1.611.2.17 2008/05/26 03:35:45 drumm Exp $
 
 /**
  * @file
@@ -1759,10 +1759,10 @@ function drupal_urlencode($text) {
   if (variable_get('clean_url', '0')) {
     return str_replace(array('%2F', '%26', '%23', '//'),
                        array('/', '%2526', '%2523', '/%252F'),
-                       urlencode($text));
+                       rawurlencode($text));
   }
   else {
-    return str_replace('%2F', '/', urlencode($text));
+    return str_replace('%2F', '/', rawurlencode($text));
   }
 }
 

@@ -1,5 +1,5 @@
 <?php
-// $Id: menu.inc,v 1.255.2.13 2008/05/19 07:39:19 goba Exp $
+// $Id: menu.inc,v 1.255.2.14 2008/06/08 09:34:44 goba Exp $
 
 /**
  * @file
@@ -514,7 +514,7 @@ function _menu_item_localize(&$item, $map, $link_translate = FALSE) {
   if (!empty($item['description'])) {
     $original_description = $item['description'];
     $item['description'] = t($item['description']);
-    if ($link_translate && $item['options']['attributes']['title'] == $original_description) {
+    if ($link_translate && isset($item['options']['attributes']['title']) && $item['options']['attributes']['title'] == $original_description) {
       $item['localized_options']['attributes']['title'] = $item['description'];
     }
   }

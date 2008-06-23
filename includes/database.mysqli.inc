@@ -1,5 +1,5 @@
 <?php
-// $Id: database.mysqli.inc,v 1.32.2.2 2008/02/11 05:50:28 drumm Exp $
+// $Id: database.mysqli.inc,v 1.32.2.3 2008/06/23 04:43:57 drumm Exp $
 
 /**
  * @file
@@ -75,6 +75,9 @@ function db_connect($url) {
   }
   $url['host'] = urldecode($url['host']);
   $url['path'] = urldecode($url['path']);
+  if (!isset($url['port'])) {
+    $url['port'] = NULL;
+  }
 
   $connection = mysqli_init();
   @mysqli_real_connect($connection, $url['host'], $url['user'], $url['pass'], substr($url['path'], 1), $url['port'], NULL, MYSQLI_CLIENT_FOUND_ROWS);

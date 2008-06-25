@@ -1,5 +1,5 @@
 <?php
-// $Id: menu.inc,v 1.255.2.15 2008-06-25 08:08:17 goba Exp $
+// $Id: menu.inc,v 1.255.2.16 2008-06-25 08:49:25 goba Exp $
 
 /**
  * @file
@@ -1522,10 +1522,10 @@ function menu_set_active_trail($new_trail = NULL) {
         $curr = FALSE;
       }
       else {
-        // Move to the child link if it's in the active trail.
-        if ($curr['below'] && $curr['link']['in_active_trail']) {
+        // Add the link if it's in the active trail, then move to the link below.
+        if ($curr['link']['in_active_trail']) {
           $trail[] = $curr['link'];
-          $tree = $curr['below'];
+          $tree = $curr['below'] ? $curr['below'] : array();
         }
         list($key, $curr) = each($tree);
       }

@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.611.2.18 2008/05/26 03:39:32 drumm Exp $
+// $Id: common.inc,v 1.611.2.19 2008/07/06 01:32:35 drumm Exp $
 
 /**
  * @file
@@ -1560,6 +1560,8 @@ function drupal_build_css_cache($types, $filename) {
  */
 function drupal_clear_css_cache() {
   file_scan_directory(file_create_path('css'), '.*', array('.', '..', 'CVS'), 'file_delete', TRUE);
+  // Clear the page cache, so cached pages do not reference nonexistent CSS.
+  cache_clear_all();
 }
 
 /**

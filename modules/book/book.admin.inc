@@ -1,5 +1,5 @@
 <?php
-// $Id: book.admin.inc,v 1.8 2008-01-08 10:35:41 goba Exp $
+// $Id: book.admin.inc,v 1.8.2.1 2008-07-08 09:35:39 goba Exp $
 
 /**
  * @file
@@ -226,25 +226,3 @@ function theme_book_admin_table($form) {
   return theme('table', $header, $rows, array('id' => 'book-outline'));
 }
 
-/**
- * Recursive helper to sort each layer of a book tree by weight.
- */
-function _book_admin_sort_tree(&$tree) {
-  uasort($tree, '_book_admin_compare');
-  foreach ($tree as $key => $subtree) {
-    if (!empty($tree[$key]['below'])) {
-      _book_admin_sort_tree($tree[$key]['below']);
-    }
-  }
-}
-
-/**
- * Used by uasort() in _book_admin_sort_tree() to compare items in a book tree.
- */
-function _book_admin_compare($a, $b) {
-  $weight = $a['link']['weight'] - $b['link']['weight'];
-  if ($weight) {
-    return $weight;
-  }
-  return strncmp($a['link']['title'], $b['link']['title']);
-}

@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.415.2.8 2008-07-08 09:43:18 goba Exp $
+// $Id: theme.inc,v 1.415.2.9 2008-07-09 21:48:28 goba Exp $
 
 /**
  * @file
@@ -1114,7 +1114,7 @@ function theme_links($links, $attributes = array('class' => 'links')) {
       if (isset($link['href']) && ($link['href'] == $_GET['q'] || ($link['href'] == '<front>' && drupal_is_front_page()))) {
         $class .= ' active';
       }
-      $output .= '<li class="'. $class .'">';
+      $output .= '<li'. drupal_attributes(array('class' => $class)) .'>';
 
       if (isset($link['href'])) {
         // Pass in $link as $options, they share the same keys.

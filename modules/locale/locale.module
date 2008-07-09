@@ -1,5 +1,5 @@
 <?php
-// $Id: locale.module,v 1.212.2.1 2008-04-09 21:11:48 goba Exp $
+// $Id: locale.module,v 1.212.2.2 2008-07-09 21:48:28 goba Exp $
 
 /**
  * @file
@@ -173,7 +173,7 @@ function locale_menu() {
   $items['admin/build/translate/delete/%'] = array(
     'title' => 'Delete string',
     'page callback' => 'locale_inc_callback',
-    'page arguments' => array('locale_translate_delete', 4),  // directly deletes, no confirmation
+    'page arguments' => array('locale_translate_delete_page', 4),
     'access arguments' => array('translate interface'),
     'type' => MENU_CALLBACK,
   );

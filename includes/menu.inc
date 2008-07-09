@@ -1,5 +1,5 @@
 <?php
-// $Id: menu.inc,v 1.255.2.16 2008/06/25 08:49:25 goba Exp $
+// $Id: menu.inc,v 1.255.2.17 2008/07/09 15:23:50 goba Exp $
 
 /**
  * @file
@@ -1263,7 +1263,12 @@ function menu_navigation_links($menu_name, $level = 0) {
       $l['href'] = $item['link']['href'];
       $l['title'] = $item['link']['title'];
       if ($item['link']['in_active_trail']) {
-        $l['attributes'] = array('class' => 'active-trail');
+        if (empty($l['attributes']['class'])) {
+          $l['attributes']['class'] = 'active-trail';
+        }
+        else {
+          $l['attributes']['class'] .= ' active-trail'; 
+        }
       }
       // Keyed with unique menu id to generate classes from theme_links().
       $links['menu-'. $item['link']['mlid']] = $l;

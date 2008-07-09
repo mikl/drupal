@@ -1,5 +1,5 @@
 <?php
-// $Id: bootstrap.inc,v 1.206.2.2 2008/02/11 14:36:21 goba Exp $
+// $Id: bootstrap.inc,v 1.206.2.3 2008/07/09 19:15:59 goba Exp $
 
 /**
  * @file
@@ -279,6 +279,11 @@ function conf_init() {
 
   if (file_exists('./'. conf_path() .'/settings.php')) {
     include_once './'. conf_path() .'/settings.php';
+  }
+
+  // Ignore the placeholder url from default.settings.php.
+  if (isset($db_url) && $db_url == 'mysql://username:password@localhost/databasename') {
+    $db_url = '';
   }
 
   if (isset($base_url)) {

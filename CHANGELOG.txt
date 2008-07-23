@@ -1,8 +1,9 @@
-// $Id: CHANGELOG.txt,v 1.173.2.22 2008/07/09 22:17:19 drumm Exp $
+// $Id: CHANGELOG.txt,v 1.173.2.23 2008/07/23 19:52:50 drumm Exp $
 
-Drupal 5.9, xxxx-xx-xx
+Drupal 5.9, 2008-07-23
 ----------------------
-
+- fixed a variety of small bugs.
+- fixed security issues, (Session fixation), see SA-2008-046
 
 Drupal 5.8, 2008-07-09
 ----------------------

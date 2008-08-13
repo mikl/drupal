@@ -1,5 +1,5 @@
 <?php
-// $Id: xmlrpc.inc,v 1.38.2.3 2008-06-07 00:38:35 drumm Exp $
+// $Id: xmlrpc.inc,v 1.38.2.4 2008-08-13 18:01:53 drumm Exp $
 
 /*
   Drupal XML-RPC library. Based on the IXR - The Incutio XML-RPC Library - (c) Incutio Ltd 2002-2005
@@ -387,7 +387,7 @@ function xmlrpc_date($time) {
     $xmlrpc_date->hour = date('H', $time);
     $xmlrpc_date->minute = date('i', $time);
     $xmlrpc_date->second = date('s', $time);
-    $xmlrpc_date->iso8601 = date('Ymd\TH:i:s');
+    $xmlrpc_date->iso8601 = date('Ymd\TH:i:s', $time);
   }
   else {
     $time = str_replace(array('-', ':'), '', $time);

@@ -1,4 +1,4 @@
-// $Id: drupal.js,v 1.29.2.1 2007/07/15 23:07:06 drumm Exp $
+// $Id: drupal.js,v 1.29.2.2 2008/08/13 18:12:23 drumm Exp $
 
 var Drupal = Drupal || {};
 
@@ -202,5 +202,5 @@ Drupal.encodeURIComponent = function (item, uri) {
 
 // Global Killswitch on the <html> element
 if (Drupal.jsEnabled) {
-  document.documentElement.className = 'js';
+  $(document.documentElement).addClass('js');
 }

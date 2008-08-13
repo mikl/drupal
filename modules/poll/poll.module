@@ -1,5 +1,5 @@
 <?php
-// $Id: poll.module,v 1.263.2.1 2008-04-25 20:39:55 goba Exp $
+// $Id: poll.module,v 1.263.2.2 2008-08-13 23:59:13 drumm Exp $
 
 /**
  * @file
@@ -338,7 +338,9 @@ function poll_choice_js() {
   // Add the new element to the stored form. Without adding the element to the
   // form, Drupal is not aware of this new elements existence and will not
   // process it. We retreive the cached form, add the element, and resave.
-  $form = form_get_cache($form_build_id, $form_state);
+  if (!$form = form_get_cache($form_build_id, $form_state)) {
+    exit();
+  }
   $form['choice_wrapper']['choice'][$delta] = $form_element;
   form_set_cache($form_build_id, $form, $form_state);
   $form += array(

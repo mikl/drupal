@@ -1,5 +1,5 @@
 <?php
-// $Id: filter.module,v 1.204.2.3 2008-08-11 18:02:58 dries Exp $
+// $Id: filter.module,v 1.204.2.4 2008-08-13 23:59:13 drumm Exp $
 
 /**
  * @file
@@ -983,7 +983,7 @@ function filter_xss($string, $allowed_tags = array('a', 'em', 'strong', 'cite', 
     (
     <(?=[^a-zA-Z!/])  # a lone <
     |                 # or
-    <[^>]*.(>|$)      # a string that starts with a <, up until the > or the end of the string
+    <[^>]*(>|$)       # a string that starts with a <, up until the > or the end of the string
     |                 # or
     >                 # just a >
     )%x', '_filter_xss_split', $string);

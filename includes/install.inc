@@ -1,5 +1,5 @@
 <?php
-// $Id: install.inc,v 1.56.2.2 2008-02-11 15:10:26 goba Exp $
+// $Id: install.inc,v 1.56.2.3 2008-08-14 09:26:43 dries Exp $
 
 define('SCHEMA_UNINSTALLED', -1);
 define('SCHEMA_INSTALLED', 0);
@@ -35,8 +35,8 @@ function drupal_load_updates() {
  * @param $module
  *   A module name.
  * @return
- *   If the module has updates, an array of available updates. Otherwise,
- *   FALSE.
+ *   If the module has updates, an array of available updates sorted by version. 
+ *   Otherwise, FALSE.
  */
 function drupal_get_schema_versions($module) {
   $updates = array();
@@ -52,6 +52,7 @@ function drupal_get_schema_versions($module) {
   if (count($updates) == 0) {
     return FALSE;
   }
+  sort($updates, SORT_NUMERIC);
   return $updates;
 }
 

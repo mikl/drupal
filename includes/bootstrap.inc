@@ -1,5 +1,5 @@
 <?php
-// $Id: bootstrap.inc,v 1.145.2.8 2008/01/10 22:14:24 drumm Exp $
+// $Id: bootstrap.inc,v 1.145.2.9 2008/08/24 09:00:25 drumm Exp $
 
 /**
  * @file
@@ -289,6 +289,15 @@ function conf_init() {
     if (!empty($_SERVER['HTTP_HOST'])) {
       $cookie_domain = check_plain($_SERVER['HTTP_HOST']);
     }
+  }
+  // To prevent session cookies from being hijacked, a user can configure the
+  // SSL version of their website to only transfer session cookies via SSL by
+  // using PHP's session.cookie_secure setting. The browser will then use two
+  // separate session cookies for the HTTPS and HTTP versions of the site. So we
+  // must use different session identifiers for HTTPS and HTTP to prevent a
+  // cookie collision.
+  if (ini_get('session.cookie_secure')) {
+    $session_name .= 'SSL';
   }
   // Strip leading periods, www., and port numbers from cookie domain.
   $cookie_domain = ltrim($cookie_domain, '.');

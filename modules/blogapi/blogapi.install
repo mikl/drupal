@@ -1,5 +1,5 @@
 <?php
-// $Id: blogapi.install,v 1.2.2.2 2008/08/13 23:59:09 drumm Exp $
+// $Id: blogapi.install,v 1.2.2.3 2008/08/27 13:25:13 drumm Exp $
 
 /**
  * Implementation of hook_install().
@@ -22,7 +22,7 @@ function blogapi_install() {
     case 'pgsql':
       db_query("CREATE TABLE {blogapi_files} (
         fid serial,
-        filename varchar(255) NOT NULL default '',
+        uid int_unsigned NOT NULL default 0,
         filepath varchar(255) NOT NULL default '',
         filesize int_unsigned NOT NULL default 0,
         PRIMARY KEY (fid)
@@ -70,7 +70,7 @@ function blogapi_update_5000() {
     case 'pgsql':
       $ret[] = update_sql("CREATE TABLE {blogapi_files} (
         fid serial,
-        filename varchar(255) NOT NULL default '',
+        uid int_unsigned NOT NULL default 0,
         filepath varchar(255) NOT NULL default '',
         filesize int_unsigned NOT NULL default 0,
         PRIMARY KEY (fid)

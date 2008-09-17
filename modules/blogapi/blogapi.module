@@ -1,5 +1,5 @@
 <?php
-// $Id: blogapi.module,v 1.115.2.3 2008/08/13 23:59:13 drumm Exp $
+// $Id: blogapi.module,v 1.115.2.4 2008/09/17 20:46:26 goba Exp $
 
 /**
  * @file
@@ -437,6 +437,11 @@ function blogapi_metaweblog_new_media_object($blogid, $username, $password, $fil
  * associated with a blog node.
  */
 function blogapi_metaweblog_get_category_list($blogid, $username, $password) {
+  $user = blogapi_validate_user($username, $password);
+  if (!$user->uid) {
+    return blogapi_error($user);
+  }
+
   if (($error = _blogapi_validate_blogid($blogid)) !== TRUE) {
     // Return an error if not configured type.
     return $error;

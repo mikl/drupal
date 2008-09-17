@@ -1,5 +1,5 @@
 <?php
-// $Id: install.php,v 1.113.2.5 2008-07-18 07:17:44 dries Exp $
+// $Id: install.php,v 1.113.2.6 2008-09-17 08:47:04 goba Exp $
 
 require_once './includes/install.inc';
 
@@ -90,7 +90,7 @@ function install_main() {
 
   // Locale selection
   if (!empty($_GET['locale'])) {
-    $install_locale = preg_replace('/[^a-zA-Z_0-9]/', '', $_GET['locale']);
+    $install_locale = preg_replace('/[^a-zA-Z_0-9\-]/', '', $_GET['locale']);
   }
   elseif (($install_locale = install_select_locale($profile)) !== FALSE) {
     install_goto("install.php?profile=$profile&locale=$install_locale");

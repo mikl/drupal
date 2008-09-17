@@ -1,5 +1,5 @@
 <?php
-// $Id: dblog.admin.inc,v 1.6 2008/01/08 10:35:41 goba Exp $
+// $Id: dblog.admin.inc,v 1.6.2.1 2008/09/17 05:47:53 goba Exp $
 
 /**
  * @file
@@ -31,14 +31,24 @@ function dblog_overview() {
   $filter = dblog_build_filter_query();
   $rows = array();
   $icons = array(
-    WATCHDOG_NOTICE  => '',
-    WATCHDOG_WARNING => theme('image', 'misc/watchdog-warning.png', t('warning'), t('warning')),
-    WATCHDOG_ERROR   => theme('image', 'misc/watchdog-error.png', t('error'), t('error')),
+    WATCHDOG_DEBUG    => '',
+    WATCHDOG_INFO     => '',
+    WATCHDOG_NOTICE   => '',
+    WATCHDOG_WARNING  => theme('image', 'misc/watchdog-warning.png', t('warning'), t('warning')),
+    WATCHDOG_ERROR    => theme('image', 'misc/watchdog-error.png', t('error'), t('error')),
+    WATCHDOG_CRITICAL => theme('image', 'misc/watchdog-error.png', t('critical'), t('critical')),
+    WATCHDOG_ALERT    => theme('image', 'misc/watchdog-error.png', t('alert'), t('alert')),
+    WATCHDOG_EMERG    => theme('image', 'misc/watchdog-error.png', t('emergency'), t('emergency')),
   );
   $classes = array(
-    WATCHDOG_NOTICE => 'dblog-notice',
-    WATCHDOG_WARNING => 'dblog-warning',
-    WATCHDOG_ERROR => 'dblog-error',
+    WATCHDOG_DEBUG    => 'dblog-debug',
+    WATCHDOG_INFO     => 'dblog-info',
+    WATCHDOG_NOTICE   => 'dblog-notice',
+    WATCHDOG_WARNING  => 'dblog-warning',
+    WATCHDOG_ERROR    => 'dblog-error',
+    WATCHDOG_CRITICAL => 'dblog-critical',
+    WATCHDOG_ALERT    => 'dblog-alert',
+    WATCHDOG_EMERG    => 'dblog-emerg',
   );
 
   $output = drupal_get_form('dblog_filter_form');

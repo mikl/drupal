@@ -1,5 +1,5 @@
 <?php
-// $Id: page.tpl.php,v 1.25 2008/01/24 09:42:53 goba Exp $
+// $Id: page.tpl.php,v 1.25.2.1 2008/09/29 13:32:15 goba Exp $
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="<?php print $language->language ?>" xml:lang="<?php print $language->language ?>" dir="<?php print $language->dir ?>">
 <head>
@@ -10,7 +10,7 @@
   <?php print $scripts ?>
 </head>
 
-<body bgcolor="#ffffff">
+<body>
 
 <div class="hide"><a href="#content" title="<?php print t('Skip navigation') ?>." accesskey="2"><?php print t('Skip navigation') ?></a>.</div>
 
@@ -112,7 +112,7 @@
 
 <?php if ($footer_message || $footer) : ?>
 <div id="footer-message">
-    <p><?php print $footer_message . $footer;?></p>
+    <?php print $footer_message . $footer;?>
 </div>
 <?php endif; ?>
 <?php print $closure;?>

@@ -1,5 +1,5 @@
 <?php
-// $Id: translation.pages.inc,v 1.2 2008-01-07 13:18:40 goba Exp $
+// $Id: translation.pages.inc,v 1.2.2.1 2008-09-30 10:50:43 goba Exp $
 
 /**
  * @file
@@ -40,7 +40,7 @@ function translation_node_overview($node) {
       $status = $translation_node->status ? t('Published') : t('Not published');
       $status .= $translation_node->translate ? ' - <span class="marker">'. t('outdated') .'</span>' : '';
       if ($translation_node->nid == $tnid) {
-        $language_name = '<strong>'. $language_name .'</strong> (source)';
+        $language_name = t('<strong>@language_name</strong> (source)', array('@language_name' => $language_name));
       }
     }
     else {

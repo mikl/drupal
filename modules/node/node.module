@@ -1,5 +1,5 @@
 <?php
-// $Id: node.module,v 1.776.2.30 2008-07-16 19:04:21 drumm Exp $
+// $Id: node.module,v 1.776.2.31 2008-10-08 20:10:26 drumm Exp $
 
 /**
  * @file
@@ -2165,6 +2165,14 @@ function node_form($node, $form_values = NULL) {
     $form['delete'] = array('#type' => 'button', '#value' => t('Delete'), '#weight' => 50);
   }
   $form['#after_build'] = array('node_form_add_preview');
+  // Ensure that node_validate() will always get called.
+  $form['#validate']['node_form_validate'] = array();
+  // Also, if the module defines its own _validate() routine based on the
+  // form_id, include that in the #validate array, as well.
+  $node_validate = $node->type .'_node_form_validate';
+  if (function_exists($node_validate)) {
+    $form['#validate'][$node_validate] = array();
+  }
   $form['#base'] = 'node_form';
   return $form;
 }

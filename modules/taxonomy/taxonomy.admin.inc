@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.admin.inc,v 1.22.2.1 2008-02-07 20:46:57 goba Exp $
+// $Id: taxonomy.admin.inc,v 1.22.2.2 2008-10-08 14:23:59 goba Exp $
 
 /**
  * @file
@@ -259,7 +259,7 @@ function taxonomy_overview_terms(&$form_state, $vocabulary) {
   );
 
   $page            = isset($_GET['page']) ? $_GET['page'] : 0;
-  $page_increment  = 10;  // Number of terms per page.
+  $page_increment  = variable_get('taxonomy_terms_per_page_admin', 100);  // Number of terms per page.
   $page_entries    = 0;   // Elements shown on this page.
   $before_entries  = 0;   // Elements at the root level before this page.
   $after_entries   = 0;   // Elements at the root level after this page.

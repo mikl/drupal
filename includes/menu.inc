@@ -1,5 +1,5 @@
 <?php
-// $Id: menu.inc,v 1.255.2.20 2008-09-23 10:22:35 goba Exp $
+// $Id: menu.inc,v 1.255.2.21 2008-10-08 12:33:55 goba Exp $
 
 /**
  * @file
@@ -335,7 +335,9 @@ function menu_execute_active_handler($path = NULL) {
   if (_menu_site_is_offline()) {
     return MENU_SITE_OFFLINE;
   }
-  if (variable_get('menu_rebuild_needed', FALSE)) {
+  // Rebuild if we know it's needed, or if the menu masks are missing which
+  // occurs rarely, likely due to a race condition of multiple rebuilds.
+  if (variable_get('menu_rebuild_needed', FALSE) || !variable_get('menu_masks', array())) {
     menu_rebuild();
   }
   if ($router_item = menu_get_item($path)) {

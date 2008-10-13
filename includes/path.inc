@@ -1,5 +1,5 @@
 <?php
-// $Id: path.inc,v 1.19 2007/11/04 16:42:45 goba Exp $
+// $Id: path.inc,v 1.19.2.1 2008/10/13 21:06:41 dries Exp $
 
 /**
  * @file
@@ -58,6 +58,7 @@ function drupal_lookup_path($action, $path = '', $path_language = '') {
   if ($action == 'wipe') {
     $map = array();
     $no_src = array();
+    $count = NULL;
   }
   elseif ($count > 0 && $path != '') {
     if ($action == 'alias') {

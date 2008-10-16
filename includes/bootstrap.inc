@@ -1,5 +1,5 @@
 <?php
-// $Id: bootstrap.inc,v 1.206.2.4 2008-08-18 18:56:30 dries Exp $
+// $Id: bootstrap.inc,v 1.206.2.5 2008-10-16 12:51:56 goba Exp $
 
 /**
  * @file
@@ -618,7 +618,7 @@ function drupal_page_cache_header($cache) {
     header('HTTP/1.1 304 Not Modified');
     // All 304 responses must send an etag if the 200 response for the same object contained an etag
     header("Etag: $etag");
-    exit();
+    return;
   }
 
   // Send appropriate response:

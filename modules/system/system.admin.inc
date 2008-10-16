@@ -1,5 +1,5 @@
 <?php
-// $Id: system.admin.inc,v 1.63.2.3 2008-05-19 07:27:35 goba Exp $
+// $Id: system.admin.inc,v 1.63.2.4 2008-10-16 20:23:37 dries Exp $
 
 /**
  * @file
@@ -680,16 +680,16 @@ function system_modules($form_state = array()) {
       foreach ($file->info['dependencies'] as $dependency) {
         if (!isset($files[$dependency]) || !$files[$dependency]->status) {
           if (isset($files[$dependency])) {
-            $dependencies[] = $files[$dependency]->info['name'] . t(' (<span class="admin-disabled">disabled</span>)');
+            $dependencies[] = t('@module (<span class="admin-disabled">disabled</span>)', array('@module' => $files[$dependency]->info['name']));
           }
           else {
-            $dependencies[] = drupal_ucfirst($dependency) . t(' (<span class="admin-missing">missing</span>)');
+            $dependencies[] = t('@module (<span class="admin-missing">missing</span>)', array('@module' => drupal_ucfirst($dependency)));
             $disabled[] = $filename;
             $form['disabled_modules']['#value'][$filename] = FALSE;
           }
         }
         else {
-          $dependencies[] = $files[$dependency]->info['name'] . t(' (<span class="admin-enabled">enabled</span>)');
+          $dependencies[] = t('@module (<span class="admin-enabled">enabled</span>)', array('@module' => $files[$dependency]->info['name']));
         }
       }
 
@@ -707,12 +707,12 @@ function system_modules($form_state = array()) {
     $dependents = array();
     foreach ($file->info['dependents'] as $dependent) {
       if ($files[$dependent]->status == 1) {
-        $dependents[] = $files[$dependent]->info['name'] . t(' (<span class="admin-enabled">enabled</span>)');
+        $dependents[] = t('@module (<span class="admin-enabled">enabled</span>)', array('@module' => $files[$dependent]->info['name']));
         $disabled[] = $filename;
         $form['disabled_modules']['#value'][$filename] = TRUE;
       }
       else {
-        $dependents[] = $files[$dependent]->info['name'] . t(' (<span class="admin-disabled">disabled</span>)');
+        $dependents[] = t('@module (<span class="admin-disabled">disabled</span>)', array('@module' => $files[$dependent]->info['name']));
       }
     }
 

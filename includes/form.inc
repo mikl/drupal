@@ -1,5 +1,5 @@
 <?php
-// $Id: form.inc,v 1.265.2.12 2008/09/23 10:51:16 goba Exp $
+// $Id: form.inc,v 1.265.2.13 2008/10/16 12:43:08 goba Exp $
 
 /**
  * @defgroup forms Form builder functions
@@ -2013,7 +2013,7 @@ function theme_textfield($element) {
   $extra = '';
   $output = '';
 
-  if ($element['#autocomplete_path']) {
+  if ($element['#autocomplete_path'] && menu_valid_path(array('link_path' => $element['#autocomplete_path']))) {
     drupal_add_js('misc/autocomplete.js');
     $class[] = 'form-autocomplete';
     $extra =  '<input class="autocomplete" type="hidden" id="'. $element['#id'] .'-autocomplete" value="'. check_url(url($element['#autocomplete_path'], array('absolute' => TRUE))) .'" disabled="disabled" />';

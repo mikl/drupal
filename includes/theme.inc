@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.415.2.12 2008-09-17 08:57:23 goba Exp $
+// $Id: theme.inc,v 1.415.2.13 2008-10-16 13:50:59 dries Exp $
 
 /**
  * @file
@@ -693,7 +693,14 @@ function drupal_discover_template($paths, $suggestions, $extension = '.tpl.php')
 }
 
 /**
- * Return the path to the currently selected theme.
+ * Return the path to the current themed element.
+ *
+ * It can point to the active theme or the module handling a themed implementation.
+ * For example, when invoked within the scope of a theming call it will depend
+ * on where the theming function is handled. If implemented from a module, it
+ * will point to the module. If implemented from the active theme, it will point
+ * to the active theme. When called outside the scope of a theming call, it will
+ * always point to the active theme.
  */
 function path_to_theme() {
   global $theme_path;

@@ -1,5 +1,5 @@
 <?php
-// $Id: session.inc,v 1.44.2.3 2008/09/17 07:53:08 goba Exp $
+// $Id: session.inc,v 1.44.2.4 2008/10/20 09:53:32 goba Exp $
 
 /**
  * @file
@@ -61,7 +61,7 @@ function sess_write($key, $value) {
   // the session table. This reduces memory and server load, and gives more useful
   // statistics. We can't eliminate anonymous session table rows without breaking
   // the throttle module and the "Who's Online" block.
-  if (!session_save_session() || (empty($_COOKIE[session_name()]) && empty($value))) {
+  if (!session_save_session() || ($user->uid == 0 && empty($_COOKIE[session_name()]) && empty($value))) {
     return TRUE;
   }
 

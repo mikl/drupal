@@ -1,5 +1,5 @@
 <?php
-// $Id: menu.inc,v 1.255.2.23 2008-10-14 20:44:16 goba Exp $
+// $Id: menu.inc,v 1.255.2.24 2008-10-20 09:46:54 goba Exp $
 
 /**
  * @file
@@ -2424,7 +2424,7 @@ function _menu_site_is_offline() {
       // page redirects], and specifically suppress its display on the site
       // maintenance page.
       if (drupal_get_normal_path($_GET['q']) != 'admin/settings/site-maintenance') {
-        drupal_set_message(t('Operating in off-line mode.'), 'status', FALSE);
+        drupal_set_message(l(t('Operating in off-line mode.'), 'admin/settings/site-maintenance'), 'status', FALSE);
       }
     }
     else {

@@ -1,5 +1,5 @@
 <?php
-// $Id: database.inc,v 1.92.2.2 2008/07/09 21:48:28 goba Exp $
+// $Id: database.inc,v 1.92.2.3 2008/10/20 09:13:04 goba Exp $
 
 /**
  * @file
@@ -172,6 +172,7 @@ function db_set_active($name = 'default') {
  */
 function _db_error_page($error = '') {
   global $db_type;
+  drupal_init_language();
   drupal_maintenance_theme();
   drupal_set_header('HTTP/1.1 503 Service Unavailable');
   drupal_set_title('Site off-line');

@@ -1,5 +1,5 @@
 <?php
-// $Id: book.admin.inc,v 1.8.2.2 2008-07-08 10:19:46 goba Exp $
+// $Id: book.admin.inc,v 1.8.2.3 2008-10-22 19:26:01 goba Exp $
 
 /**
  * @file
@@ -170,8 +170,8 @@ function _book_admin_table($node, &$form) {
  * @see book_admin_edit()
  */
 function _book_admin_table_tree($tree, &$form) {
-  foreach ($tree as $key => $data) {
-    $form[$key] = array(
+  foreach ($tree as $data) {
+    $form['book-admin-'. $data['link']['nid']] = array(
       '#item' => $data['link'],
       'nid' => array('#type' => 'value', '#value' => $data['link']['nid']),
       'depth' => array('#type' => 'value', '#value' => $data['link']['depth']),

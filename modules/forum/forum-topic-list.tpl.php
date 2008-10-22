@@ -1,5 +1,5 @@
 <?php
-// $Id: forum-topic-list.tpl.php,v 1.4 2007/08/30 18:58:12 goba Exp $
+// $Id: forum-topic-list.tpl.php,v 1.4.2.1 2008/10/22 18:22:51 dries Exp $
 
 /**
  * @file forum-topic-list.tpl.php
@@ -52,8 +52,8 @@
           <a href="<?php print $topic->new_url; ?>"><?php print $topic->new_text; ?></a>
         <?php endif; ?>
       </td>
-      <td class="created"><?php print $topic->created; ?>
-      <td class="last-reply"><?php print $topic->last_reply; ?>
+      <td class="created"><?php print $topic->created; ?></td>
+      <td class="last-reply"><?php print $topic->last_reply; ?></td>
     <?php endif; ?>
     </tr>
   <?php endforeach; ?>

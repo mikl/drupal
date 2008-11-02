@@ -1,5 +1,5 @@
 <?php
-// $Id: form.inc,v 1.265.2.13 2008/10/16 12:43:08 goba Exp $
+// $Id: form.inc,v 1.265.2.14 2008/11/02 06:27:21 dries Exp $
 
 /**
  * @defgroup forms Form builder functions
@@ -1499,7 +1499,7 @@ function form_get_options($element, $key) {
  * @ingroup themeable
  */
 function theme_fieldset($element) {
-  if ($element['#collapsible']) {
+  if (!empty($element['#collapsible'])) {
     drupal_add_js('misc/collapse.js');
 
     if (!isset($element['#attributes']['class'])) {
@@ -1507,7 +1507,7 @@ function theme_fieldset($element) {
     }
 
     $element['#attributes']['class'] .= ' collapsible';
-    if ($element['#collapsed']) {
+    if (!empty($element['#collapsed'])) {
       $element['#attributes']['class'] .= ' collapsed';
     }
   }

@@ -1,5 +1,5 @@
 <?php
-// $Id: block.admin.inc,v 1.14.2.3 2008/10/20 13:02:29 dries Exp $
+// $Id: block.admin.inc,v 1.14.2.4 2008/11/03 13:49:44 goba Exp $
 
 /**
  * @file
@@ -40,7 +40,7 @@ function block_admin_display_form(&$form_state, $blocks, $theme = NULL) {
 
   // Build form tree
   $form = array(
-    '#action' => arg(3) ? url('admin/build/block/list/'. $theme_key) : url('admin/build/block'),
+    '#action' => arg(4) ? url('admin/build/block/list/'. $theme_key) : url('admin/build/block'),
     '#tree' => TRUE,
   );
 

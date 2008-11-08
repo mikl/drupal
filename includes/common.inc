@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.756.2.30 2008/10/22 19:36:25 goba Exp $
+// $Id: common.inc,v 1.756.2.31 2008/11/08 20:09:09 dries Exp $
 
 /**
  * @file
@@ -1820,7 +1820,7 @@ function _drupal_build_css_path($matches, $base = NULL) {
   $last = '';
   while ($path != $last) {
     $last = $path;
-    $path = preg_replace('`(^|/)(?!../)([^/]+)/../`', '$1', $path);
+    $path = preg_replace('`(^|/)(?!\.\./)([^/]+)/\.\./`', '$1', $path);
   }
   return 'url('. $path .')';
 }

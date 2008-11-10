@@ -1,5 +1,5 @@
 <?php
-// $Id: form.inc,v 1.265.2.14 2008-11-02 06:27:21 dries Exp $
+// $Id: form.inc,v 1.265.2.15 2008-11-10 10:34:41 goba Exp $
 
 /**
  * @defgroup forms Form builder functions
@@ -1915,7 +1915,15 @@ function expand_checkboxes($element) {
     }
     foreach ($element['#options'] as $key => $choice) {
       if (!isset($element[$key])) {
-        $element[$key] = array('#type' => 'checkbox', '#processed' => TRUE, '#title' => $choice, '#return_value' => $key, '#default_value' => isset($value[$key]), '#attributes' => $element['#attributes']);
+        $element[$key] = array(
+          '#type' => 'checkbox',
+          '#processed' => TRUE,
+          '#title' => $choice,
+          '#return_value' => $key,
+          '#default_value' => isset($value[$key]),
+          '#attributes' => $element['#attributes'],
+          '#ahah' => isset($element['#ahah']) ? $element['#ahah'] : NULL,
+        );
       }
     }
   }

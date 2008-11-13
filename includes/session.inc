@@ -1,5 +1,5 @@
 <?php
-// $Id: session.inc,v 1.37.2.2 2007/07/26 19:16:45 drumm Exp $
+// $Id: session.inc,v 1.37.2.3 2008/11/13 02:15:38 drumm Exp $
 
 /**
  * @file
@@ -58,7 +58,7 @@ function sess_write($key, $value) {
 
   // If saving of session data is disabled or if the client doesn't have a session,
   // and one isn't being created ($value), do nothing.
-  if (!session_save_session() || (empty($_COOKIE[session_name()]) && empty($value))) {
+  if (!session_save_session() || ($user->uid == 0 && empty($_COOKIE[session_name()]) && empty($value))) {
     return TRUE;
   }
 

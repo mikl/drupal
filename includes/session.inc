@@ -1,5 +1,5 @@
 <?php
-// $Id: session.inc,v 1.37.2.4 2008-11-15 03:37:45 drumm Exp $
+// $Id: session.inc,v 1.37.2.5 2008-11-15 03:42:12 drumm Exp $
 
 /**
  * @file
@@ -159,8 +159,8 @@ function sess_gc($lifetime) {
  *
  * @param $status
  *   Disables writing of session data when FALSE, (re-)enables writing when TRUE.
- *
- * @return FALSE if writing session data has been disabled. Otherwise, TRUE.
+ * @return
+ *   FALSE if writing session data has been disabled. Otherwise, TRUE.
  */
 function session_save_session($status = NULL) {
   static $save_session = TRUE;

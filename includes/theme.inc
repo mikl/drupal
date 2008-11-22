@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.415.2.14 2008/11/10 10:12:25 goba Exp $
+// $Id: theme.inc,v 1.415.2.15 2008/11/22 10:13:02 dries Exp $
 
 /**
  * @file
@@ -8,8 +8,7 @@
  * The theme system allows for nearly all output of the Drupal system to be
  * customized by user themes.
  *
- * @see <a href="http://drupal.org/node/171179">Theme guide</a>
- * @see themeable
+ * @ingroup themeable
  */
 
 /**

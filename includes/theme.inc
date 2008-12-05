@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.415.2.15 2008/11/22 10:13:02 dries Exp $
+// $Id: theme.inc,v 1.415.2.16 2008/12/05 22:31:54 dries Exp $
 
 /**
  * @file
@@ -1429,10 +1429,10 @@ function theme_mark($type = MARK_NEW) {
  *   All other elements are treated as attributes of the list item element.
  * @param $title
  *   The title of the list.
- * @param $attributes
- *   The attributes applied to the list element.
  * @param $type
  *   The type of list to return (e.g. "ul", "ol")
+ * @param $attributes
+ *   The attributes applied to the list element.
  * @return
  *   A string containing the list output.
  */

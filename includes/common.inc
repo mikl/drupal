@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.756.2.33 2008/12/10 20:25:16 goba Exp $
+// $Id: common.inc,v 1.756.2.34 2008/12/10 22:18:24 goba Exp $
 
 /**
  * @file
@@ -499,9 +499,8 @@ function drupal_http_request($url, $headers = array(), $method = 'GET', $data = 
   $request = $method .' '. $path ." HTTP/1.0\r\n";
   $request .= implode("\r\n", $defaults);
   $request .= "\r\n\r\n";
-  if ($data) {
-    $request .= $data ."\r\n";
-  }
+  $request .= $data;
+
   $result->request = $request;
 
   fwrite($fp, $request);

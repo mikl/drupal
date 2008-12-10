@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.756.2.32 2008-12-03 12:33:11 dries Exp $
+// $Id: common.inc,v 1.756.2.33 2008-12-10 20:25:16 goba Exp $
 
 /**
  * @file
@@ -3632,7 +3632,16 @@ function drupal_flush_all_caches() {
 
   drupal_clear_css_cache();
   drupal_clear_js_cache();
-  system_theme_data();
+
+  // If invoked from update.php, we must not update the theme information in the
+  // database, or this will result in all themes being disabled.
+  if (defined('MAINTENANCE_MODE') && MAINTENANCE_MODE == 'update') {
+    _system_theme_data();
+  }
+  else {
+    system_theme_data();
+  }
+
   drupal_rebuild_theme_registry();
   menu_rebuild();
   node_types_rebuild();

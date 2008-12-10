@@ -1,5 +1,5 @@
 <?php
-// $Id: update.php,v 1.252 2008-02-03 18:41:16 goba Exp $
+// $Id: update.php,v 1.252.2.1 2008-12-10 20:25:16 goba Exp $
 
 /**
  * @file
@@ -448,7 +448,7 @@ function update_check_incompatibility($name, $type = 'module') {
 
   // Store values of expensive functions for future use.
   if (empty($themes) || empty($modules)) {
-    $themes = system_theme_data();
+    $themes = _system_theme_data();
     $modules = module_rebuild_cache();
   }
 

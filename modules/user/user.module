@@ -1,5 +1,5 @@
 <?php
-// $Id: user.module,v 1.892.2.9 2008/11/05 14:13:03 dries Exp $
+// $Id: user.module,v 1.892.2.10 2009/01/06 16:26:05 goba Exp $
 
 /**
  * @file
@@ -270,7 +270,9 @@ function user_save($account, $array = array(), $category = 'account') {
     // the current one.
     if (!empty($array['pass'])) {
       sess_destroy_uid($account->uid);
-      sess_regenerate();
+      if ($account->uid == $GLOBALS['user']->uid) {
+        sess_regenerate();
+      }
     }
 
     // Refresh user object.

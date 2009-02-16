@@ -1,7 +1,8 @@
-// $Id: CHANGELOG.txt,v 1.253.2.23 2009/01/14 23:54:01 goba Exp $
+// $Id: CHANGELOG.txt,v 1.253.2.24 2009/02/16 12:34:58 goba Exp $
 
 Drupal 6.10-dev, xxxx-xx-xx (development release)
 ----------------------
+- Fixed node_feed() so custom fields can show up in RSS feeds.
 
 Drupal 6.9, 2009-01-14
 ----------------------

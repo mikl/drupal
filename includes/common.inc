@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.756.2.43 2009-01-14 23:54:01 goba Exp $
+// $Id: common.inc,v 1.756.2.44 2009-02-16 12:00:11 goba Exp $
 
 /**
  * @file
@@ -1539,6 +1539,8 @@ function drupal_attributes($attributes = array()) {
  *   an HTML string containing a link to the given path.
  */
 function l($text, $path, $options = array()) {
+  global $language;
+
   // Merge in defaults.
   $options += array(
       'attributes' => array(),
@@ -1546,7 +1548,8 @@ function l($text, $path, $options = array()) {
     );
 
   // Append active class.
-  if ($path == $_GET['q'] || ($path == '<front>' && drupal_is_front_page())) {
+  if (($path == $_GET['q'] || ($path == '<front>' && drupal_is_front_page())) &&
+      (empty($options['language']) || $options['language']->language == $language->language)) {
     if (isset($options['attributes']['class'])) {
       $options['attributes']['class'] .= ' active';
     }

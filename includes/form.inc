@@ -1,5 +1,5 @@
 <?php
-// $Id: form.inc,v 1.265.2.18 2009/02/17 11:24:22 goba Exp $
+// $Id: form.inc,v 1.265.2.19 2009/02/22 18:12:46 goba Exp $
 
 /**
  * @defgroup forms Form builder functions
@@ -1169,7 +1169,12 @@ function form_type_image_button_value($form, $edit = FALSE) {
  */
 function form_type_checkbox_value($form, $edit = FALSE) {
   if ($edit !== FALSE) {
-    return !empty($edit) ? $form['#return_value'] : 0;
+    if (empty($form['#disabled'])) {
+      return !empty($edit) ? $form['#return_value'] : 0;
+    }
+    else {
+      return $form['#default_value'];
+    }
   }
 }
 

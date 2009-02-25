@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.415.2.18 2009-02-16 12:00:11 goba Exp $
+// $Id: theme.inc,v 1.415.2.19 2009-02-25 21:02:16 goba Exp $
 
 /**
  * @file
@@ -1868,6 +1868,7 @@ function template_preprocess_page(&$variables) {
   $suggestion = 'page';
   $suggestions = array();
   while ($arg = arg($i++)) {
+    $arg = str_replace(array('/', '\\', '\0'), '', $arg);
     $suggestions[] = $suggestion .'-'. $arg;
     if (!is_numeric($arg)) {
       $suggestion .= '-'. $arg;

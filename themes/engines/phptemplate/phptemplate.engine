@@ -1,5 +1,5 @@
 <?php
-// $Id: phptemplate.engine,v 1.54.2.4 2008/08/13 18:47:17 drumm Exp $
+// $Id: phptemplate.engine,v 1.54.2.5 2009/02/25 23:14:05 drumm Exp $
 
 /**
  * @file
@@ -257,6 +257,7 @@ function phptemplate_page($content, $show_blocks = TRUE) {
   $suggestion = 'page';
   $suggestions = array($suggestion);
   while ($arg = arg($i++)) {
+    $arg = str_replace(array('/', '\\', '\0'), '', $arg);
     $suggestions[] = $suggestion . '-' . $arg;
     if (!is_numeric($arg)) {
       $suggestion .= '-' . $arg;

@@ -1,5 +1,5 @@
 <?php
-// $Id: bootstrap.inc,v 1.206.2.9 2009-01-14 19:10:25 goba Exp $
+// $Id: bootstrap.inc,v 1.206.2.10 2009-02-25 11:47:37 goba Exp $
 
 /**
  * @file
@@ -130,6 +130,16 @@ define('LANGUAGE_NEGOTIATION_PATH', 2);
  * if no language identified by domain.
  */
 define('LANGUAGE_NEGOTIATION_DOMAIN', 3);
+
+/**
+ * Language written left to right. Possible value of $language->direction.
+ */
+define('LANGUAGE_LTR', 0);
+
+/**
+ * Language written right to left. Possible value of $language->direction.
+ */
+define('LANGUAGE_RTL', 1);
 
 /**
  * Start the timer with the specified name. If you start and stop

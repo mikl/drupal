@@ -1,4 +1,4 @@
-// $Id: drupal.js,v 1.29.2.2 2008-08-13 18:12:23 drumm Exp $
+// $Id: drupal.js,v 1.29.2.3 2009-02-26 06:46:48 drumm Exp $
 
 var Drupal = Drupal || {};
 
@@ -12,8 +12,8 @@ Drupal.jsEnabled = document.getElementsByTagName && document.createElement && do
  */
 Drupal.extend = function(obj) {
   for (var i in obj) {
-    if (this[i]) {
-      Drupal.extend.apply(this[i], [obj[i]]);
+    if (this[i] && (typeof(this[i]) == 'function' || typeof(this[i]) == 'object')) {
+   	  Drupal.extend.apply(this[i], [obj[i]]);
     }
     else {
       this[i] = obj[i];

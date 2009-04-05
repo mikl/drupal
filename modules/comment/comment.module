@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.module,v 1.617.2.5 2009-03-30 11:34:14 goba Exp $
+// $Id: comment.module,v 1.617.2.6 2009-04-05 12:04:52 dries Exp $
 
 /**
  * @file
@@ -1051,7 +1051,9 @@ function comment_render($node, $cid = 0) {
       $output .= comment_form_box(array('nid' => $nid), t('Post new comment'));
     }
 
-    $output = theme('comment_wrapper', $output, $node);
+    if ($output) {
+      $output = theme('comment_wrapper', $output, $node);
+    }
   }
 
   return $output;

@@ -1,5 +1,5 @@
 <?php
-// $Id: system.install,v 1.238.2.13 2009-04-27 12:29:12 goba Exp $
+// $Id: system.install,v 1.238.2.14 2009-04-27 12:50:13 goba Exp $
 
 /**
  * Test and report Drupal installation requirements.
@@ -2552,6 +2552,15 @@ function system_update_6049() {
   $ret = array();
   db_drop_index($ret, 'url_alias', 'src');
   db_add_index($ret, 'url_alias', 'src_language', array('src', 'language'));
+  return $ret;
+}
+
+/**
+ * Clear any menu router blobs stored in the cache table.
+ */
+function system_update_6050() {
+  $ret = array();
+  cache_clear_all('router:', 'cache_menu', TRUE);
   return $ret;
 }
 

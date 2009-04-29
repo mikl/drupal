@@ -1,5 +1,5 @@
 <?php
-// $Id: update.fetch.inc,v 1.7.2.2 2009/01/14 21:36:16 goba Exp $
+// $Id: update.fetch.inc,v 1.7.2.3 2009/04/29 17:17:21 goba Exp $
 
 /**
  * @file
@@ -110,10 +110,11 @@ function _update_cron_notify() {
   include_once './includes/install.inc';
   $status = update_requirements('runtime');
   $params = array();
+  $notify_all = (variable_get('update_notification_threshold', 'all') == 'all');
   foreach (array('core', 'contrib') as $report_type) {
     $type = 'update_'. $report_type;
     if (isset($status[$type]['severity'])
-        && $status[$type]['severity'] == REQUIREMENT_ERROR) {
+        && ($status[$type]['severity'] == REQUIREMENT_ERROR || ($notify_all && $status[$type]['reason'] == UPDATE_NOT_CURRENT))) {
       $params[$report_type] = $status[$type]['reason'];
     }
   }

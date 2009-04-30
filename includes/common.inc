@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.756.2.48 2009/02/25 23:16:45 goba Exp $
+// $Id: common.inc,v 1.756.2.49 2009/04/30 00:13:30 goba Exp $
 
 /**
  * @file
@@ -149,6 +149,15 @@ function drupal_set_header($header = NULL) {
  */
 function drupal_get_headers() {
   return drupal_set_header();
+}
+
+/**
+ * Make any final alterations to the rendered xhtml.
+ */
+function drupal_final_markup($content) {
+  // Make sure that the charset is always specified as the first element of the
+  // head region to prevent encoding-based attacks.
+  return preg_replace('/<head[^>]*>/i', "\$0\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />", $content, 1);
 }
 
 /**
@@ -577,7 +586,7 @@ function drupal_error_handler($errno, $message, $filename, $line, $context) {
     return;
   }
 
-  if ($errno & (E_ALL)) {
+  if ($errno & (E_ALL ^ E_NOTICE)) {
     $types = array(1 => 'error', 2 => 'warning', 4 => 'parse error', 8 => 'notice', 16 => 'core error', 32 => 'core warning', 64 => 'compile error', 128 => 'compile warning', 256 => 'user error', 512 => 'user warning', 1024 => 'user notice', 2048 => 'strict warning', 4096 => 'recoverable fatal error');
 
     // For database errors, we want the line number/file name of the place that

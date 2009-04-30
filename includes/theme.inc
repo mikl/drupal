@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.415.2.20 2009/04/29 17:22:52 goba Exp $
+// $Id: theme.inc,v 1.415.2.21 2009/04/30 00:13:30 goba Exp $
 
 /**
  * @file
@@ -687,6 +687,10 @@ function theme() {
   }
   // restore path_to_theme()
   $theme_path = $temp;
+  // Add final markup to the full page.
+  if ($hook == 'page') {
+    $output = drupal_final_markup($output);
+  }
   return $output;
 }
 

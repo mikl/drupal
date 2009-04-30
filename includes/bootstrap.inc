@@ -1,5 +1,5 @@
 <?php
-// $Id: bootstrap.inc,v 1.145.2.13 2009/01/14 19:12:27 drumm Exp $
+// $Id: bootstrap.inc,v 1.145.2.14 2009/04/30 00:13:48 drumm Exp $
 
 /**
  * @file
@@ -725,6 +725,8 @@ function request_uri() {
       $uri = $_SERVER['SCRIPT_NAME'] .'?'. $_SERVER['QUERY_STRING'];
     }
   }
+  // Prevent multiple slashes to avoid cross site requests via the FAPI.
+  $uri = '/'. ltrim($uri, '/');
 
   return $uri;
 }

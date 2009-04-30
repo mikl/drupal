@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.337.2.7 2008/12/05 22:32:50 dries Exp $
+// $Id: theme.inc,v 1.337.2.8 2009/04/30 00:13:48 drumm Exp $
 
 /**
  * @file
@@ -168,7 +168,12 @@ function theme() {
     $functions[$function] = theme_get_function($function);
   }
   if ($functions[$function]) {
-    return call_user_func_array($functions[$function], $args);
+    $output = call_user_func_array($functions[$function], $args);
+    // Add final markup to the full page.
+    if ($function == 'page') {
+      $output = drupal_final_markup($output);
+    }
+    return $output;
   }
 }
 

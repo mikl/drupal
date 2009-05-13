@@ -1,5 +1,5 @@
 <?php
-// $Id: phptemplate.engine,v 1.54.2.7 2009-05-13 15:41:32 drumm Exp $
+// $Id: phptemplate.engine,v 1.54.2.8 2009-05-13 15:44:19 drumm Exp $
 
 /**
  * @file
@@ -372,7 +372,10 @@ function phptemplate_box($title, $content, $region = 'main') {
  * @param $variables
  *   A sequential array of variables passed to the theme function.
  * @param $suggestions
- *   An array of suggested template files to use.
+ *   An array of suggested template files to use. This may include a path when
+ *   the suggested template is contained within a sub-directory of the theme.
+ *   They are set from _phptemplate_variables() or the theming hook invoking
+ *   _phptemplate_callback().
  */
 function _phptemplate_default($hook, $variables, $suggestions = array(), $extension = '.tpl.php') {
   global $theme_engine;

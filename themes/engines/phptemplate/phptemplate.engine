@@ -1,5 +1,5 @@
 <?php
-// $Id: phptemplate.engine,v 1.54.2.6 2009/04/29 17:49:52 drumm Exp $
+// $Id: phptemplate.engine,v 1.54.2.7 2009/05/13 15:41:32 drumm Exp $
 
 /**
  * @file
@@ -377,14 +377,9 @@ function phptemplate_box($title, $content, $region = 'main') {
 function _phptemplate_default($hook, $variables, $suggestions = array(), $extension = '.tpl.php') {
   global $theme_engine;
 
-  // Remove slashes or null to prevent files from being included from
-  // an unexpected location (especially on Windows servers).
-  $extension = str_replace(array("/", "\\", "\0"), '', $extension);
-
   // Loop through any suggestions in FIFO order.
   $suggestions = array_reverse($suggestions);
   foreach ($suggestions as $suggestion) {
-    $suggestion = str_replace(array("/", "\\", "\0"), '', $suggestion);
     if (!empty($suggestion) && file_exists(path_to_theme() .'/'. $suggestion . $extension)) {
       $file = path_to_theme() .'/'. $suggestion . $extension;
       break;

@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.337.2.8 2009/04/30 00:13:48 drumm Exp $
+// $Id: theme.inc,v 1.337.2.9 2009/05/13 19:41:56 drumm Exp $
 
 /**
  * @file
@@ -170,7 +170,7 @@ function theme() {
   if ($functions[$function]) {
     $output = call_user_func_array($functions[$function], $args);
     // Add final markup to the full page.
-    if ($function == 'page') {
+    if ($function == 'page' || $function == 'book_export_html') {
       $output = drupal_final_markup($output);
     }
     return $output;

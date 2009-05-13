@@ -1,5 +1,5 @@
 <?php
-// $Id: phptemplate.engine,v 1.54.2.8 2009-05-13 15:44:19 drumm Exp $
+// $Id: phptemplate.engine,v 1.54.2.9 2009-05-13 16:36:22 drumm Exp $
 
 /**
  * @file
@@ -418,5 +418,3 @@ function _phptemplate_render($file, $variables) {
   ob_end_clean();                  // End buffering and discard
   return $contents;                // Return the contents
 }
-
-?>

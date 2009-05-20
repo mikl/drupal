@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.756.2.53 2009-05-13 19:48:02 goba Exp $
+// $Id: common.inc,v 1.756.2.54 2009-05-20 12:03:32 goba Exp $
 
 /**
  * @file
@@ -3669,7 +3669,8 @@ function drupal_flush_all_caches() {
 function _drupal_flush_css_js() {
   $string_history = variable_get('css_js_query_string', '00000000000000000000');
   $new_character = $string_history[0];
-  $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  // Not including 'q' to allow certain JavaScripts to re-use query string.
+  $characters = 'abcdefghijklmnoprstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
   while (strpos($string_history, $new_character) !== FALSE) {
     $new_character = $characters[mt_rand(0, strlen($characters) - 1)];
   }

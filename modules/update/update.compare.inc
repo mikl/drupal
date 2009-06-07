@@ -1,5 +1,5 @@
 <?php
-// $Id: update.compare.inc,v 1.8.2.3 2009/04/29 18:43:11 goba Exp $
+// $Id: update.compare.inc,v 1.8.2.4 2009/06/07 17:22:02 goba Exp $
 
 /**
  * @file
@@ -38,6 +38,8 @@ function update_get_projects() {
       // Still empty, so we have to rebuild the cache.
       _update_process_info_list($projects, module_rebuild_cache(), 'module');
       _update_process_info_list($projects, system_theme_data(), 'theme');
+      // Allow other modules to alter projects before fetching and comparing.
+      drupal_alter('update_projects', $projects);
       // Cache the site's project data for at most 1 hour.
       _update_cache_set('update_project_projects', $projects, time() + 3600);
     }

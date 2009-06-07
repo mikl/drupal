@@ -1,5 +1,5 @@
 <?php
-// $Id: update.fetch.inc,v 1.7.2.4 2009/04/29 18:43:11 goba Exp $
+// $Id: update.fetch.inc,v 1.7.2.5 2009/06/07 17:22:02 goba Exp $
 
 /**
  * @file
@@ -92,7 +92,10 @@ function _update_build_fetch_url($project, $site_key = '') {
   $name = $project['name'];
   $url = $project['info']['project status url'];
   $url .= '/'. $name .'/'. DRUPAL_CORE_COMPATIBILITY;
-  if (!empty($site_key)) {
+  // Only append a site_key and the version information if we have a site_key
+  // in the first place, and if this is not a disabled module or theme. We do
+  // not want to record usage statistics for disabled code.
+  if (!empty($site_key) && (strpos($project['project_type'], 'disabled') === FALSE)) {
     $url .= (strpos($url, '?') === TRUE) ? '&' : '?';
     $url .= 'site_key=';
     $url .= drupal_urlencode($site_key);

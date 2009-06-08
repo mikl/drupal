@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.415.2.22 2009-05-13 19:11:04 goba Exp $
+// $Id: theme.inc,v 1.415.2.23 2009-06-08 16:06:07 goba Exp $
 
 /**
  * @file
@@ -1632,7 +1632,7 @@ function theme_username($object) {
     $output .= ' ('. t('not verified') .')';
   }
   else {
-    $output = variable_get('anonymous', t('Anonymous'));
+    $output = check_plain(variable_get('anonymous', t('Anonymous')));
   }
 
   return $output;

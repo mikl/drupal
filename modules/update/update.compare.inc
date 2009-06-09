@@ -1,5 +1,5 @@
 <?php
-// $Id: update.compare.inc,v 1.8.2.4 2009-06-07 17:22:02 goba Exp $
+// $Id: update.compare.inc,v 1.8.2.5 2009-06-09 11:08:32 goba Exp $
 
 /**
  * @file
@@ -303,6 +303,11 @@ function update_calculate_project_data($available) {
               'data' => t('This project is no longer supported, and is no longer available for download. Disabling everything included by this project is strongly recommended!'),
             );
             break;
+          case 'not-fetched':
+            $projects[$project]['status'] = UPDATE_NOT_FETCHED;
+            $projects[$project]['reason'] = t('Failed to fetch available update data');
+            break;
+
           default:
             // Assume anything else (e.g. 'published') is valid and we should
             // perform the rest of the logic in this function.

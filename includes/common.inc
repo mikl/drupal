@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.756.2.55 2009-05-20 12:28:13 goba Exp $
+// $Id: common.inc,v 1.756.2.56 2009-06-09 10:35:13 goba Exp $
 
 /**
  * @file
@@ -481,6 +481,16 @@ function drupal_http_request($url, $headers = array(), $method = 'GET', $data = 
   // If the server url has a user then attempt to use basic authentication
   if (isset($uri['user'])) {
     $defaults['Authorization'] = 'Authorization: Basic '. base64_encode($uri['user'] . (!empty($uri['pass']) ? ":". $uri['pass'] : ''));
+  }
+
+  // If the database prefix is being used by SimpleTest to run the tests in a copied
+  // database then set the user-agent header to the database prefix so that any
+  // calls to other Drupal pages will run the SimpleTest prefixed database. The
+  // user-agent is used to ensure that multiple testing sessions running at the
+  // same time won't interfere with each other as they would if the database
+  // prefix were stored statically in a file or database variable.
+  if (preg_match("/simpletest\d+/", $GLOBALS['db_prefix'], $matches)) {
+    $defaults['User-Agent'] = 'User-Agent: ' . $matches[0];
   }
 
   foreach ($headers as $header => $value) {

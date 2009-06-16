@@ -1,5 +1,5 @@
 <?php
-// $Id: settings.php,v 1.39.2.3 2007-07-09 04:28:12 drumm Exp $
+// $Id: settings.php,v 1.39.2.4 2009-06-16 18:29:52 drumm Exp $
 
 /**
  * @file
@@ -132,6 +132,7 @@ ini_set('session.cache_limiter',    'none');
 ini_set('session.cookie_lifetime',  2000000);
 ini_set('session.gc_maxlifetime',   200000);
 ini_set('session.save_handler',     'user');
+ini_set('session.use_cookies',      1);
 ini_set('session.use_only_cookies', 1);
 ini_set('session.use_trans_sid',    0);
 ini_set('url_rewriter.tags',        '');

@@ -1,5 +1,5 @@
 <?php
-// $Id: tablesort.inc,v 1.43.2.1 2007/06/16 22:29:25 drumm Exp $
+// $Id: tablesort.inc,v 1.43.2.2 2009/07/01 20:52:11 drumm Exp $
 
 /**
  * @file
@@ -131,7 +131,7 @@ function tablesort_cell($cell, $header, $ts, $i) {
  *   except for those pertaining to table sorting.
  */
 function tablesort_get_querystring() {
-  return drupal_query_string_encode($_REQUEST, array_merge(array('q', 'sort', 'order'), array_keys($_COOKIE)));
+  return drupal_query_string_encode($_REQUEST, array_merge(array('q', 'sort', 'order', 'pass'), array_keys($_COOKIE)));
 }
 
 /**

@@ -1,5 +1,5 @@
 <?php
-// $Id: taxonomy.module,v 1.330.2.20 2009/05/13 19:49:11 drumm Exp $
+// $Id: taxonomy.module,v 1.330.2.21 2009/07/10 05:47:16 drumm Exp $
 
 /**
  * @file
@@ -57,7 +57,6 @@ function taxonomy_link($type, $node = NULL) {
  * @return
  *   An internal Drupal path.
  */
-
 function taxonomy_term_path($term) {
   $vocabulary = taxonomy_get_vocabulary($term->vid);
   if ($vocabulary->module != 'taxonomy' && $path = module_invoke($vocabulary->module, 'term_path', $term)) {

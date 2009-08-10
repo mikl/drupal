@@ -1,5 +1,5 @@
 <?php
-// $Id: actions.inc,v 1.8.2.8 2009/08/10 10:34:42 goba Exp $
+// $Id: actions.inc,v 1.8.2.9 2009/08/10 10:39:49 goba Exp $
 
 /**
  * @file
@@ -112,6 +112,7 @@ function actions_do($action_ids, &$object, $context = NULL, $a1 = NULL, $a2 = NU
 /**
  * Discover all action functions by invoking hook_action_info().
  *
+ * @code
  * mymodule_action_info() {
  *   return array(
  *     'mymodule_functiondescription_action' => array(
@@ -125,6 +126,7 @@ function actions_do($action_ids, &$object, $context = NULL, $a1 = NULL, $a2 = NU
  *     )
  *   );
  * }
+ * @endcode
  *
  * The description is used in presenting possible actions to the user for
  * configuration. The type is used to present these actions in a logical

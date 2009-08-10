@@ -1,5 +1,5 @@
 <?php
-// $Id: system.admin.inc,v 1.63.2.8 2009-06-09 10:58:09 goba Exp $
+// $Id: system.admin.inc,v 1.63.2.9 2009-08-10 10:45:32 goba Exp $
 
 /**
  * @file
@@ -1843,7 +1843,7 @@ EOT;
 /**
  * This function formats the content of an administrative block.
  *
- * @param $block
+ * @param $content
  *   An array containing information about the block. It should
  *   include a 'title', a 'description' and a formatted 'content'.
  * @ingroup themeable

@@ -1,5 +1,5 @@
 <?php
-// $Id: user.module,v 1.892.2.14 2009/07/01 20:51:56 goba Exp $
+// $Id: user.module,v 1.892.2.15 2009/08/10 11:34:59 goba Exp $
 
 /**
  * @file
@@ -618,7 +618,7 @@ function user_user($type, &$edit, &$account, $category = NULL) {
       '#weight' => 5,
       '#title' => t('History'),
     );
-    $account->content['summary']['member_for'] =  array(
+    $account->content['summary']['member_for'] = array(
       '#type' => 'user_profile_item',
       '#title' => t('Member for'),
       '#value' => format_interval(time() - $account->created),

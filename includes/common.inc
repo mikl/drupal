@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.756.2.60 2009-07-21 08:59:10 goba Exp $
+// $Id: common.inc,v 1.756.2.61 2009-08-10 10:37:19 goba Exp $
 
 /**
  * @file
@@ -990,7 +990,7 @@ function flood_register_event($name) {
  *
  * @param $name
  *   The name of the event.
- * @param $number
+ * @param $threshold
  *   The maximum number of the specified event per hour (per visitor).
  * @return
  *   True if the user did not exceed the hourly threshold. False otherwise.

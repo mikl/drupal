@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.756.2.63 2009/09/14 08:09:18 goba Exp $
+// $Id: common.inc,v 1.756.2.64 2009/09/14 13:39:14 goba Exp $
 
 /**
  * @file
@@ -48,7 +48,7 @@ function drupal_set_content($region = NULL, $data = NULL) {
  *   A specified region to fetch content for. If NULL, all regions will be
  *   returned.
  * @param $delimiter
- *   Content to be inserted between exploded array elements.
+ *   Content to be inserted between imploded array elements.
  */
 function drupal_get_content($region = NULL, $delimiter = ' ') {
   $content = drupal_set_content();

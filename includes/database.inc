@@ -1,5 +1,5 @@
 <?php
-// $Id: database.inc,v 1.92.2.6 2009/08/10 09:57:49 goba Exp $
+// $Id: database.inc,v 1.92.2.7 2009/09/14 10:23:16 goba Exp $
 
 /**
  * @file
@@ -32,11 +32,11 @@ define('DB_ERROR', 'a515ac9c2796ca0e23adbe92c68fc9fc');
  * For example, one might wish to return a list of the most recent 10 nodes
  * authored by a given user. Instead of directly issuing the SQL query
  * @code
- *   SELECT n.title, n.body, n.created FROM node n WHERE n.uid = $uid LIMIT 0, 10;
+ *   SELECT n.nid, n.title, n.created FROM node n WHERE n.uid = $uid LIMIT 0, 10;
  * @endcode
  * one would instead call the Drupal functions:
  * @code
- *   $result = db_query_range('SELECT n.title, n.body, n.created
+ *   $result = db_query_range('SELECT n.nid, n.title, n.created
  *     FROM {node} n WHERE n.uid = %d', $uid, 0, 10);
  *   while ($node = db_fetch_object($result)) {
  *     // Perform operations on $node->body, etc. here.

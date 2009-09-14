@@ -1,5 +1,5 @@
 <?php
-// $Id: database.mysql-common.inc,v 1.17.2.1 2008-02-07 10:17:26 goba Exp $
+// $Id: database.mysql-common.inc,v 1.17.2.2 2009-09-14 10:31:48 goba Exp $
 
 /**
  * @file
@@ -512,7 +512,7 @@ function db_drop_index(&$ret, $table, $name) {
  */
 
 function db_change_field(&$ret, $table, $field, $field_new, $spec, $keys_new = array()) {
-  $sql = 'ALTER TABLE {'. $table .'} CHANGE '. $field .' '.
+  $sql = 'ALTER TABLE {'. $table .'} CHANGE `'. $field .'` '.
     _db_create_field_sql($field_new, _db_process_field($spec));
   if (count($keys_new)) {
     $sql .= ', ADD '. implode(', ADD ', _db_create_keys_sql($keys_new));

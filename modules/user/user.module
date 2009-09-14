@@ -1,5 +1,5 @@
 <?php
-// $Id: user.module,v 1.892.2.16 2009-09-14 11:12:47 goba Exp $
+// $Id: user.module,v 1.892.2.17 2009-09-14 11:56:15 goba Exp $
 
 /**
  * @file
@@ -487,7 +487,7 @@ function user_access($string, $account = NULL, $reset = FALSE) {
     $perm = array();
   }
 
-  if (is_null($account)) {
+  if (!isset($account)) {
     $account = $user;
   }
 

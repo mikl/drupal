@@ -1,5 +1,5 @@
 <?php
-// $Id: system.install,v 1.238.2.15 2009-07-01 20:51:56 goba Exp $
+// $Id: system.install,v 1.238.2.16 2009-09-14 11:21:55 goba Exp $
 
 /**
  * Test and report Drupal installation requirements.
@@ -790,7 +790,8 @@ function system_schema() {
       ),
     'indexes' => array(
       'fit' => array('fit'),
-      'tab_parent' => array('tab_parent')
+      'tab_parent' => array('tab_parent'),
+      'tab_root_weight_title' => array(array('tab_root', 64), 'weight', 'title'),      
       ),
     'primary key' => array('path'),
     );
@@ -2594,6 +2595,15 @@ function system_update_6051() {
     drupal_set_message("User signatures no longer inherit comment input formats. Each user's signature now has its own associated format that can be selected on the user's account page. Existing signatures have been set to your site's default input format.");
   }
 
+  return $ret;
+}
+
+/**
+ * Add a missing index on the {menu_router} table.
+ */
+function system_update_6052() {
+  $ret = array();
+  db_add_index($ret, 'menu_router', 'tab_root_weight_title', array(array('tab_root', 64), 'weight', 'title'));
   return $ret;
 }
 

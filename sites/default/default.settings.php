@@ -1,5 +1,5 @@
 <?php
-// $Id: default.settings.php,v 1.8.2.3 2009-09-14 11:54:03 goba Exp $
+// $Id: default.settings.php,v 1.8.2.4 2009-09-14 12:59:18 goba Exp $
 
 /**
  * @file
@@ -146,6 +146,17 @@ ini_set('session.use_cookies',      1);
 ini_set('session.use_only_cookies', 1);
 ini_set('session.use_trans_sid',    0);
 ini_set('url_rewriter.tags',        '');
+
+/**
+ * If you encounter a situation where users post a large amount of text, and
+ * the result is stripped out upon viewing but can still be edited, Drupal's
+ * output filter may not have sufficient memory to process it. If you
+ * experience this issue, you may wish to uncomment the following two lines
+ * and increase the limits of these variables. For more information, see
+ * http://php.net/manual/en/pcre.configuration.php.
+ */
+# ini_set('pcre.backtrack_limit', 200000);
+# ini_set('pcre.recursion_limit', 200000);
 
 /**
  * Drupal automatically generates a unique session cookie name for each site

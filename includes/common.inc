@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.756.2.65 2009-09-14 14:55:09 goba Exp $
+// $Id: common.inc,v 1.756.2.66 2009-09-15 10:40:26 goba Exp $
 
 /**
  * @file
@@ -2650,9 +2650,9 @@ function page_set_cache() {
  * Returns TRUE if ran successfully
  */
 function drupal_cron_run() {
-  // If not in 'safe mode', increase the maximum execution time:
-  if (!ini_get('safe_mode')) {
-    set_time_limit(240);
+  // Try to allocate enough time to run all the hook_cron implementations.
+  if (function_exists('set_time_limit')) {
+    @set_time_limit($time_limit);
   }
 
   // Fetch the cron semaphore

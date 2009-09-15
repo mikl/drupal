@@ -1,5 +1,5 @@
 <?php
-// $Id: node.module,v 1.947.2.15 2009-02-16 14:39:40 goba Exp $
+// $Id: node.module,v 1.947.2.16 2009-09-15 10:40:26 goba Exp $
 
 /**
  * @file
@@ -2318,9 +2318,9 @@ function node_access_rebuild($batch_mode = FALSE) {
       batch_set($batch);
     }
     else {
-      // If not in 'safe mode', increase the maximum execution time.
-      if (!ini_get('safe_mode')) {
-        set_time_limit(240);
+      // Try to allocate enough time to rebuild node grants
+      if (function_exists('set_time_limit')) {
+        @set_time_limit($time_limit);
       }
       $result = db_query("SELECT nid FROM {node}");
       while ($node = db_fetch_object($result)) {

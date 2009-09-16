@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.611.2.24 2009-05-13 17:10:36 drumm Exp $
+// $Id: common.inc,v 1.611.2.25 2009-09-16 17:29:09 drumm Exp $
 
 /**
  * @file
@@ -427,6 +427,18 @@ function drupal_http_request($url, $headers = array(), $method = 'GET', $data = 
   // Parse the URL, and make sure we can handle the schema.
   $uri = parse_url($url);
 
+  if ($uri == FALSE) {
+    $result->error = 'unable to parse URL';
+    $result->code = -1001;
+    return $result;
+  }
+
+  if (!isset($uri['scheme'])) {
+    $result->error = 'missing schema';
+    $result->code = -1002;
+    return $result;
+  }
+
   switch ($uri['scheme']) {
     case 'http':
       $port = isset($uri['port']) ? $uri['port'] : 80;
@@ -441,6 +453,7 @@ function drupal_http_request($url, $headers = array(), $method = 'GET', $data = 
       break;
     default:
       $result->error = 'invalid schema '. $uri['scheme'];
+      $result->code = -1003;
       return $result;
   }
 

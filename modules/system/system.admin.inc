@@ -1,5 +1,5 @@
 <?php
-// $Id: system.admin.inc,v 1.63.2.11 2009-09-14 14:16:21 goba Exp $
+// $Id: system.admin.inc,v 1.63.2.12 2009-09-16 17:54:19 goba Exp $
 
 /**
  * @file
@@ -1978,7 +1978,7 @@ function theme_system_admin_by_module($menu_items) {
  *   An array of requirements.
  * @ingroup themeable
  */
-function theme_status_report(&$requirements) {
+function theme_status_report($requirements) {
   $i = 0;
   $output = '<table class="system-status-report">';
   foreach ($requirements as $requirement) {

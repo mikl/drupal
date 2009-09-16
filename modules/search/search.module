@@ -1,5 +1,5 @@
 <?php
-// $Id: search.module,v 1.209.2.6 2008/05/14 06:35:29 drumm Exp $
+// $Id: search.module,v 1.209.2.7 2009/09/16 04:27:01 drumm Exp $
 
 /**
  * @file
@@ -1052,6 +1052,17 @@ function search_box($form_id) {
  * Process a block search form submission.
  */
 function search_box_form_submit($form_id, $form_values) {
+  // The search form relies on control of the redirect destination for its
+  // functionality, so we override any static destination set in the request,
+  // for example by drupal_access_denied() or drupal_not_found()
+  // (see http://drupal.org/node/292565).
+  if (isset($_REQUEST['destination'])) {
+    unset($_REQUEST['destination']);
+  }
+  if (isset($_REQUEST['edit']['destination'])) {
+    unset($_REQUEST['edit']['destination']);
+  }
+
   return 'search/node/'. trim($form_values[$form_id .'_keys']);
 }
 

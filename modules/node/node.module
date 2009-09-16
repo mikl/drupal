@@ -1,5 +1,5 @@
 <?php
-// $Id: node.module,v 1.947.2.17 2009-09-15 10:54:45 goba Exp $
+// $Id: node.module,v 1.947.2.18 2009-09-16 18:21:06 goba Exp $
 
 /**
  * @file
@@ -2709,7 +2709,7 @@ function node_assign_owner_action_form($context) {
       '#default_value' => $owner_name,
       '#autocomplete_path' => 'user/autocomplete',
       '#size' => '6',
-      '#maxlength' => '7',
+      '#maxlength' => '60',
       '#description' => $description,
     );
   }

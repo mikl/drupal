@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.756.2.70 2009-09-16 19:47:20 goba Exp $
+// $Id: common.inc,v 1.756.2.71 2009-09-23 09:09:29 goba Exp $
 
 /**
  * @file
@@ -2662,7 +2662,7 @@ function page_set_cache() {
 function drupal_cron_run() {
   // Try to allocate enough time to run all the hook_cron implementations.
   if (function_exists('set_time_limit')) {
-    @set_time_limit($time_limit);
+    @set_time_limit(240);
   }
 
   // Fetch the cron semaphore

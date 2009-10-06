@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.756.2.71 2009-09-23 09:09:29 goba Exp $
+// $Id: common.inc,v 1.756.2.72 2009-10-06 12:03:11 goba Exp $
 
 /**
  * @file
@@ -1110,7 +1110,7 @@ function format_xml_elements($array) {
           $output .= drupal_attributes($value['attributes']);
         }
 
-        if ($value['value'] != '') {
+        if (isset($value['value']) && $value['value'] != '') {
           $output .= '>'. (is_array($value['value']) ? format_xml_elements($value['value']) : check_plain($value['value'])) .'</'. $value['key'] .">\n";
         }
         else {

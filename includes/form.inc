@@ -1,5 +1,5 @@
 <?php
-// $Id: form.inc,v 1.265.2.28 2009-09-16 17:54:19 goba Exp $
+// $Id: form.inc,v 1.265.2.29 2009-11-06 08:01:48 goba Exp $
 
 /**
  * @defgroup forms Form builder functions
@@ -48,7 +48,7 @@
 
 /**
  * Retrieves a form from a constructor function, or from the cache if
- * the form was built in a previous page-load. The form is then passesed
+ * the form was built in a previous page-load. The form is then passed
  * on for processing, after and rendered for display if necessary.
  *
  * @param $form_id

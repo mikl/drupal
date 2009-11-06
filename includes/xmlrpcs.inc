@@ -1,5 +1,5 @@
 <?php
-// $Id: xmlrpcs.inc,v 1.24.2.1 2008-04-28 10:04:52 dries Exp $
+// $Id: xmlrpcs.inc,v 1.24.2.2 2009-11-06 08:07:38 goba Exp $
 
 /**
  * The main entry point for XML-RPC requests.
@@ -67,7 +67,7 @@ function xmlrpc_server($callbacks) {
   xmlrpc_server_set($xmlrpc_server);
   $result = xmlrpc_server_call($xmlrpc_server, $xmlrpc_server->message->methodname, $xmlrpc_server->message->params);
 
-  if ($result->is_error) {
+  if (is_object($result) && !empty($result->is_error)) {
     xmlrpc_server_error($result);
   }
   // Encode the result

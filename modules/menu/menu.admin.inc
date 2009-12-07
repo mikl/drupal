@@ -1,9 +1,9 @@
 <?php
-// $Id: menu.admin.inc,v 1.26.2.4 2009-02-25 13:15:40 goba Exp $
+// $Id: menu.admin.inc,v 1.26.2.5 2009-12-07 08:14:33 goba Exp $
 
 /**
  * @file
- * Administrative page callbaks for menu module.
+ * Administrative page callbacks for menu module.
  */
 
 /**

@@ -1,5 +1,5 @@
 <?php
-// $Id: comment.module,v 1.617.2.10 2009-09-14 10:36:42 goba Exp $
+// $Id: comment.module,v 1.617.2.11 2010-01-28 10:15:11 goba Exp $
 
 /**
  * @file
@@ -1072,20 +1072,20 @@ function comment_operations($action = NULL) {
   if ($action == 'publish') {
     $operations = array(
       'publish' => array(t('Publish the selected comments'), 'UPDATE {comments} SET status = '. COMMENT_PUBLISHED .' WHERE cid = %d'),
-      'delete' => array(t('Delete the selected comments'), '')
+      'delete' => array(t('Delete the selected comments'), ''),
     );
   }
   else if ($action == 'unpublish') {
     $operations = array(
       'unpublish' => array(t('Unpublish the selected comments'), 'UPDATE {comments} SET status = '. COMMENT_NOT_PUBLISHED .' WHERE cid = %d'),
-      'delete' => array(t('Delete the selected comments'), '')
+      'delete' => array(t('Delete the selected comments'), ''),
     );
   }
   else {
     $operations = array(
       'publish' => array(t('Publish the selected comments'), 'UPDATE {comments} SET status = '. COMMENT_PUBLISHED .' WHERE cid = %d'),
       'unpublish' => array(t('Unpublish the selected comments'), 'UPDATE {comments} SET status = '. COMMENT_NOT_PUBLISHED .' WHERE cid = %d'),
-      'delete' => array(t('Delete the selected comments'), '')
+      'delete' => array(t('Delete the selected comments'), ''),
     );
   }
   return $operations;

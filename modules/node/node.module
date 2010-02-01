@@ -1,5 +1,5 @@
 <?php
-// $Id: node.module,v 1.947.2.19 2009-09-23 09:09:30 goba Exp $
+// $Id: node.module,v 1.947.2.20 2010-02-01 17:50:04 goba Exp $
 
 /**
  * @file
@@ -958,7 +958,9 @@ function _node_save_revision(&$node, $uid, $update = NULL) {
  */
 function node_delete($nid) {
 
-  $node = node_load($nid);
+  // Clear the cache before the load, so if multiple nodes are deleted, the
+  // memory will not fill up with nodes (possibly) already removed.
+  $node = node_load($nid, NULL, TRUE);
 
   if (node_access('delete', $node)) {
     db_query('DELETE FROM {node} WHERE nid = %d', $node->nid);

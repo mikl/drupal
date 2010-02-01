@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.756.2.75 2009-12-16 21:14:02 goba Exp $
+// $Id: common.inc,v 1.756.2.76 2010-02-01 16:01:41 goba Exp $
 
 /**
  * @file
@@ -3549,6 +3549,7 @@ function drupal_write_record($table, &$object, $update = array()) {
  */
 function drupal_parse_info_file($filename) {
   $info = array();
+  $constants = get_defined_constants();
 
   if (!file_exists($filename)) {
     return $info;
@@ -3592,9 +3593,9 @@ function drupal_parse_info_file($filename) {
         $parent = &$parent[$key];
       }
 
-      // Handle PHP constants
-      if (defined($value)) {
-        $value = constant($value);
+      // Handle PHP constants.
+      if (isset($constants[$value])) {
+        $value = $constants[$value];
       }
 
       // Insert actual value

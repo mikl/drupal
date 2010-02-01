@@ -1,5 +1,5 @@
 <?php
-// $Id: file.inc,v 1.121.2.9 2009-09-16 19:34:14 goba Exp $
+// $Id: file.inc,v 1.121.2.10 2010-02-01 16:14:58 goba Exp $
 
 /**
  * @file
@@ -1194,6 +1194,7 @@ function file_get_mimetype($filename, $mapping = NULL) {
       'au|snd' => 'audio/basic',
       'mid|midi|kar' => 'audio/midi',
       'mpga|mpega|mp2|mp3|m4a' => 'audio/mpeg',
+      'f4a|f4b' => 'audio/mp4',
       'm3u' => 'audio/x-mpegurl',
       'oga|spx' => 'audio/ogg',
       'sid' => 'audio/prs.sid',
@@ -1332,7 +1333,8 @@ function file_get_mimetype($filename, $mapping = NULL) {
       'fli' => 'video/fli',
       'gl' => 'video/gl',
       'mpeg|mpg|mpe' => 'video/mpeg',
-      'mp4' => 'video/mp4',
+      'mp4|f4v|f4p' => 'video/mp4',
+      'flv' => 'video/x-flv',
       'ogv' => 'video/ogg',
       'qt|mov' => 'video/quicktime',
       'mxu' => 'video/vnd.mpegurl',

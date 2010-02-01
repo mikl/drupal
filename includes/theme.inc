@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.415.2.24 2009-06-18 12:04:04 goba Exp $
+// $Id: theme.inc,v 1.415.2.25 2010-02-01 17:40:49 goba Exp $
 
 /**
  * @file
@@ -1313,7 +1313,7 @@ function theme_table($header, $rows, $attributes = array(), $caption = NULL) {
   // Format the table header:
   if (count($header)) {
     $ts = tablesort_init($header);
-    // HTML requires that the thead tag has tr tags in it follwed by tbody
+    // HTML requires that the thead tag has tr tags in it followed by tbody
     // tags. Using ternary operator to check and see if we have any rows.
     $output .= (count($rows) ? ' <thead><tr>' : ' <tr>');
     foreach ($header as $cell) {

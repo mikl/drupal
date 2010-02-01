@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.415.2.25 2010-02-01 17:40:49 goba Exp $
+// $Id: theme.inc,v 1.415.2.26 2010-02-01 17:44:17 goba Exp $
 
 /**
  * @file
@@ -1274,7 +1274,7 @@ function theme_submenu($links) {
  *   - Any HTML attributes, such as "colspan", to apply to the table cell.
  *
  *   Here's an example for $rows:
- *   @verbatim
+ *   @code
  *   $rows = array(
  *     // Simple row
  *     array(
@@ -1285,7 +1285,7 @@ function theme_submenu($links) {
  *       'data' => array('Cell 1', array('data' => 'Cell 2', 'colspan' => 2)), 'class' => 'funky'
  *     )
  *   );
- *   @endverbatim
+ *   @endcode
  *
  * @param $attributes
  *   An array of HTML attributes to apply to the table tag.

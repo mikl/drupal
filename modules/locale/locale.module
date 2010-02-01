@@ -1,5 +1,5 @@
 <?php
-// $Id: locale.module,v 1.212.2.7 2010-02-01 16:49:14 goba Exp $
+// $Id: locale.module,v 1.212.2.8 2010-02-01 18:10:05 goba Exp $
 
 /**
  * @file
@@ -299,6 +299,15 @@ function locale_theme() {
       'arguments' => array('form' => array()),
     ),
   );
+}
+
+/**
+ * Implementation of hook_node_type().
+ */
+function locale_node_type($op, $info) {
+  if ($op == 'delete') {
+    variable_del('language_content_type_'. $info->type);
+  }
 }
 
 // ---------------------------------------------------------------------------------

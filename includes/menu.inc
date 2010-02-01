@@ -1,5 +1,5 @@
 <?php
-// $Id: menu.inc,v 1.255.2.32 2009-10-06 11:59:05 goba Exp $
+// $Id: menu.inc,v 1.255.2.33 2010-02-01 16:49:14 goba Exp $
 
 /**
  * @file
@@ -1689,15 +1689,28 @@ function menu_cache_clear_all() {
  * is different and leaves stale data in the menu tables.
  */
 function menu_rebuild() {
-  variable_del('menu_rebuild_needed');
+  if (!lock_acquire('menu_rebuild')) {
+    // Wait for another request that is already doing this work.
+    // We choose to block here since otherwise the router item may not 
+    // be avaiable in menu_execute_active_handler() resulting in a 404.
+    lock_wait('menu_rebuild');
+    return FALSE;
+  }
+
   $menu = menu_router_build(TRUE);
   _menu_navigation_links_rebuild($menu);
   // Clear the menu, page and block caches.
   menu_cache_clear_all();
   _menu_clear_page_cache();
+  
   if (defined('MAINTENANCE_MODE')) {
     variable_set('menu_rebuild_needed', TRUE);
   }
+  else {
+    variable_del('menu_rebuild_needed');
+  }
+  lock_release('menu_rebuild');
+  return TRUE;
 }
 
 /**

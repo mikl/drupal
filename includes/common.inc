@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.756.2.77 2010-02-01 17:44:17 goba Exp $
+// $Id: common.inc,v 1.756.2.78 2010-03-01 10:29:50 goba Exp $
 
 /**
  * @file
@@ -1726,7 +1726,7 @@ function drupal_clone($object) {
  * Add a <link> tag to the page's HEAD.
  */
 function drupal_add_link($attributes) {
-  drupal_set_html_head('<link'. drupal_attributes($attributes) ." />\n");
+  drupal_set_html_head('<link'. drupal_attributes($attributes) .' />');
 }
 
 /**

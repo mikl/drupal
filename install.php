@@ -1,5 +1,5 @@
 <?php
-// $Id: install.php,v 1.113.2.11 2010-05-07 18:33:20 dries Exp $
+// $Id: install.php,v 1.113.2.12 2010-05-09 14:13:31 dries Exp $
 
 require_once './includes/install.inc';
 
@@ -19,14 +19,6 @@ define('MAINTENANCE_MODE', 'install');
 function install_main() {
   require_once './includes/bootstrap.inc';
   drupal_bootstrap(DRUPAL_BOOTSTRAP_CONFIGURATION);
-
-  // The user agent header is used to pass a database prefix in the request when
-  // running tests. However, for security reasons, it is imperative that no
-  // installation be permitted using such a prefix.
-  if (isset($_SERVER['HTTP_USER_AGENT']) && strpos($_SERVER['HTTP_USER_AGENT'], "simpletest") !== FALSE) {
-    header($_SERVER['SERVER_PROTOCOL'] . ' 403 Forbidden');
-    exit;
-  }
 
   // This must go after drupal_bootstrap(), which unsets globals!
   global $profile, $install_locale, $conf;

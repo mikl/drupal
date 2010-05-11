@@ -1,5 +1,5 @@
 <?php
-// $Id: lock.inc,v 1.1.2.2 2010-02-01 16:49:14 goba Exp $
+// $Id: lock.inc,v 1.1.2.3 2010-05-11 09:26:03 goba Exp $
 
 /**
  * @file
@@ -18,7 +18,7 @@
  *
  * This is a cooperative, advisory lock system. Any long-running operation
  * that could potentially be attempted in parallel by multiple requests should
- * try to acquire a lock before proceeding. By obtaiing a lock, one request
+ * try to acquire a lock before proceeding. By obtaining a lock, one request
  * notifies any other requests that a specific opertation is in progress which
  * must not be executed in parallel.
  *

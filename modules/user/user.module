@@ -1,5 +1,5 @@
 <?php
-// $Id: user.module,v 1.892.2.23 2010-05-28 13:29:39 goba Exp $
+// $Id: user.module,v 1.892.2.24 2010-05-28 13:39:07 goba Exp $
 
 /**
  * @file
@@ -1452,6 +1452,16 @@ function user_external_login_register($name, $module) {
   }
 }
 
+/**
+ * Generates a unique URL for a user to login and reset their password.
+ *
+ * @param object $account
+ *   An object containing the user account.
+ *
+ * @return
+ *   A unique URL that provides a one-time log in for the user, from which
+ *   they can change their password.
+ */
 function user_pass_reset_url($account) {
   $timestamp = time();
   return url("user/reset/$account->uid/$timestamp/". user_pass_rehash($account->pass, $timestamp, $account->login), array('absolute' => TRUE));

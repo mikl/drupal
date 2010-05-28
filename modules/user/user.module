@@ -1,5 +1,5 @@
 <?php
-// $Id: user.module,v 1.892.2.22 2010-05-19 11:52:21 goba Exp $
+// $Id: user.module,v 1.892.2.23 2010-05-28 13:29:39 goba Exp $
 
 /**
  * @file
@@ -1250,7 +1250,7 @@ function user_set_authmaps($account, $authmaps) {
     if ($value) {
       db_query("UPDATE {authmap} SET authname = '%s' WHERE uid = %d AND module = '%s'", $value, $account->uid, $module[1]);
       if (!db_affected_rows()) {
-        db_query("INSERT INTO {authmap} (authname, uid, module) VALUES ('%s', %d, '%s')", $value, $account->uid, $module[1]);
+        @db_query("INSERT INTO {authmap} (authname, uid, module) VALUES ('%s', %d, '%s')", $value, $account->uid, $module[1]);
       }
     }
     else {

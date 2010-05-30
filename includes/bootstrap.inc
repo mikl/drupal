@@ -1,5 +1,5 @@
 <?php
-// $Id: bootstrap.inc,v 1.206.2.21 2010-05-28 12:12:56 goba Exp $
+// $Id: bootstrap.inc,v 1.206.2.22 2010-05-30 09:07:58 goba Exp $
 
 /**
  * @file
@@ -43,7 +43,7 @@ define('CACHE_AGGRESSIVE', 2);
  * @see watchdog()
  * @see watchdog_severity_levels()
  */
-define('WATCHDOG_EMERGENCY', 0);
+define('WATCHDOG_EMERG', 0);
 
 /**
  * Log message severity -- Alert: action must be taken immediately.

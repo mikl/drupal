@@ -1,5 +1,5 @@
 <?php
-// $Id: bootstrap.inc,v 1.206.2.22 2010-05-30 09:07:58 goba Exp $
+// $Id: bootstrap.inc,v 1.206.2.23 2010-06-02 13:07:45 goba Exp $
 
 /**
  * @file
@@ -439,6 +439,13 @@ function conf_init() {
     // We escape the hostname because it can be modified by a visitor.
     if (!empty($_SERVER['HTTP_HOST'])) {
       $cookie_domain = check_plain($_SERVER['HTTP_HOST']);
+      // Strip leading periods, www., and port numbers from cookie domain.
+      $cookie_domain = ltrim($cookie_domain, '.');
+      if (strpos($cookie_domain, 'www.') === 0) {
+        $cookie_domain = substr($cookie_domain, 4);
+      }
+      $cookie_domain = explode(':', $cookie_domain);
+      $cookie_domain = '.'. $cookie_domain[0];
     }
   }
   // To prevent session cookies from being hijacked, a user can configure the
@@ -450,13 +457,6 @@ function conf_init() {
   if (ini_get('session.cookie_secure')) {
     $session_name .= 'SSL';
   }
-  // Strip leading periods, www., and port numbers from cookie domain.
-  $cookie_domain = ltrim($cookie_domain, '.');
-  if (strpos($cookie_domain, 'www.') === 0) {
-    $cookie_domain = substr($cookie_domain, 4);
-  }
-  $cookie_domain = explode(':', $cookie_domain);
-  $cookie_domain = '.'. $cookie_domain[0];
   // Per RFC 2109, cookie domains must contain at least one dot other than the
   // first. For hosts such as 'localhost' or IP Addresses we don't set a cookie domain.
   if (count(explode('.', $cookie_domain)) > 2 && !is_numeric(str_replace('.', '', $cookie_domain))) {

@@ -1,5 +1,5 @@
 <?php
-// $Id: node.module,v 1.947.2.23 2010-05-19 12:23:12 goba Exp $
+// $Id: node.module,v 1.947.2.24 2010-06-02 12:11:07 goba Exp $
 
 /**
  * @file
@@ -2380,7 +2380,7 @@ function _node_access_rebuild_batch_operation(&$context) {
       node_access_acquire_grants($loaded_node);
     }
     $context['sandbox']['progress']++;
-    $context['sandbox']['current_node'] = $loaded_node->nid;
+    $context['sandbox']['current_node'] = $row['nid'];
   }
 
   // Multistep processing : report progress.

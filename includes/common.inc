@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.756.2.89 2010-06-02 18:58:25 goba Exp $
+// $Id: common.inc,v 1.756.2.90 2010-06-30 08:54:24 goba Exp $
 
 /**
  * @file
@@ -3313,7 +3313,7 @@ function drupal_uninstall_schema($module) {
  */
 function drupal_get_schema_unprocessed($module, $table = NULL) {
   // Load the .install file to get hook_schema.
-  module_load_include('install', $module);
+  module_load_install($module);
   $schema = module_invoke($module, 'schema');
 
   if (!is_null($table) && isset($schema[$table])) {

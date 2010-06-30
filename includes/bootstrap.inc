@@ -1,5 +1,5 @@
 <?php
-// $Id: bootstrap.inc,v 1.206.2.24 2010-06-30 08:39:22 goba Exp $
+// $Id: bootstrap.inc,v 1.206.2.25 2010-06-30 09:16:40 goba Exp $
 
 /**
  * @file
@@ -213,6 +213,11 @@ define('LANGUAGE_LTR', 0);
  * Language written right to left. Possible value of $language->direction.
  */
 define('LANGUAGE_RTL', 1);
+
+// Hide E_DEPRECATED messages.
+if (defined('E_DEPRECATED')) {
+  error_reporting(error_reporting() ^ E_DEPRECATED);
+}
 
 /**
  * Start the timer with the specified name. If you start and stop

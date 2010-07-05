@@ -1,5 +1,5 @@
 <?php
-// $Id: bootstrap.inc,v 1.206.2.25 2010-06-30 09:16:40 goba Exp $
+// $Id: bootstrap.inc,v 1.206.2.26 2010-07-05 21:41:38 goba Exp $
 
 /**
  * @file
@@ -216,7 +216,7 @@ define('LANGUAGE_RTL', 1);
 
 // Hide E_DEPRECATED messages.
 if (defined('E_DEPRECATED')) {
-  error_reporting(error_reporting() ^ E_DEPRECATED);
+  error_reporting(error_reporting() & ~E_DEPRECATED);
 }
 
 /**

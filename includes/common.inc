@@ -1,5 +1,5 @@
 <?php
-// $Id: common.inc,v 1.756.2.92 2010-08-06 10:56:34 goba Exp $
+// $Id: common.inc,v 1.756.2.93 2010-08-06 11:10:57 goba Exp $
 
 /**
  * @file
@@ -3694,6 +3694,8 @@ function watchdog_severity_levels() {
 
 /**
  * Explode a string of given tags into an array.
+ *
+ * @see drupal_implode_tags()
  */
 function drupal_explode_tags($tags) {
   // This regexp allows the following types of user input:
@@ -3718,6 +3720,8 @@ function drupal_explode_tags($tags) {
 
 /**
  * Implode an array of tags into a string.
+ *
+ * @see drupal_explode_tags()
  */
 function drupal_implode_tags($tags) {
   $encoded_tags = array();
